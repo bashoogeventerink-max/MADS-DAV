@@ -250,4 +250,86 @@ than assuming:
   read): weekly vs. daily bin width; the lockdown boundary dates themselves
   (still approximate/unvalidated, per stage 2).
 
-## Stage 5 — Critique (in progress)
+## Stage 5 — Critique (done)
+
+- **Chart built:** `notebooks/analysis/01-lockdown-activity.ipynb` (new folder,
+  separate from the numbered course-lesson notebooks) — loads the already
+  anonymised/featured export from `01.3-your-own-chat.ipynb`, adds the
+  stage-2 lockdown-period lookup, weekly bins (`week_start` = Monday of each
+  ISO week, per the stage-3/4 decision to keep spike days out of the trend
+  line), and renders both the primary weekly-volume chart and the per-author
+  companion small-multiples chart (shared y-scale).
+- **First impression (student's own read, primary chart):** activity does
+  rise around the first lockdown (2020–2021) — visibly higher than the
+  trend right after it, in late 2021. But the **second shaded lockdown
+  (2021–2022) shows no comparable spike.**
+- **Claim, stated plainly:** activity should be higher during lockdown
+  because communication shifted onto WhatsApp — but the student's own
+  assessment is that **this claim cannot be fully observed in the data**:
+  only one of the shaded lockdown windows lines up with a visible rise, and
+  several *larger, unshaded* peaks show up well after 2022 (2023–2025) that
+  the lockdown story does not explain.
+- **What this means for the stage-1 proposition:** this is a real
+  falsification signal, not a technicality — noted here rather than argued
+  away. The declining-trend-since-lockdown half of the proposition also
+  doesn't match the chart (volume looks noisy/spiky throughout, with peaks
+  recurring well after lockdown ended, not declining).
+- **Not yet done:** the mechanical half of the critique checklist (what's
+  grouped visually vs. conceptually, what could be deleted, whether colour
+  is used as a pointer) — parked, secondary to the claim-level finding
+  above.
+
+## Stage 6 — Verification (done)
+
+- **Null stated:** volume is flat/noisy regardless of lockdown status — no
+  real difference in message counts tied to restriction periods.
+- **Multiple-comparisons check:** honest answer — no other period splits
+  were tried before landing on lockdown vs. non-lockdown. This was the only
+  comparison made, not the best of several, so the "best of many" risk
+  doesn't apply here — but that also means the pattern hasn't been
+  stress-tested against alternatives yet.
+- **Shuffle test (gut estimate):** student expects a shuffle would produce
+  something "this strong" quite often — similarly-sized spikes already
+  appear in 2022 and 2023, well outside any shaded lockdown window.
+- **Confounder identified:** family/friends' illness news (already flagged
+  as a live risk back in stage 3) keeping the group engaged — a plausible
+  alternative driver of spikes, independent of lockdown status.
+- **Held-out slice check (informal, done by eye):** the 2020–2021 rise still
+  looks real and remarkable on its own. But the **same magnitude of rise
+  recurs in mid-2022, end-2022, and end-2023** — none of which are lockdown
+  windows. So the pattern does **not** survive as lockdown-specific once
+  compared against other slices of the same series; it reads as general
+  recurring spikiness (consistent with the bad-news-responsiveness risk
+  flagged in stage 3), not something unique to lockdown.
+- **Residual/model check:** not done — no rolling average or trend fit
+  applied yet, so no residual shape to inspect.
+
+### Verdict on the stage-1 proposition
+
+**Not supported as stated.** Only the first lockdown window shows a rise;
+the second does not; and later, unshaded periods (2022–2023) show spikes of
+comparable or greater size. The declining-trend half of the proposition
+also doesn't hold — volume stays noisy/spiky through 2026 rather than
+trending down after restrictions lifted. This is the honest outcome of the
+stage-5/6 checks, not a plotting problem — per goad's own guidance, the
+right next move is a **sharper stage 1**, not a better chart: the real
+signal in this data looks like it's about *recurring spike events*
+(bad-news responsiveness, named as a risk back in stage 3) rather than a
+sustained COVID-era shift.
+
+**Decision:** write up this negative finding as the deliverable (not a
+sharper stage-1 pass on the spike-driven proposition — parked as a
+follow-up hypothesis, not started).
+
+## Write-up
+
+- **File:** `notebooks/analysis/findings.md` (+ `weekly-volume.png`,
+  `weekly-volume-per-author.png` exported from the notebook for embedding).
+- **Audience:** course group + teacher, written to also hold up if shown to
+  the friends in the group chat — matches stage 1's audience note.
+- Walks through: original expectation → what the chart shows → the stage-6
+  checks → the honest verdict (proposition not supported) → what looks more
+  likely instead (recurring bad-news-driven spikes, flagged as an untested
+  hypothesis, not a new conclusion) → explicit list of what this check did
+  *not* do (no other splits tried, boundary dates approximate, shuffle/
+  held-out checks done by eye not computed, no residual fit).

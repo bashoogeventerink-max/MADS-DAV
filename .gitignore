@@ -36,3 +36,9 @@ AGENTS.local.md
 .cursor/
 .lefthook-local.yml
 lefthook-local.yml
+
+# Course lesson notebooks (notebooks/lessonN/) and the local scratch folder
+# (notebooks/notebooks/) are worked in locally but not tracked going forward --
+# only notebooks/analysis/ (this student's own custom work) is committed.
+notebooks/lesson*/
+notebooks/notebooks/
