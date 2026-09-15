@@ -161,3 +161,39 @@ attractor pattern and `vibrant-barracuda`/Mark's detractor pattern.
   before starting, since a redesign done before the stats land might need
   redoing once the stats are in (e.g. if the shuffle test undercuts the
   Thijs/Jop pattern, item 2's title would need to change again).
+
+**Resolved by the v3 redesign** (see `analysis-log.md`, "Presentation draft
+v3"): statistics went first (SE + shuffle test), the chart narrowed to
+`pliable-tiger` alone with a real story, all 9 authors stayed visible in
+grey, and `n=`/SE moved off the other 8 bars onto the focus bar only.
+
+## Follow-up items after v3, parked for a future session
+
+Logged after reviewing the v3 chart (`slide-pliable-tiger-election-effect.png`)
+— not acted on yet, same as items 1-6 above when they were first written down.
+
+7. **Neaten the title.** Current: *"The historian in the group (pliable-tiger)
+   awakes and activates group chat during election periods"* — a deliberately
+   punchier draft, but long and slightly awkward as a final headline
+   (`fig.suptitle` in `02-election-length.ipynb`, v3 cell). Revisit wording
+   once real-name/audience question (item 3) is settled, since that also
+   affects whether "the historian" or a name leads the sentence.
+8. **Pick one of the x-axis label or the subtitle, not both.** The v3 chart
+   currently carries the metric description twice — once as the italic
+   subtitle (`v3_subtitle`, also reused as `ax.set_title`) and again as the
+   x-axis label. Decide which one owns "% change ... relative to each
+   author's own baseline ... 5 windows over a 6-year period" before the next
+   redraw; keeping both is exactly the kind of per-chart redundancy item 1
+   originally flagged.
+9. **Simplify the footnote wording.** The current 4-line explanation of what
+   an error bar means (added this session) is more literal/technical than it
+   needs to be for a class audience — shorten it once the title/subtitle
+   question above is settled, so the whole chart's text budget gets
+   reconsidered together rather than patched line by line.
+10. **Rethink what `n=619` on the `pliable-tiger` bar should mean.** Currently
+    it's just the election-window message count (the numerator behind that
+    bar's rate) — worth deciding whether a reader needs the rest-of-chat `n`
+    too for context, whether `n=619` needs a one-word gloss (e.g. "n=619
+    election-window messages") so it doesn't read as a mystery statistic, or
+    whether it's redundant now that the error bar already communicates
+    reliability visually.
