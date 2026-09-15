@@ -19,6 +19,18 @@
       "env": {
         "CODESTYLE_REF": "stable"
       }
+    },
+    "learn": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "https://learn.pttrn.io/mcp/learn-student-mcp.tgz"
+      ],
+      "env": {
+        "LEARN_TOKEN": "${LEARN_TOKEN}",
+        "LEARN_PROJECT_ID": "learn-79720",
+        "LEARN_API_KEY": "${LEARN_API_KEY}"
+      }
     }
   }
 }

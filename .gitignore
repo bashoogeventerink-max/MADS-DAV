@@ -37,6 +37,9 @@ AGENTS.local.md
 .lefthook-local.yml
 lefthook-local.yml
 
+# Local MCP secrets (referenced from .mcp.json via ${VAR} expansion; never committed).
+.mcp.local.env
+
 # Course lesson notebooks (notebooks/lessonN/) and the local scratch folder
 # (notebooks/notebooks/) are worked in locally but not tracked going forward --
 # only notebooks/analysis/ (this student's own custom work) is committed.
