@@ -913,3 +913,94 @@ it's shown).
   scope are readable without the caption. `n=` in the labels clarified as
   each author's election-window message count specifically (the sample
   size the % for that bar rests on).
+
+### Items 5 & 6 from `feedback-comparing-categories.md`, computed (not by eye)
+
+Revisiting the % chart's stage-6 gaps, per the logged feedback. Sequencing decided
+with the student first: statistics before redesign, since the redesign (items 1/2/4)
+would need redoing if these checks undercut the pattern.
+
+**Item 5 — error bars, Poisson chosen over bootstrap:** `SE(rate) = sqrt(count) /
+weeks` per side (election window, rest of chat), combined via the standard
+delta-method formula for a ratio of two independent rate estimates, since
+`pct_change` is a ratio of two rates. Student's call, after a plain-language
+trade-off explanation: Poisson is faster (a formula, no resampling) but assumes a
+steady drip with no bursts — known not to hold for this chat (birthday/bad-news
+spikes, per Analysis 1) — versus bootstrapping the ~9 weeks per window, which is
+more honest about burstiness but thin on only ~9 weeks to resample from.
+
+**Result — SEs land in a similar ~5–7 percentage-point band across all nine
+authors**, regardless of each author's own election-window sample size. Reading each
+author's change as a multiple of its own SE (change ÷ SE, a rough z-score):
+`pliable-tiger` (+37.9%, 6.2×), `vibrant-barracuda` (−29.9%, 5.9×),
+`rib-tickling-curlew` (+34.3%, 5.3×), `hypnotic-rabbit` (−29.1%, 4.2×), and
+`fluffy-beaver` (+22.3%, 3.6×) all sit 3+ SEs from zero; `animated-elk`,
+`effervescent-penguin`, `striking-rail`, `humorous-stingray` all sit under 2 SEs —
+statistically indistinguishable from noise by this measure alone.
+
+**Item 6 — shuffle test, computed:** 5 random ~61-day windows (student's number),
+drawn from within the 2020–2025 span the 5 real elections already occupy (not
+2026's unmatched tail — student's call, to avoid the general-activity-decline
+confound deciding the answer by itself), non-overlapping with the real windows or
+each other, compared against each author's own quiet baseline (excludes all 5 real
+election windows, same baseline the real `pct_change` used — a like-for-like
+reference, not a mixed one). A draw only counts as a "match" if it moves at least as
+far in the *same direction* (student's call) as the real result. Seeded (42) for
+reproducibility, in `02-election-length.ipynb` after the pct chart.
+
+**Result:** `rib-tickling-curlew` 0/5 matches, `pliable-tiger` and
+`vibrant-barracuda` 1/5 each — all read as real, larger-than-typical swings for
+those three, not likely chance. `hypnotic-rabbit` matched 3/5 — despite clearing 4+
+SEs by the Poisson measure above, a swing this size for this specific person
+happens by chance quite often. **The two methods disagreeing on `hypnotic-rabbit`
+is itself informative, not a bug:** it's exactly the failure mode named when
+choosing Poisson over bootstrap — Poisson assumes no bursts, and `hypnotic-rabbit`'s
+n=117 (smallest of the nine) means a handful of clustered messages would move the
+rate further than Poisson's formula expects.
+
+**Caveat, not glossed over:** only 5 shuffle draws — "0/5" and "1/5" are themselves
+noisy estimates (roughly "under 20%"), not precise percentages.
+
+**What this does and doesn't establish:** a low shuffle-match rate supports "this
+swing is real, not chance- or era-driven noise" for `pliable-tiger`,
+`rib-tickling-curlew`, and `vibrant-barracuda`. It does **not** by itself establish
+the *election* as the cause, as opposed to some other real, unrelated event landing
+in that window for that person — the same causal-vs-correlation gap Analysis 1 hit
+with bad-news spikes. Left as an open caveat for the write-up, not resolved here.
+
+**Revised confidence ranking, to build the redesign on:** `pliable-tiger`,
+`rib-tickling-curlew`, `vibrant-barracuda` — solid on both checks. `fluffy-beaver` —
+solid on SE alone (not one of the three the feedback named for shuffle focus).
+`hypnotic-rabbit` — the number to caveat hardest or drop from a simplified chart's
+highlighted set, despite looking strong on SE alone. The remaining four
+(`animated-elk`, `striking-rail`, `humorous-stingray`, `effervescent-penguin`) —
+statistically flat on both measures, candidates to grey out uniformly regardless of
+which side of the old ±20% threshold they happened to land on.
+
+### Presentation draft v3: narrowed to `pliable-tiger`, built on the stats above
+
+Not a rebuild — v3 lives alongside v1/v2 in the same notebook, same pattern as
+before. Decisions made with the student:
+
+- **Scope narrowed to `pliable-tiger` alone**, not the full attractor/detractor set —
+  the one person with a real, specific story to tell: ~10 years studying history,
+  enormously politically engaged, briefly a member of a Dutch political party, known
+  in the group for driving political-topic discussions (e.g. democracy). Answers the
+  "still to do" gap named back in item 3 of `feedback-comparing-categories.md` — an
+  anonymous alias's % change now has an actual behavioural story behind it. Real name
+  deliberately kept out of the notebook/chart — item 3's audience/sharing-plan caution
+  is unresolved, not overridden.
+- **All 9 authors stay visible, in grey** (student's explicit call, not the model's) —
+  only `pliable-tiger` coloured. Preserves the honesty property the original
+  attractor/detractor reframe was built to protect (not implying "only this one
+  person changed"), but without needing a 3-way statistical threshold to get there.
+- **Old 3-way attractor/neutral/detractor legend dropped.** Replaced with a 2-entry
+  legend: the highlighted author, and what the error bar means — otherwise the
+  whiskers go unexplained once the threshold legend is gone.
+- **Per-bar `n=` label kept only on the focus bar** (with its SE folded in:
+  `+38% (n=619, ±6 SE)`); the other 8 rely on the error bar alone rather than a
+  repeated text label — direct fix for item 1's "too much happening in one graph."
+- **Error bars (item 5) kept on all nine bars**, not just the focus one — lets a
+  reader see by eye that most of the grey bars sit close to their own zero-crossing.
+- **File:** `notebooks/analysis/slide-pliable-tiger-election-effect.png`, same
+  notebook (`02-election-length.ipynb`), reproducible top to bottom.
