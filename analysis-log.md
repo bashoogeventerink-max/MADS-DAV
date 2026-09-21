@@ -1004,3 +1004,378 @@ before. Decisions made with the student:
   reader see by eye that most of the grey bars sit close to their own zero-crossing.
 - **File:** `notebooks/analysis/slide-pliable-tiger-election-effect.png`, same
   notebook (`02-election-length.ipynb`), reproducible top to bottom.
+
+### Presentation draft v3, follow-up polish (items 7–10 from `feedback-comparing-categories.md`)
+
+Resolved in the same notebook cell, decided with the student. Real-name/audience
+question (item 3) still not settled, so the alias stays throughout.
+
+- **Title (item 7):** shortened to *"pliable-tiger gets more active during election
+  windows"* — states the finding directly, dropping the punchier-but-long "historian...
+  awakes and activates" draft.
+- **Subtitle/x-axis redundancy (item 8):** both dropped from the chart itself. The
+  metric description they used to split between them (% change definition, "5 windows
+  over a 6-year period") moved into the footnote instead — one place, not two.
+- **Footnote (item 9):** cut to the error-bar explanation's first sentence only
+  (dropped the second sentence spelling out how to read a specific bar's whisker —
+  judged as more than a class audience needs), combined with the metric description
+  that moved out of the subtitle/x-axis label per item 8.
+- **`n=` label (item 10):** kept, but named — `n=619` became `n=619 election-window
+  messages`, so a reader doesn't need to already know the chat's scale to judge
+  whether that's a small or large sample. No rest-of-chat `n` added alongside it; the
+  error bar already carries that reliability signal visually.
+- **File:** same `notebooks/analysis/slide-pliable-tiger-election-effect.png`,
+  regenerated top to bottom from `02-election-length.ipynb`.
+
+### Presentation draft v3, follow-up round 2: title focus, footnote formatting
+
+- **Title now names the backstory, not just the alias:** changed to
+  *"pliable-tiger, the group's historian, gets more active during election
+  windows"* — the student wanted the real story to be the focus, not a bare
+  alias, following on from item 3's original point about anonymous codes
+  needing an actual behavioural story.
+- **Political-party detail kept off the chart, decided explicitly:** the
+  student also wanted "former member of a political party" in the title —
+  same backstory as "historian," logged in the v3 markdown cell above. Held
+  back after a direct trade-off question: political affiliation is a more
+  specific, more identifying fact within a 9-person friend group than
+  "historian" alone, and item 3's audience/sharing-plan check (whether this
+  can go in front of the teacher/group at all) is still unresolved. Student
+  chose "historian only" — the political-party fact stays in the private
+  notebook markdown, not on anything shown in class. Revisit both the title
+  and this decision together once item 3 is settled.
+- **Footnote reformatted as bullet points:** the combined metric-definition
+  + error-bar sentence now renders as two stacked `•` lines instead of one
+  run-on sentence.
+- **File:** same `notebooks/analysis/slide-pliable-tiger-election-effect.png`,
+  regenerated top to bottom.
+
+### Presentation draft v3, follow-up round 3: teacher-feedback critique via `goad_critique_visual`
+
+Student asked for a read of the latest chart against the teacher's original
+feedback (`feedback-comparing-categories.md`). Walked the first-impression and
+gestalt sections of the critique checklist rather than giving a verdict outright.
+
+- **Student's own first-impression read:** saw the top bar first, both because of
+  its colour and because it's the largest; named the bars/colour as the
+  highest-contrast element (correctly, data-carrying); nothing bright/large that
+  shouldn't be; flagged that comparing the top bar against the lowest detractor is
+  hard without the colour carrying that comparison.
+- **Gestalt issue surfaced (assistant-identified, per the checklist's own division
+  of labour):** `rib-tickling-curlew`'s +34% sits almost as far from zero as
+  `pliable-tiger`'s +38%, but grey grouped it with the flat/near-zero bars purely
+  by colour similarity — fighting the eye's own read of the magnitudes, and
+  directly related to the student's own "hard to compare" observation above.
+- **Fix chosen, after a check on the claim it implies:** promote
+  `rib-tickling-curlew` to the same highlight colour and label treatment as
+  `pliable-tiger`. Before applying, confirmed with the student that "history
+  fanatic" is lived knowledge about Jop (rib-tickling-curlew's real name) too —
+  not an assumption invented to fit his bar being high. Same evidentiary bar
+  pliable-tiger's "historian" story was held to; a categorical claim about "history
+  fanatics" from n=2 is a bigger claim than "these two named people," and this
+  chat's small-n risk has already been flagged repeatedly (Analysis 4).
+- **Result:** both bars share the blue highlight and the `n=`/SE label format;
+  title generalised to *"The group's history fanatics get more active during
+  election windows"* (no longer names either alias directly — both are already
+  the y-axis tick labels). Political-party detail from the original backstory
+  still excluded from the chart; item 3's audience/sharing-plan question is
+  about the trait's identifiability, unaffected by the highlight moving from one
+  person to two.
+- **Not yet worked through:** the checklist's remaining two sections
+  (`guidelines`, `claim`) — parked for whenever the student wants to continue the
+  critique.
+- **File:** same `notebooks/analysis/slide-pliable-tiger-election-effect.png`,
+  regenerated top to bottom.
+
+### Presentation draft v3, follow-up round 4: the five guidelines
+
+Continued the critique checklist. Show-the-data, avoid-spaghetti, and
+start-with-grey all held up already (no aggregation hiding variation, no lines to
+tangle, colour already reserved for the two focus bars). Two items acted on:
+
+- **Reduce clutter — on-bar labels shortened:** `+38% (n=619 election-window
+  messages, +-6 SE)` was judged too long sitting on the bar itself. Cut to just
+  `+38%` / `+34%`; the `n=`/SE detail moved into a new third footnote bullet
+  instead.
+- **Integrate text — legend replaced with a direct annotation:** the
+  "error bar: ±1 SE (Poisson)" legend box was a lookup, not integrated text.
+  Replaced with `ax.annotate`, pointing an arrow straight at the whisker of the
+  first grey bar (`fluffy-beaver`) — deliberately anchored away from the two
+  highlighted bars, since it's explaining the error-bar concept in general, not
+  something specific to either focus author.
+- **Still open:** the checklist's `claim` section — parked for next.
+- **File:** same `notebooks/analysis/slide-pliable-tiger-election-effect.png`,
+  regenerated top to bottom.
+
+### Presentation draft v3, follow-up round 5: the claim section — flagged, not resolved
+
+Finished `goad_critique_visual`'s checklist with the `claim` section. Student's
+stated claim: "people more interested in politics/history show this interest in
+the chat and chat more, probably with each other."
+
+- **Overclaim identified:** the claim bundles a measured half (message *rate*
+  goes up for these two people during election windows — shown directly on the
+  chart) with an unmeasured half (that the extra messages are actually *about*
+  politics/history, and represent mutual conversation between the two). Nothing
+  in this analysis's pipeline checks message content or reply structure — no
+  keyword feature like Analysis 2's `is_planning`, no network/mention data.
+- **Student's own answers exposed the gap:** named "topic isn't
+  politics-related" as the falsifier (Q2) and then named topic data as what's
+  "deliberately not shown" (Q5) — the claim's actual mechanism is the part left
+  untested.
+- **Direct tension with Analysis 4's own unresolved verdict:** "already
+  high-volume authors post more during *any* notable/busy period" was flagged
+  there as a live alternative explanation and never ruled out. The current
+  title quietly resolves that ambiguity in the more interesting direction
+  without new evidence.
+- **Left open, decision deferred to the student:** either (a) narrow the
+  title/claim to what's actually shown (activity/volume only, cause
+  unstated), or (b) spend time testing the topic angle with a keyword check on
+  the *extra* election-window messages specifically. Not decided this
+  session.
+- **Independent styling request, applied:** metric-definition text moved back
+  out of the footnote into an italic subtitle under the headline (matching the
+  original v1/v2 pattern); footnote trimmed to the error-bar explanation and
+  sample-size bullet only. Layout retightened after the first pass left a large
+  gap between subtitle and plot.
+- **File:** same `notebooks/analysis/slide-pliable-tiger-election-effect.png`,
+  regenerated top to bottom.
+
+### Presentation draft v3, follow-up round 6: election-window detail moved to footnote
+
+- **"(5 windows over a 6-year period)" removed from the subtitle**, replaced
+  with a spelled-out footnote bullet: *"The election windows are based on 5
+  periods of elections (3 within NL, 2 in USA) over a 6-year period."* — names
+  which elections these are (matches `ELECTION_DAYS`: US 2020, NL 2021, NL
+  snap 2023, US 2024, NL 2025) rather than just a bare count.
+- **File:** same `notebooks/analysis/slide-pliable-tiger-election-effect.png`,
+  regenerated top to bottom.
+
+# Analysis 5 — football tournaments and chat activity (lesson 3, `03.3-events-in-your-chat.ipynb`)
+
+New goad cycle, first "time" theme analysis. Same own chat data as lessons 1–2.
+First draft, ~2 hour budget end to end, for class Tuesday 22nd.
+
+## Stage 1 — Question (done)
+
+- **Origin:** prior knowledge of the group, not data-mined — student already
+  expects major football tournaments (World Cup, European Championship) to
+  raise chat activity, before looking at any numbers.
+- **Candidates considered, deferred:** a member's wedding/engagement
+  announcement (~August 2023) — a single-day event, sample-size caveat noted
+  up front, same trap `Analysis 4`'s per-bar `n=` labelling exists to guard
+  against — and the end of the last COVID lockdown, flagged by the assistant
+  as a likely confound with the general activity-decline trend already
+  surfaced in `Analysis 4` above. Chosen not to pursue first for exactly that
+  reason. Both parked for a later `03.3` pass, not abandoned.
+- **Why football first:** unlike the other two, tournaments repeat (World Cup
+  2022, Euro 2020/2024 all fall inside this chat's span) — several
+  independent chances to see the same effect, rather than reading one single
+  data point as if it were a pattern.
+- **Proposition:** messages per day rise during football tournament windows
+  (World Cup / Euro), compared to the surrounding baseline.
+- **Falsification:** if the daily-count line does not rise during the
+  tournament windows, that's a no.
+- **Open, not yet checked:** whether "activity rises during a globally
+  exciting event" is itself the boring result 03.1/03.3 warn about ("people
+  sleep at night") — worth revisiting once the tournament date ranges are
+  pinned down and multiple windows can be compared against each other rather
+  than eyeballed once.
+- **Audience / time budget:** in-class grading Tuesday 22nd; first draft
+  only, ~2 hours end to end for stages 1–6 plus write-up.
+
+## Stage 2 — Data (done)
+
+**Tournament reference table (static lookup, approximate — same pattern as
+the lockdown/election tables above; validate exact match dates if this goes
+beyond a first draft):**
+
+| Tournament | Hype start (−14 days) | Official start | End |
+|---|---|---|---|
+| Euro 2020 (played 2021) | 2021-05-28 | 2021-06-11 | 2021-07-11 |
+| World Cup 2022 | 2022-11-06 | 2022-11-20 | 2022-12-18 |
+| Euro 2024 | 2024-05-31 | 2024-06-14 | 2024-07-14 |
+
+- **One row:** one calendar day. **Count:** messages sent that day —
+  `own.set_index("timestamp").resample("D").size()`, same as 03.3.3's worked
+  example. `resample("D")` already fills quiet days as zero, so no
+  gap-missingness concern.
+- **Unit of row vs. unit of claim:** same (day-level daily count) — no
+  pseudoreplication concern for this visual check.
+- **Derived feature:** a categorical `phase` column (`hype` / `during` /
+  `baseline`) built from the reference table above via one `FlagDates` call
+  per tournament, extended 14 days backward for the `hype` phase — student's
+  explicit call to keep hype and during as separate categories rather than
+  one merged window, so the chart can show whether activity actually ramps
+  up before kickoff or jumps only once matches start.
+- **Pipeline placement:** the `FlagDates` + static-lookup step belongs in a
+  `Pipeline` (reusable), matching the existing lockdown/election pattern —
+  but built fresh and self-contained inside
+  `03.3-events-in-your-chat.ipynb`, not routed through the lesson-1
+  `own_pipeline`.
+
+## Stage 3 — Shape (done)
+
+- **Gate check:** relevant, not skipped. This chat's daily/weekly counts are
+  already known to be bursty (single-event spikes, not a steady Poisson
+  drip — established in `Analysis 4`'s SE work above), so a raw-count-only
+  read could mistake one loud day inside a tournament window for sustained
+  elevated activity.
+- **Decision:** show raw daily counts **and** the 7-day rolling average,
+  for **each of the three tournament windows separately** — not pooled —
+  so the effect's consistency (3/3, 2/3, or 1/3 windows showing a rise) stays
+  visible to the reader instead of being averaged away.
+- **n at the claim's unit:** 3 independent tournament windows. Named
+  explicitly so the small-n limitation is stated, not hidden — same
+  discipline as the wedding candidate's single-day caveat from Stage 1.
+
+## Stage 4 — Encoding (done)
+
+- **Obvious family (time) vs. stretch alternative (categories) sketched
+  before committing:** three small-multiple line panels (chosen) vs. a
+  grouped-bar chart of per-phase averages per tournament (rejected —
+  would average away the window-by-window detail the shape stage just
+  decided to keep visible).
+- **The one comparison:** each tournament window against this chat's
+  *overall* daily average (global mean over the full Aug 2020 – Sep 2026
+  export, computed once before slicing), not a locally-clipped baseline —
+  student's explicit call, "wants to show all the data."
+- **Parameters fixed:** 7-day rolling window (matches 03.3.3's worked
+  example); hype window shortened from the initially discussed 14 days to
+  7 (student's revision).
+- **Build:** `notebooks/lesson3/03.3-events-in-your-chat.ipynb`, cells
+  after `3.3.5.1` — reference table, `FlagDates`-built `phase` column,
+  `RollingAvg` computed on the full series *before* slicing into
+  per-tournament panels (avoids rolling-window edge bias at each panel's
+  start), `FacetPlot` for the three-panel layout, `sharey=True` so panel
+  heights compare honestly.
+- **Numbers behind the picture** (overall baseline 10.1 msgs/day):
+
+  | Tournament | baseline | hype | during |
+  |---|---|---|---|
+  | Euro 2020 | 5.5 | 5.6 | **18.9** |
+  | World Cup 2022 | 10.3 | 13.6 | **21.0** |
+  | Euro 2024 | 5.2 | 5.4 | **19.9** |
+
+  `during` clears the overall baseline 3/3 — the stage-1 proposition
+  holds across all three windows, not just one. `hype` is inconsistent
+  (flat for two, already-elevated for World Cup 2022) — the open question
+  from Stage 3 resolved as "no clean ramp-up," which is itself the answer,
+  not a failed check.
+- **Pre-existing bug found and fixed while building this:** `own["timestamp"]`
+  loads as a plain string column from this processed parquet, not
+  datetime — broke `resample("D")` in the *existing* 3.3.1/3.3.3/3.3.4
+  worked-example cells too, not just this new analysis. Fixed once in the
+  shared setup cell (`own["timestamp"] = pd.to_datetime(...)`,
+  `03.3-events-in-your-chat.ipynb`) rather than patched per-cell.
+
+## Stage 5 — Critique (done)
+
+- **First impression (student's own read):** a small rise in the red
+  (`during`) band across all three years; World Cup 2022 has the highest
+  absolute activity of the three — noted as a separate observation from
+  the relative-rise claim being tested, not conflated with it.
+- **Highest contrast:** the red-vs-yellow shading. Yellow (`hype`) judged
+  "not significant" by eye — matches the mixed hype numbers above.
+- **`during` vs. baseline readable by position alone**, without the
+  legend — the point of the plot doesn't depend on colour lookup.
+- **Fixes applied, student-directed:**
+  1. Legend removed entirely, replaced with direct in-graph text labels
+     (`daily`, `7-day average`, `chat's overall daily average`) stated
+     once on the first panel only — same colour coding holds across all
+     three, so no need to repeat.
+  2. `during tournament` labelled directly inside the shaded band on
+     **every** panel (student's specific request) — that band is the
+     actual claim, so it doesn't get the "state it once" treatment the
+     other labels got.
+  3. Single shared y-axis label (`subplot_ylabels=["messages per day", "",
+     ""]`) instead of three repeated ones.
+- **Verdict:** legend-free version re-executed clean, all four labels
+  legible and non-overlapping (first attempt placed the `daily` label
+  under the baseline label's box — moved to a clear stretch of line after
+  the tournament ends).
+
+## Stage 6 — Verification (done)
+
+- **Null named by student:** no particular rise in messages during these
+  periods compared to others.
+- **Confound named by student:** seasonality — summers generically more
+  active than winters (Euro windows are summer; the World Cup window
+  sits right before the December holidays), either of which could
+  produce a fake football effect on its own.
+- **Check run (student chose to build it now, not defer it):**
+  seasonality-controlled shuffle test in `03.3-events-in-your-chat.ipynb`
+  — each tournament's `during` mean compared against the *same calendar
+  dates in every other available year* (not random dates from anywhere
+  in the dataset), excluding any comparison year overlapping one of the
+  3 real tournament windows.
+- **Result:** **0 matches** out of 3 (Euro 2020), 5 (World Cup 2022), and
+  4 (Euro 2024) comparison years — no other year's equivalent calendar
+  dates came anywhere close to the real tournament window's activity, for
+  any of the three. Directly answers the seasonality concern raised,
+  without needing a broader confounder sweep.
+- **Limitation named, not glossed over:** no 4th tournament exists in
+  this data to hold out and replicate the pattern on — the check is
+  strong for what it tests (seasonality), not a full replication.
+
+### Verdict on the stage-1 proposition
+
+**Holds, 3/3.** Messages per day rise during all three football
+tournament windows relative to this chat's overall baseline (10.1 →
+18.9 / 21.0 / 19.9), and the rise survives the one confound actually
+named (seasonality) with zero matching comparison years. The
+**hype-phase prediction does not hold** (2/3 show no ramp-up before
+kickoff) — a real, stated null on a smaller claim, not a failure of the
+main one. First draft complete: `03.3-events-in-your-chat.ipynb`,
+reproducible top to bottom (also fixed a pre-existing `timestamp`
+dtype bug blocking the whole notebook, not just this analysis).
+
+### Post-verdict polish (student-directed, after seeing the finished chart)
+
+- **Gold `hype` shading removed from all three panels.** The hype-phase
+  numbers never showed a real, consistent shift (Stage 6's own finding —
+  2/3 tournaments flat at baseline), so shading it as if it were a
+  finding on the same footing as `during` was overstating it. The
+  underlying `hype`/`phase` data and the numeric table are unchanged;
+  only the visual band is gone.
+- **All direct labels (`during tournament`, `7-day average`, `daily`,
+  `chat's overall daily average`) consolidated onto the first panel
+  only**, rather than repeating `during tournament` on all three — same
+  claim, same colour coding, stated once.
+- Re-executed clean, no errors.
+
+### Second polish pass (student-directed)
+
+- **Title made catchy:** "Football tournaments bring activity to the group
+  chat" — states the finding as a headline, not a description of the
+  chart. Same room-for-a-conclusion move as the categories-lesson slide
+  titles.
+- **Seasonality check surfaced as an on-chart footnote**, not left only
+  in the notebook prose or this log — a reader looking at the chart alone
+  now sees "0 of 3 / 5 / 4 comparison years came close," not just the
+  main line.
+- **X-axis removed entirely** (`set_xticks([])`, `set_xlabel("")`) —
+  each panel's title already names the period, so a date axis under it
+  repeated information without adding any. Had to explicitly clear
+  `xlabel` after every `sns.lineplot` call, since seaborn re-fills it
+  from the column name on each draw even after `PlotSettings(xlabel="")`
+  set it blank at figure creation.
+- **Layout fix needed for the footnote:** matplotlib's `constrained`
+  layout engine doesn't reserve space for a bare `fig.text()` on its
+  own — first attempt had the footnote overlapping the bottom axis
+  border, and reserving bottom margin alone then pushed the suptitle
+  into the panel titles. Fixed with
+  `fig.get_layout_engine().set(rect=(0, 0.08, 1, 0.93))`, reserving both
+  a top and bottom strip explicitly.
+- Re-executed clean, no errors.
+
+### Parked for later (explicitly deferred, not this draft)
+
+- **Content check, not just volume:** is the *talk* during these windows
+  actually more about football (World Cup / Euro specific terms), or just
+  louder in general? Requested by the student as a follow-up, not built
+  now — would need a keyword/regex feature (lesson 1's `RegexFeature`)
+  compared `during` vs. `baseline`, with the same "boring result" guard
+  the categories-lesson planning-message regex needed: a raw count would
+  just track overall volume, so it would need to be a *share* of that
+  window's messages, not a raw count.

@@ -172,28 +172,121 @@ grey, and `n=`/SE moved off the other 8 bars onto the focus bar only.
 Logged after reviewing the v3 chart (`slide-pliable-tiger-election-effect.png`)
 — not acted on yet, same as items 1-6 above when they were first written down.
 
-7. **Neaten the title.** Current: *"The historian in the group (pliable-tiger)
-   awakes and activates group chat during election periods"* — a deliberately
-   punchier draft, but long and slightly awkward as a final headline
-   (`fig.suptitle` in `02-election-length.ipynb`, v3 cell). Revisit wording
-   once real-name/audience question (item 3) is settled, since that also
-   affects whether "the historian" or a name leads the sentence.
-8. **Pick one of the x-axis label or the subtitle, not both.** The v3 chart
-   currently carries the metric description twice — once as the italic
-   subtitle (`v3_subtitle`, also reused as `ax.set_title`) and again as the
-   x-axis label. Decide which one owns "% change ... relative to each
-   author's own baseline ... 5 windows over a 6-year period" before the next
-   redraw; keeping both is exactly the kind of per-chart redundancy item 1
-   originally flagged.
-9. **Simplify the footnote wording.** The current 4-line explanation of what
-   an error bar means (added this session) is more literal/technical than it
-   needs to be for a class audience — shorten it once the title/subtitle
-   question above is settled, so the whole chart's text budget gets
-   reconsidered together rather than patched line by line.
-10. **Rethink what `n=619` on the `pliable-tiger` bar should mean.** Currently
-    it's just the election-window message count (the numerator behind that
-    bar's rate) — worth deciding whether a reader needs the rest-of-chat `n`
-    too for context, whether `n=619` needs a one-word gloss (e.g. "n=619
-    election-window messages") so it doesn't read as a mystery statistic, or
-    whether it's redundant now that the error bar already communicates
-    reliability visually.
+7. **Neaten the title. — resolved.** Real-name/audience question (item 3)
+   still not settled, so the alias stays; shortened to *"pliable-tiger gets
+   more active during election windows"* — states the finding directly
+   (matching item 2's original direction) instead of the punchier-but-long
+   "historian... awakes and activates" draft.
+8. **Pick one of the x-axis label or the subtitle, not both. — resolved.**
+   Neither the axis-level subtitle nor the x-axis label survives on the
+   chart now — both were dropped, and the metric description they used to
+   split between them (the % change definition, and "5 windows over a
+   6-year period") moved into the footnote instead. One place, not two.
+9. **Simplify the footnote wording. — resolved.** Cut to the first sentence
+   only ("An error bar shows the range the true value could plausibly fall
+   in, just from week-to-week randomness."); the second sentence (spelling
+   out how to read a specific bar's whisker) was dropped as more than a
+   class audience needs on the slide itself. The footnote now also carries
+   the metric description that moved out of the subtitle/x-axis label
+   (item 8), so it reads as one combined line rather than two separate
+   pieces of chart text.
+10. **Rethink what `n=619` on the `pliable-tiger` bar should mean. —
+    resolved.** Kept the `n=`, dropped the bare number: the label now reads
+    `n=619 election-window messages` so a reader doesn't need to already
+    know the chat's scale to judge whether 619 is a small or large sample.
+    No rest-of-chat `n` added alongside it — the error bar already carries
+    that reliability information visually, per the original note.
+
+## Follow-up round 2: title focus and footnote formatting
+
+11. **Title now leads with the "historian" backstory — resolved, with a
+    scope decision.** Title changed to *"pliable-tiger, the group's
+    historian, gets more active during election windows"*, making the real
+    behavioural story (not just the alias) the focus, per the student's
+    request. **Deliberately left out of the title:** the other half of the
+    same backstory — former political-party membership — was requested too,
+    but decided (with the student, after a direct trade-off question) to
+    keep off the visible chart for now. Reasoning: a political affiliation
+    is a more specific, more identifying fact within a 9-person friend group
+    than "historian" is, and item 3's audience/sharing-plan check is still
+    unresolved. The political-party detail stays where it already lived —
+    the private v3 markdown cell in `02-election-length.ipynb` — not on
+    anything that gets shown in class. Revisit if item 3 gets resolved.
+12. **Footnote reformatted as bullet points — resolved.** The combined
+    metric-definition + error-bar sentence from item 9 is now two stacked
+    `•`-prefixed lines instead of one run-on sentence, left-aligned under
+    the chart.
+
+## Follow-up round 3: second highlighted author, from teacher-feedback critique
+
+Surfaced while walking the current chart through `goad_critique_visual`'s gestalt
+section against the teacher's original feedback — `rib-tickling-curlew`'s +34% was
+almost as extreme as `pliable-tiger`'s +38%, but grey grouped it with the flat bars
+purely by colour, fighting the eye's own read of the magnitudes.
+
+13. **`rib-tickling-curlew` promoted to the same highlight as `pliable-tiger` —
+    resolved.** Confirmed with the student first that "history fanatic" is lived
+    knowledge about Jop (rib-tickling-curlew's real name, per item 3) too, not an
+    assumption invented to fit his bar being high — same evidentiary bar
+    pliable-tiger's "historian" story was held to. Both bars now share the blue
+    highlight colour; the other 7 stay grey.
+14. **Both highlighted bars get the same `n=`/SE label** — same format as before,
+    applied to `rib-tickling-curlew` too (`+34% (n=515 election-window messages,
+    +-7 SE)`).
+15. **Title generalised to both people.** Changed to *"The group's history
+    fanatics get more active during election windows"* — no longer names an
+    alias directly (both aliases are already the y-axis tick labels), states the
+    now-two-person finding. Political-party detail from the earlier backstory
+    still excluded — item 3's audience/sharing-plan question is about the trait's
+    identifiability, not about how many people it's currently attached to.
+
+## Follow-up round 4: the five guidelines, applied to the two-author version
+
+Walked `goad_critique_visual`'s guidelines section against the current chart.
+Show-the-data, avoid-spaghetti, and start-with-grey all held already; two items
+acted on:
+
+16. **On-bar labels shortened — resolved.** `+38% (n=619 election-window
+    messages, +-6 SE)` ran too long on the bar itself. Cut to just `+38%` /
+    `+34%`; the `n=`/SE detail moved to a new third footnote bullet
+    ("Election-window sample sizes: pliable-tiger n=619 (+-6 SE),
+    rib-tickling-curlew n=515 (+-7 SE).") instead of crowding the bar.
+17. **Legend replaced with a direct annotation — resolved.** The
+    "error bar: ±1 SE (Poisson)" legend box (a lookup) is gone; replaced with an
+    `ax.annotate` callout pointing straight at the whisker of the first grey bar
+    (`fluffy-beaver`) — chosen because it's explaining the error-bar concept in
+    general, not something specific to either highlighted author, so it's
+    anchored away from the two focus bars on purpose.
+
+## Follow-up round 5: the claim section, and a subtitle/footnote swap
+
+Walked `goad_critique_visual`'s final `claim` section. **Not fully resolved —
+flagged, not fixed.** The student's stated claim ("people more interested in
+politics/history show this interest in the chat and chat more, probably with
+each other") bundles two things: (a) message *rate* going up for these two
+people — measured, shown directly — and (b) that the extra messages are
+actually *about* politics/history and represent mutual conversation — **not
+measured by this chart or anywhere in this analysis's pipeline** (no
+content/keyword check like Analysis 2's `is_planning` feature, no reply/mention
+network). The student named the exact falsifier themselves in Q2 ("topic isn't
+politics-related") and named topic data as what's "deliberately not shown" in
+Q5 — meaning the claim's central mechanism is the untested part. This directly
+overlaps `Analysis 4`'s own already-logged, unresolved alternative: "already
+high-volume authors post more during *any* notable/busy period," not something
+election-specific. **Left open, two options put to the student:** narrow the
+title's claim to what's shown (activity/volume only), or spend time actually
+testing the topic angle with a keyword check on the *extra* election-window
+messages. Not decided yet.
+
+18. **Subtitle restored, footnote trimmed further.** Independent styling
+    request: the metric-definition bullet moved back out of the footnote into
+    an italic subtitle directly under the headline (`ax.set_title`, matching
+    the original v1/v2 headline+subtitle pattern) — layout tightened
+    (`pad=6`, `rect=[0, 0.09, 1, 0.93]`) after the first attempt left too much
+    blank space between subtitle and plot. Footnote now carries only the
+    error-bar explanation and the sample-size bullet from item 16.
+19. **"(5 windows over a 6-year period)" moved out of the subtitle into its
+    own footnote bullet, spelled out.** Subtitle shortened to just the metric
+    definition. New first footnote bullet: *"The election windows are based on
+    5 periods of elections (3 within NL, 2 in USA) over a 6-year period."* —
+    names which elections these actually are instead of just a bare count.
