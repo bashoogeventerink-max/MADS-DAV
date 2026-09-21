@@ -27,9 +27,9 @@
         "https://learn.pttrn.io/mcp/learn-student-mcp.tgz"
       ],
       "env": {
-        "LEARN_TOKEN": "${LEARN_TOKEN}",
+        "LEARN_TOKEN": "AMf-vByeXlwUmm2RI7r4-Dt_dgV4xQujSSz74fdFwnhRRKfKTSAJzR2UYKxj5x5xAHLnaRl-afEwG5DwHJ_O1dLVRz94umEfjKeZPtwQzebLiUXSAmVxgkmO9bfFQxO8F6UK3hhjcA3JtGTitqc_n-Bs3AvZZ5S0nmh_Bc2ntIef5YybXLn06O7FRFgkYSTX1cw16CqQND9Cp2VUvRNy9JQNhNwOqa5BlfKex145EPiVFLIc64Rxy01dUfJ6SiSXL1CzodbF3mAFIDsGyyr0St7qvKg-fm7qlbNxIsWTVp8rnfaa6Zveod3wOGP1jnhgjTkXBHEqYEeekLDIxRrsDQbTMSOsv4Cmuw",
         "LEARN_PROJECT_ID": "learn-79720",
-        "LEARN_API_KEY": "${LEARN_API_KEY}"
+        "LEARN_API_KEY": "AIzaSyAQbdn2HBQgahi__12zzN1JpJXwAAwXJ3w"
       }
     }
   }
