@@ -1369,6 +1369,20 @@ dtype bug blocking the whole notebook, not just this analysis).
   a top and bottom strip explicitly.
 - Re-executed clean, no errors.
 
+### Final draft artifacts (saved to `notebooks/analysis/`, same home as Analyses 1–4)
+
+- **`notebooks/analysis/football-tournaments-activity.png`** — the final
+  chart, extracted straight from the executed notebook's output, not
+  re-rendered separately.
+- **`notebooks/analysis/03-football-tournaments.ipynb`** — a duplicate of
+  `notebooks/lesson3/03.3-events-in-your-chat.ipynb` (full notebook,
+  lesson worked-examples included), so this analysis's methodology lives
+  alongside `01-lockdown-activity.ipynb` and `02-election-length.ipynb`
+  rather than only inside the lesson folder. The lesson copy stays the
+  one referenced by `3.3.6.1`'s write-up; the two are duplicates as of
+  this save, not kept in sync automatically — if either is edited later,
+  the other won't pick it up.
+
 ### Parked for later (explicitly deferred, not this draft)
 
 - **Content check, not just volume:** is the *talk* during these windows
