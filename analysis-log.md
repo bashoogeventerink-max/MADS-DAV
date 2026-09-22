@@ -1779,3 +1779,129 @@ move on to a new topic rather than keep sharpening this one.
 - `notebooks/analysis/04-nl-match-days-activity.ipynb` — four-panel chart
   (round 2 line styling) and the Euro-2024-only focus chart, both
   reproducible top to bottom.
+
+---
+
+# Analysis 7 — the annual friends' weekend and chat activity
+
+New goad cycle, prompted by the student's own idea (alongside a second,
+parked candidate — see below). Same 9-person chat data as all prior
+analyses. Time budget: ~3 hours, more than the recent tight-evening passes.
+
+## Parked candidate (not started this cycle)
+
+Hour-of-day message distribution, COVID lockdown vs. after — this is the
+exact "genuinely separate question" Analysis 1's Stage 4 flagged and parked
+without answering. Student chose to run the friends'-weekend idea first;
+this stays available as the next cycle after this one.
+
+## Stage 1 — Question (done)
+
+- **Data, for this question:** same chat, but the weekend itself is sliced
+  in purely by known external dates — not necessarily discussed in-chat
+  (planning messages might reference it, but the slicing doesn't depend on
+  that).
+- **Known events (dates):**
+  | Weekend | Start | End | Notes |
+  |---|---|---|---|
+  | 2024 | 2024-04-19 | 2024-04-21 | Whole group attended. A member fell and got a facial scar — a plausible confound for that year's after-window specifically (check-in/concern messages, not necessarily "positive interaction"). |
+  | 2025 | 2025-09-19 | 2025-09-21 | Whole group attended. |
+- **Dynamic:** expected "business as usual" once everyone's home, but with
+  photo-sharing/rehashing in the days after.
+- **Suspicion, revised after a follow-up round (see below):** message
+  volume rises in the month before (planning, location hints, logistics),
+  **stays elevated during the weekend itself** (not a dip — even while
+  together, in-the-moment sharing/logistics keeps the chat busy), rises
+  further in the week after (photos, callbacks), then returns to baseline.
+- **Follow-up correction, logged explicitly:** the student's first pass
+  through the checklist gave two different shapes for the "during" period
+  in the same answer set — rising (from the falsification-criterion
+  answer) vs. dipping (from the arc answer). Named back to the student
+  rather than silently reconciled; asked directly which one they actually
+  believe. **Resolved: rises during too** (not a dip) — logistics/in-the-
+  moment sharing keeps volume elevated through the weekend itself.
+- **Boring result named and guarded against:** "people text more while
+  physically together/planning, then it fades" — true of any trip for any
+  group, not specific to this one. The real question needs to be sharper
+  than that (the specific before/during/after shape, and the "positive
+  interaction" read of the after-bump, are the parts a generic trip
+  wouldn't obviously predict).
+- **Proposition:** message volume is higher than the group's normal
+  baseline in the month before the weekend and during the weekend itself,
+  and stays elevated for about a week after, before returning to baseline.
+- **Falsification:** if there is no increase in messages before/during the
+  weekend compared to the group's normal baseline, that says no.
+- **Origin:** lived experience — the suspicion was named before looking at
+  any numbers, not suggested by a pattern noticed while skimming the data.
+- **Arc:** build-up → elevated during → increase after → back to baseline.
+  Student says they would have predicted this shape in advance, not just
+  "more talking generally."
+- **Audience:** course + teacher + the friend group itself (same as prior
+  analyses).
+- **Live risks, named now rather than discovered later, not yet resolved:**
+  - **n=2 weekend events** in the export window is a thin sample for
+    claiming a general pattern — parallel to Analysis 4's n=5-election
+    caveat, but thinner still. Whatever this shows will be descriptive for
+    these two specific weekends, not evidence of a stable yearly effect.
+  - **2024's accident** is a plausible confound specifically for that
+    year's after-window — a spike there could be concern/retelling rather
+    than "positive interaction," and the two years' after-windows may not
+    be comparable for that reason.
+
+## Stage 2 — Data (done)
+
+- **One row = one message** (timestamp, author, text), same as all prior
+  analyses.
+- **Claim unit = day** (message-count-per-day), not message and not
+  person — the proposition is about volume over calendar time.
+- **Companion check agreed:** per-author small-multiples, same pattern as
+  Analysis 1, to confirm any before/during/after pattern isn't driven by
+  1–2 people rather than the group.
+- **New features, agreed:**
+  | Feature | Definition |
+  |---|---|
+  | `weekend_id` | categorical: `2024`, `2025`, or `none` — isolates 2024's accident confound from 2025 |
+  | `period` | categorical: `before` (60 days pre-start), `during` (start–end inclusive), `after` (7 days post-end), `baseline` (everything else, excluding both events' before/during/after windows so one weekend's halo doesn't bias the other's baseline) |
+  | `days_relative` | signed integer, days from that weekend's start date (e.g. −60 to +7), only defined near an event — enables an event-aligned time series (both years overlaid or averaged), the actual chart shape originally asked for, not just 4 bucket means |
+- **Window widths — units mixup caught and corrected:** student's first
+  answer said "60 month window," which would have swallowed almost the
+  entire ~6-year export as "before." Flagged back rather than silently
+  fixed; confirmed as **60 days** (wider than Stage 1's original "month
+  before," student's deliberate choice). After-window stays **7 days**
+  per Stage 1.
+- **Missingness:** none expected — counts derived straight from
+  timestamp/author, no reason to think 2024/2025 coverage is less
+  complete than the rest of the export.
+
+## Stage 3 — Shape (done)
+
+- **Common vs. rare matters here:** Analysis 1 already established this
+  chat has birthday/bad-news spike days. A spike landing inside one of the
+  before/during/after windows by coincidence would distort the read.
+- **Concrete decision:** report **median** (not mean) for period
+  comparisons — more robust to a single spike day. Any birthday-collision
+  day gets **labeled on the chart, not excluded** — same precedent as
+  Analysis 1's "label spike days separately" decision.
+- **New feature: `is_birthday`**, built from a 9-alias birthday lookup
+  (day/month only, no real names, supplied directly by the student against
+  the already-anonymized aliases).
+- **Collision check, done — 3 real hits:**
+  | Alias | Birthday | Falls in |
+  |---|---|---|
+  | `fluffy-beaver` | Apr 13 | 2024 before-window (Feb 19–Apr 18) |
+  | `effervescent-penguin` | Sep 16 | 2025 before-window (Jul 21–Sep 18) |
+  | `striking-rail` | Sep 22 | 2025 after-window (Sep 22–28), day 1 |
+
+  None fall inside either during-window. Student's explicit call: label
+  these 3, don't drop them.
+- **Independent units per group, checked:** `during` = 6 days total (3+3
+  across both events) — notably thin next to `before` (120 days) and
+  `after` (14 days). **Decision:** because `during` can't carry equal
+  weight as its own bucket, the **event-aligned time series
+  (`days_relative`, both years overlaid/averaged) is the primary read for
+  Stage 4**; the before/during/after/baseline bucket comparison is a
+  secondary supporting view, not the headline chart.
+
+## Stage 4 — Encoding
+
+Not started yet.
