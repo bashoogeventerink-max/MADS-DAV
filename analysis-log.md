@@ -1393,3 +1393,79 @@ dtype bug blocking the whole notebook, not just this analysis).
   the categories-lesson planning-message regex needed: a raw count would
   just track overall volume, so it would need to be a *share* of that
   window's messages, not a raw count.
+
+### Feedback received on the finished chart (parked, not acted on)
+
+Logged in `notebooks/analysis/feedback-football-tournaments.md`, same pattern
+as Analysis 4's `feedback-comparing-categories.md` — a per-chart feedback file
+to pick back up later, not acted on yet:
+
+1. The trend isn't equally strong across all three tournament panels by eye,
+   even though Stage 6's numeric verdict called it "holds, 3/3."
+2. Overlay the three tournaments on one graph, aligned by tournament day
+   (`t=0` = start of tournament, `t+1` = second day, ...) instead of three
+   separate calendar-date panels, to make the "tournaments bring activity"
+   claim land more directly.
+3. Check whether the Netherlands' own matches specifically drive activity
+   (not just the tournament in general) — especially the World Cup 2022
+   Netherlands–Argentina match — and mark NL match days as dashed vertical
+   lines on the chart. No match-level data exists in the pipeline yet; needs
+   a new lookup table (date/opponent/stage/outcome per NL match).
+4. Plot count minus a daily-average baseline instead of raw count, to
+   control for seasonality directly rather than relying on Stage 6's
+   separate confound check. Open question logged in the feedback file: a
+   flat overall-average baseline doesn't actually control for seasonality,
+   a per-calendar-date seasonal baseline (close to what Stage 6's shuffle
+   test already computes) does.
+5. Check time-of-day (not just daily volume) during tournaments vs. other
+   weeks — idea: people chat later in the day/evening during tournaments.
+   Same "daily rhythm" question already parked in Analysis 1's Stage 4, now
+   for tournament windows. **Caveat named by the student:** World Cup 2026
+   isn't in the tournament reference table yet even though it falls inside
+   the data window, and its matches were played at night in European time
+   (different host time zone than the other three tournaments) — a
+   cross-tournament send-hour comparison needs to exclude WC 2026 or align
+   by hours-relative-to-kickoff, not raw clock-hour, or the time-zone shift
+   could be mistaken for the behavioural effect being tested.
+
+---
+
+# Method ideas parked for later (not tied to one analysis)
+
+Broader methodological ideas raised in feedback, not chart-specific fixes —
+kept separate from the per-chart feedback files above since they'd change
+*how* rhythm/periodicity gets found in future analyses generally, not just
+one existing chart.
+
+## Autocorrelation to find rhythm, instead of eyeballing it
+
+Idea: use autocorrelation (e.g. the ACF of the daily message-count series) to
+find recurring rhythm/periodicity in the chat directly from the data, rather
+than only checking rhythm around already-known candidate events (tournaments,
+elections, lockdowns).
+
+**Where this connects to what's already logged, to think about when
+revisiting:**
+- **Analysis 1's still-open, parked hypothesis** ("recurring spike events,"
+  e.g. bad-news responsiveness) was only ever eyeballed — spikes in 2022 and
+  2023 were noticed by looking at the chart, not measured. Autocorrelation
+  (or a periodogram/spectral view) could give an actual measured periodicity
+  instead of an impression, and might either support or undercut that
+  parked hypothesis.
+- **Item 5 above** (time-of-day "rhythm" during tournaments) is currently
+  scoped as a distribution comparison (`during` vs. `baseline` send-hour
+  histograms) — autocorrelation is a different, complementary way of
+  characterizing rhythm (e.g. daily/weekly periodicity in the *count*
+  series itself) rather than a single window's hour distribution. Worth
+  deciding whether these stay separate checks or get combined.
+- **Items 4/5's seasonality work** currently proposes a per-calendar-date
+  seasonal baseline (reusing Stage 6's comparison-year approach). An
+  autocorrelation/ACF view could reveal the dominant cycle length (e.g. a
+  clean weekly 7-day peak) more directly, which could simplify or validate
+  that seasonal-baseline approach rather than assuming which periods to
+  compare against.
+- Not yet decided: which series to run this on (whole-chat daily counts vs.
+  just the tournament windows), what library/method to use (a plain ACF
+  plot vs. a formal seasonal decomposition like STL), and what would count
+  as a large-enough effect to act on — none of this has been scoped yet,
+  this is a method to explore, not a specific chart to build.
