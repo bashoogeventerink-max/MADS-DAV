@@ -33,6 +33,8 @@ dev/
 # Per-student assistant memory and local hook overrides; never part of the course material.
 CLAUDE.local.md
 AGENTS.local.md
+# Local repo-cleanup planning list; not part of the course material.
+todo.md
 .cursor/
 .lefthook-local.yml
 lefthook-local.yml
