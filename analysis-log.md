@@ -1469,3 +1469,313 @@ revisiting:**
   plot vs. a formal seasonal decomposition like STL), and what would count
   as a large-enough effect to act on — none of this has been scoped yet,
   this is a method to explore, not a specific chart to build.
+
+---
+
+# Analysis 6 — does the Dutch team's own tournament run explain the within-tournament shape?
+
+New goad cycle, prompted by feedback item 1 on Analysis 5's chart
+(`notebooks/analysis/feedback-football-tournaments.md`) — "the trend isn't
+strong across all tournaments." Coached via `goad_analysis_checklist`
+(the six-stage tool this project's `CLAUDE.md` designates for analysis work).
+Same chat data, same three tournament windows as Analysis 5
+(Euro 2020, World Cup 2022, Euro 2024).
+
+## Stage 1 — Question (done)
+
+- **Origin, named honestly:** data-suggested, not prior knowledge — the
+  suspicion came from looking at Analysis 5's finished chart (the
+  mid-tournament dip in two windows, the steady climb in the third, and the
+  7-day average staying elevated above baseline after World Cup 2022 ended),
+  not from an expectation held before seeing it. Per this log's own standing
+  discipline (Analysis 4's same caveat), a second look at that same chart
+  doesn't count as independent confirmation — this needs its own check
+  against something the original chart didn't already show.
+- **The actual suspicion, more specific than "weaker/stronger":** the three
+  tournament windows don't just differ in overall size, they differ in
+  *internal shape*. Euro 2020 and World Cup 2022 both show a rise in
+  week 1–2 followed by a mid-tournament drop; Euro 2024 shows a steady
+  increase throughout instead.
+- **Proposed mechanism, per tournament:** the Netherlands men's team's own
+  run through each tournament, not the tournament in general.
+  - Euro 2024: an unexpected deep run, building growing hype over time —
+    matches the steady climb.
+  - World Cup 2022: the dramatic NL–Argentina match plus a subsequent
+    rise-drop-rise-again pattern.
+  - World Cup 2020 (Euro 2020, played 2021): an early, unexpected NL exit.
+  - World Cup 2026 (not yet in this analysis's data or reference table,
+    flagged again as it was under Analysis 5's item 5 feedback): an easy
+    group stage followed by another early, unexpected exit.
+- **Boring result named and guarded against:** three small-n (n=3) windows
+  will never look visually identical purely by chance — some unevenness is
+  expected even under a real, consistent effect. The bar for "a real
+  inconsistency" is set at one tournament showing essentially no rise over
+  baseline at all, not merely a different internal shape or timing.
+- **Proposition:** World Cup 2022 produces a smaller overall increase in
+  activity than the two Euro tournaments (not just a different internal
+  shape — an actual smaller net effect).
+- **Falsification:** if all three tournaments show a comparably significant
+  increase in daily messages over baseline, that says no — the shape
+  difference would then be interesting on its own but wouldn't support "one
+  tournament is genuinely weaker."
+- **Independent check required, because the origin is data-suggested:** this
+  needs evidence beyond re-reading the same aggregate chart — e.g. checking
+  whether the shape difference lines up with actual NL match dates/results
+  (feedback item 3's not-yet-built match-level lookup table) rather than
+  just eyeballing the existing three panels again.
+- **Audience / time budget:** same as Analysis 5 — course group + teacher,
+  legible to a non-technical audience; this is a deferred follow-up, not
+  the in-class deadline work, so no hard time pressure named yet.
+
+## Stage 2 — Data (in progress)
+
+- **New feature (theme 1 — NL trajectory) → new match-level lookup table,
+  student-confirmed** (web-sourced, one correction applied: Morocco match
+  moved from 2026-06-29 to the confirmed 2026-06-30):
+
+  **Euro 2020 (played 2021), Group C:**
+  | Date | Match | Result |
+  |---|---|---|
+  | 2021-06-13 | Netherlands – Ukraine | 3–2 W |
+  | 2021-06-17 | Netherlands – Austria | 2–0 W |
+  | 2021-06-21 | North Macedonia – Netherlands | 0–3 W |
+  | 2021-06-27 | Netherlands – Czech Republic (R16) | 0–2 L — **eliminated** |
+
+  **World Cup 2022, Group A:**
+  | Date | Match | Result |
+  |---|---|---|
+  | 2022-11-21 | Senegal – Netherlands | 0–2 W |
+  | 2022-11-25 | Netherlands – Ecuador | 1–1 D |
+  | 2022-11-29 | Netherlands – Qatar | 2–0 W |
+  | 2022-12-03 | Netherlands – United States (R16) | 3–1 W |
+  | 2022-12-09 | Netherlands – Argentina (QF) | 2–2 aet, lost 3–4 pens — **eliminated** |
+
+  **Euro 2024, Group D:**
+  | Date | Match | Result |
+  |---|---|---|
+  | 2024-06-16 | Netherlands – Poland | 2–1 W |
+  | 2024-06-21 | Netherlands – France | 0–0 D |
+  | 2024-06-25 | Netherlands – Austria | 2–3 L (still advanced, 3rd place) |
+  | 2024-07-02 | Romania – Netherlands (R16) | 0–3 W |
+  | 2024-07-06 | Netherlands – Turkey (QF) | 2–1 W |
+  | 2024-07-10 | Netherlands – England (SF) | 1–2 L — **eliminated** |
+
+  **World Cup 2026, Group F:**
+  | Date | Match | Result |
+  |---|---|---|
+  | 2026-06-14 | Netherlands – Japan | 2–2 D |
+  | 2026-06-20 | Netherlands – Sweden | 5–1 W |
+  | 2026-06-25 | Netherlands – Tunisia | 3–1 W |
+  | 2026-06-30 | Netherlands – Morocco (R32) | 1–1 aet, lost on pens — **eliminated** |
+
+- **Provenance:** web-sourced (Wikipedia, UEFA, FIFA, ESPN, Fox Sports,
+  Al Jazeera — see chat for full source list), then checked against the
+  student's own memory, which corrected one date (Morocco: 2026-06-29 →
+  2026-06-30). Same "verify before relying on it beyond a first draft"
+  caveat as this log's other reference tables, but now partially
+  student-verified rather than purely researched.
+- **Missingness:** none — all matches accounted for across all four
+  tournaments, including each tournament's elimination match.
+- **Not yet decided:** what derived feature this match table should produce
+  for the daily-count analysis — a simple `is_nl_match_day` boolean, or a
+  richer categorical (`match_type`: group/knockout, or
+  `is_elimination_match`) that could test the "unexpected early exit
+  suppresses/spikes activity differently than a deep run" mechanism more
+  directly than a flat boolean would.
+- **Decided (Stage 2 closed), scope narrowed after the shape-stage gate
+  check below:** one new column joined onto the existing daily-count table
+  by exact calendar date — `is_nl_match_day` (boolean, true only on the
+  exact date of an NL match). **`match_result` dropped for this pass** —
+  student's explicit call: the question right now is only whether NL match
+  days themselves see more chat activity, not whether win/draw/loss changes
+  the size of the effect. Parked as a named future investigation, not
+  abandoned. **Exact-date-only join** — student's explicit call, not
+  extending a few days after each match for post-match reaction/aftermath.
+- **One row, both tables:** daily-count table stays one row per calendar
+  day (unchanged from Analysis 5); the new match table is one row per NL
+  match, joined onto the daily table by date.
+- **Pipeline placement:** static lookup table, same pattern as the
+  tournament/lockdown/election lookups already in this project, joined by
+  exact date.
+
+## Stage 3 — Shape (done)
+
+- **Independent units:** all 19 NL match days pooled across the four
+  tournaments (4 + 5 + 6 + 4), treated as comparable units from the start
+  — group-stage and knockout matches not split out for this pass. A real
+  improvement over Analysis 5's n=3/4-tournaments comparison.
+- **Common vs. rare:** student expects the "more messages on match day"
+  bump to show up on essentially all 19 match days, not just a few
+  standout ones.
+- **Secondary suspicion, named but explicitly not folded back in yet:**
+  losses might produce an even bigger spike than wins — "easier to bash
+  the team than to celebrate." This is the same `match_result` feature
+  dropped from Stage 2, resurfacing as a real hypothesis — parked
+  deliberately, not tested this pass, so it doesn't quietly reappear as an
+  assumption baked into the chart.
+- **Chart shape wanted:** the existing daily time-series view (as in
+  Analysis 5), with a vertical line marking each of the 19 match days, so
+  a reader can visually check per match whether that day shows a clear
+  spike — not a single before/after summary number per match, and not (yet)
+  a multi-day before/during/after trajectory per match.
+
+## Stage 4 — Encoding (done)
+
+- **Family confirmed:** time series (same family as Analysis 5) — a
+  distributions framing (match-day counts vs. non-match-day counts within
+  tournament windows) was sketched as a genuine alternative and explicitly
+  parked for a future pass, not built now.
+- **The one comparison the plot makes:** each match day against the
+  tournament's overall baseline (same flat reference line Analysis 5
+  already used) — not match day against its own immediate surrounding
+  days.
+- **Layout:** extend Analysis 5's small-multiple panels to **four** panels
+  (adding World Cup 2026), each with a vertical line marking that
+  tournament's NL match days (4–6 verticals per panel), rather than
+  switching chart family.
+
+### Build (draft, not yet critiqued)
+
+- **File:** `notebooks/analysis/04-nl-match-days-activity.ipynb` — new
+  notebook (not a modification of `03-football-tournaments.ipynb`), built
+  by the assistant per the student's request, executed top to bottom with
+  no errors.
+- **World Cup 2026 added to the reference table** — web-verified official
+  start/end: 2026-06-11 to 2026-07-19 (39 days, opening match in Mexico
+  City, final at MetLife Stadium).
+  The hype-phase machinery from Analysis 5 was dropped for this notebook
+  (not needed for the match-day question) rather than extended with a
+  fourth hype-start date.
+- **19 of 19 NL match days landed inside the chat's date range** (build
+  check, printed in the notebook) — the confirmed match table joins onto
+  the daily-count table cleanly, exact-date-only as decided.
+- **Chart:** four small-multiple panels (Euro 2020, World Cup 2022,
+  Euro 2024, World Cup 2026), same style as Analysis 5 (grey daily count,
+  crimson 7-day average, shaded `during` band, dashed black baseline line),
+  now with a dashed red vertical line (`VerticalDate`) on every one of that
+  tournament's NL match days.
+## Stage 5 — Critique (done)
+
+- **First impression (student's own read):** too much red — the dashed
+  vertical match-day lines dominate the first look and drown out
+  everything else on the chart.
+- **Grouping mismatch identified:** the shaded `during tournament`
+  background band and the dashed match-day lines both read as the same
+  red, even though they're conceptually different things (the whole
+  tournament window vs. individual match days) — the eye groups them
+  together when the claim doesn't.
+- **Which element should carry the message vs. which does:** the crimson
+  7-day rolling average is the intended data-carrying element, but it
+  isn't the only coloured thing — the dashed vertical lines pull focus
+  away from it.
+- **What to delete:** the shaded crimson `during tournament` background
+  band.
+- **Claim, stated by the student in one sentence — narrower than Stage 1's
+  proposition:** there's more chat traffic on NL match days specifically,
+  but **by the student's own visual read this only actually looks true for
+  Euro 2024** — the other three panels don't show it as clearly. This is a
+  real narrowing worth carrying into Stage 6, not glossed over.
+- **Falsification named:** if the days immediately around each match day
+  show similarly-sized spikes (not just the match day itself), that would
+  say the pattern isn't really match-day-specific.
+
+### Critique round 1 applied
+
+- **Fix:** dropped the shaded crimson `during tournament` background band
+  entirely — it was grouping the whole tournament window and the
+  individual match days into the same visual colour, which the student's
+  own critique identified as the wrong grouping. The `during`-window
+  numeric bounds are unchanged in the data, only the shading is gone.
+  Re-executed, `notebooks/analysis/04-nl-match-days-activity.ipynb`.
+- **Student's second look:** confirmed the band removal wasn't enough —
+  the dashed match-day lines were drawn on top of (in front of) the grey
+  and crimson data lines, making it hard to actually judge whether a match
+  day lines up with a real spike.
+
+### Critique round 2 applied
+
+- **Fix:** match-day markers switched from the toolkit's `VerticalDate`
+  (fixed at linewidth=2, full opacity, drawn on top of everything) to a
+  plain `ax.axvline` — thin (`linewidth=1`), semi-transparent
+  (`alpha=0.35`), and `zorder=1` so the line sits *behind* the grey/crimson
+  data lines (default `zorder=2`) instead of in front of them.
+- **New chart added, per student request:** a single-panel focus chart for
+  Euro 2024 only (the tournament that looked convincing in round 1's
+  critique), same round-2 line styling, real x-axis dates kept (no clutter
+  problem with only one panel), legend instead of direct labels.
+- **File:** same `notebooks/analysis/04-nl-match-days-activity.ipynb`,
+  re-executed, both charts render clean.
+- **Student's re-critique: line-style fix confirmed as resolved.** The
+  thin/semi-transparent/behind-the-data-lines styling fixes the
+  "grey lines overwhelmed" problem — no further styling change requested.
+- **Student's read of the Euro 2024 focus chart, further narrowing the
+  claim:** apart from the very first match, every NL match day shows a
+  visible increase in messages — but for at least one match (the second),
+  the rise actually lands **the day before** the match, not on the match
+  day itself. This directly surfaces a gap named back in Stage 2: the
+  exact-date-only join can't see a day-before effect, because it was never
+  built to look for one. The claim is narrowing again — from "all 4
+  tournaments" (Stage 1) → "really just Euro 2024" (Stage 5 round 1) →
+  "most Euro 2024 match days, one match's effect appears the day before,
+  not on it" (Stage 5 round 2).
+
+## Stage 6 — Verification (done)
+
+- **Null stated:** NL match days show no increase in messages at all,
+  relative to non-match days — matches the falsification criterion named
+  in Stage 5.
+- **Multiple comparisons, honestly disclosed by the student:** the claim
+  kept narrowing at every look — all 4 tournaments (Stage 1) → just
+  Euro 2024 (Stage 5 round 1) → most Euro 2024 matches, with a "day before"
+  allowance added for one match (Stage 5 round 2). Student named this
+  explicitly as making the story *weaker*, not stronger — an honest read,
+  not glossed over.
+- **Shuffle test:** gut estimate only, not computed — student believes a
+  real correlation exists specifically for Euro 2024, expects random days
+  would rarely look this strong there.
+- **Confounder:** none specifically identified.
+- **Held-out check — the decisive one, done by eye across the three other
+  tournaments, allowing the same "day of or day before" rule:**
+  - **World Cup 2022:** partial support — an increase the day after
+    match 1, and on match 5 (the Argentina match). 2 of 5 matches show it.
+  - **Euro 2020:** weak/partial — only an uplift between match 1 and 2, and
+    after match 4. Not a clean per-match pattern.
+  - **World Cup 2026:** **no relationship at all** between match days and
+    chat activity.
+- **Residual/model check:** not done, same gap as every prior analysis in
+  this log.
+
+### Verdict on the Analysis 6 proposition
+
+**Not supported as a general pattern — and this result directly confirms
+the original feedback item 1 concern that started this whole cycle**
+(`feedback-football-tournaments.md`, "the trend isn't strong across all
+tournaments"). The clean day-of/day-before match effect that looked
+convincing on Euro 2024 alone does **not** replicate consistently on the
+held-out tournaments: partial on World Cup 2022, weak on Euro 2020, absent
+entirely on World Cup 2026. Combined with the student's own honest
+multiple-comparisons disclosure (the claim only ever got narrower, never
+independently confirmed), this reads as "Euro 2024 happened to show a
+striking pattern," not "Netherlands match days drive group chat activity."
+Per goad's own guidance when verification leaves a pattern in doubt: the
+honest next step is a **sharper Stage 1**, not a better chart. Candidate
+sharper questions, not started: is there something *specific* to Euro 2024
+(the unexpected deep run, building hype match over match) that the other
+three tournaments' trajectories don't share — i.e. does the mechanism
+depend on the team still being alive and improbably good, not on "a match
+happened"? `match_result` (parked since Stage 2/3) would be the natural
+next feature to test that.
+
+**Decision:** write this up as an honest "one convincing case, doesn't
+generalize" finding — same shape as Analysis 4's own doubtful verdict —
+rather than continuing to polish the four-panel chart's visual design.
+**The sharper-question follow-up (is it specifically Euro 2024's
+unexpected deep run, via `match_result`/stage-reached, not "a match
+happened") is explicitly parked here, not started** — student's call:
+move on to a new topic rather than keep sharpening this one.
+
+### Files (draft, reflect the state as of Stage 6)
+
+- `notebooks/analysis/04-nl-match-days-activity.ipynb` — four-panel chart
+  (round 2 line styling) and the Euro-2024-only focus chart, both
+  reproducible top to bottom.
