@@ -2051,3 +2051,41 @@ against.
   (null, multiple comparisons, exhaustive shuffle test, confounders,
   held-out) → the honest partial verdict (during/after real, before not
   supported) → explicit list of what this check did not do.
+
+### Presentation polish (v3), after the write-up was drafted
+
+Requested separately, same pattern as Analysis 4's slide-chart polish passes —
+refining the already-verified finding's *presentation*, not re-opening the
+analysis.
+
+- **Title sharpened to the actual claim:** "We don't anticipate the friends'
+  weekend trip — we react to it," headline/subtitle split (same pattern as
+  the election-length slide charts) — bold challenging headline via
+  `fig.suptitle`, precise measured claim demoted to an italic subtitle.
+- **X-axis:** explicit 5-day tick spacing.
+- **In-chart annotation moved to the subtitle**, freeing the plot area.
+- **Legend box removed, replaced with direct in-plot labels** — "2024"/"2025"
+  at each smoothed line's end, "During the weekend" above the shaded span,
+  a leader-line label for the baseline. No legend key to look up.
+- **Year colour families clarified:** 2024 = light grey (raw `#cccccc` →
+  smoothed `#999999`), 2025 = near-black (raw `#666666` → smoothed
+  `#222222`) — raw and smoothed share a hue per year so the faint
+  background line is now identifiable.
+- **Birthday markers changed** from gold stars (too attention-grabbing) to
+  small muted open circles.
+- **New shuffle test added for the after-window** (7-day, matching the
+  real after-median of 20.5/day), run the same exhaustive way as the
+  during-window test: **68 of 2087 comparable baseline windows (~3%) reach
+  or beat it** — genuinely different from during's 0/2091. Added to the
+  chart footnote and the write-up: during is essentially unmatched
+  anywhere else in the chat's history, after is real but not statistically
+  rare.
+- **Clarified on request:** the 80/day during-figure is the *pooled*
+  median across both years' during-days (6 total). Per year they differ
+  more than the pooled number suggests — 2024's during-median is 91,
+  2025's is 53. Noted in the write-up as a caveat, not hidden behind the
+  single pooled number.
+- **Layout fix:** switched from `tight_layout(rect=...)` to explicit
+  `fig.subplots_adjust(...)` — the rect version kept re-inserting a large
+  blank gap between the subtitle and the plot that tight_layout's own
+  heuristics wouldn't remove.

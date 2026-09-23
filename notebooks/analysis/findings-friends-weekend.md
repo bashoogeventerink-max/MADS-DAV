@@ -1,4 +1,4 @@
-# Does the annual friends' weekend show up in the group chat?
+# We don't anticipate the friends' weekend trip — we react to it
 
 *Data: our WhatsApp export, Aug 2020 – Aug 2026 (9 people, ~22.5k messages). Full
 pipeline and charts: [`05-friends-weekend-activity.ipynb`](05-friends-weekend-activity.ipynb).*
@@ -94,6 +94,14 @@ story rescues the "before" half of the original idea.
   during-weekend spike is the single most extreme 3-day stretch in this
   chat's entire history, which is stronger evidence than I expected going
   in.
+  I ran the same check on the **after**-window and got a genuinely
+  different answer: of 2087 comparable 7-day baseline windows, **68 (about
+  3%) reach or beat the real after-window median of 20.5 messages/day**.
+  So the after-bump, while real, isn't rare — something like it happens
+  roughly 1 in 30 weeks in this chat regardless of the trip. The during
+  and after effects deserve different amounts of confidence: during is
+  essentially unmatched anywhere else in the chat's history, after is a
+  real but fairly ordinary busy week.
 - **Is there a more likely explanation?** Two live candidates, not
   investigated further this round: 2024's after-window includes a member's
   accident (a fall, facial scar) — plausibly inflating that year's after-bump
@@ -110,16 +118,25 @@ story rescues the "before" half of the original idea.
 
 ## Verdict
 
-**Partially supported.** The during-weekend spike is real and verified as
-genuinely unusual, not ordinary chat noise — it's the most extreme 3-day
-stretch in six years of this chat. The after-effect is real too, but
-short-lived, mostly faded within 1–2 weeks rather than lasting a month. The
-**before** half of my original idea — a month of building excitement — isn't
-supported at either window width I tried; if there's any anticipation
-effect at all, it's a ramp in the final few days before leaving, not a
-sustained one. So the honest version of the finding is narrower than what I
-set out to test: **the group shows up hard for the trip and its immediate
-afterglow, but doesn't spend weeks visibly anticipating it in the chat.**
+**Partially supported, and the two effects deserve different confidence.**
+The during-weekend spike is real and verified as genuinely unusual, not
+ordinary chat noise — it's the single most extreme 3-day stretch in six
+years of this chat, with zero comparable baseline windows matching it. The
+after-effect is real too, but weaker evidence: it fades within 1–2 weeks,
+and unlike during, a comparably busy week happens elsewhere in this chat
+about 3% of the time anyway — so "elevated after the trip" is true but not
+nearly as rare a signal as "elevated during it." The **before** half of my
+original idea — a month of building excitement — isn't supported at either
+window width I tried; if there's any anticipation effect at all, it's a
+ramp in the final few days before leaving, not a sustained one. So the
+honest version of the finding is narrower than what I set out to test:
+**the group doesn't anticipate the trip for weeks — it reacts to it, hard,
+in the moment, with a real but more ordinary afterglow.**
+
+*(One more thing worth naming: the "80 messages/day" during-figure is
+pooled across both years, but the two years weren't equally extreme on
+their own — 2024's during-median was 91, 2025's was 53. Both are well
+above baseline, but 2024 was the bigger outlier of the two.)*
 
 ## What this check did *not* do
 
