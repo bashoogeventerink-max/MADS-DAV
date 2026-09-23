@@ -1902,6 +1902,152 @@ this stays available as the next cycle after this one.
   Stage 4**; the before/during/after/baseline bucket comparison is a
   secondary supporting view, not the headline chart.
 
-## Stage 4 — Encoding
+## Stage 4 — Encoding (done)
 
-Not started yet.
+- **Sketched two families:** obvious (time — `days_relative` event-aligned
+  line, 2024/2025 overlaid as two separate lines, not averaged) and an
+  alternative (distributions — box/violin per period, showing the full
+  spread including Stage 3's birthday outliers). **Student picked the
+  time-series draft** after trying both.
+- **Single comparison the plot exists to make:** chat activity is visibly
+  different during the weekend-away period compared to normal.
+- **Axes:** x = `days_relative` (days from/to the weekend), y = raw daily
+  message count. Both years overlaid as separate lines, not averaged.
+- **New confound surfaced at this stage:** the pre-weekend "before" rise
+  could be an aggregation artifact — ordinary weekly
+  Friday/weekend-planning chatter ("who's free this weekend?") that
+  happens most weeks regardless of a trip, not something specific to
+  *this* trip's buildup. Needs checking against day-of-week patterns
+  elsewhere in the chat before the pre-weekend rise gets read as
+  trip-specific.
+- **Sensitivity parameters flagged:** the 60-day before-window width, and
+  raw count vs. a day-of-week-adjusted count (given the confound just
+  named) — both need a robustness check before the read is trusted.
+
+### Build
+
+- **Notebook:** `notebooks/analysis/05-friends-weekend-activity.ipynb` — loads
+  the featured export, reindexes daily counts to a full calendar (zero-message
+  days kept, not dropped), builds `weekend_id`/`period`/`days_relative`/
+  `is_birthday_collision`, and renders all three stage-4 charts:
+  `friends-weekend-timeseries.png` (primary), `friends-weekend-period-medians.png`
+  (secondary bucket view), `friends-weekend-per-author.png` (companion).
+- **Period-median result (secondary chart):** baseline 4.0, **before 2.0
+  (below baseline)**, during 80.0, after 20.5 messages/day. The "before"
+  half of the Stage-1 proposition does not show up as a rise at all — a
+  real signal, not a plotting artifact, confirmed by the primary chart
+  too (the 60-day window before is mostly flat/near-zero with scattered
+  unrelated spikes, not a ramp toward day 0).
+- **Day-of-week confound check (Stage 4's new question):** before-window
+  Friday median (7.5) is somewhat above the chat's overall Friday median
+  (5.0), but before-window Saturday median (3.5) is well *below* the
+  overall Saturday median (8.0) — no clean "planning chatter" signal by
+  day-of-week; doesn't explain away the missing "before" rise either.
+- **Per-author companion chart:** the during-window spike appears across
+  essentially all 9 authors, not 1–2 people — the "during" effect looks
+  like a genuine group-wide pattern.
+
+## Stage 5 — Critique (done)
+
+- **v1 critique:** first impression was "quite a lot of data" — the
+  during-window spike went unnoticed at first because the red boundary
+  lines blended with the data lines' color/style. Grouping was hard to
+  read, especially 3 overlapping birthday text labels. The one comparison
+  (during/after increase) wasn't clearly visible.
+- **v2 redesign, agreed as clean:** both years in grey (de-emphasized —
+  year-to-year comparison isn't the point), `during` shown as a shaded
+  pink span instead of blending lines, a dotted baseline-median reference
+  line, birthday collisions as single-legend gold star markers instead of
+  overlapping text, and the finding written directly on the chart.
+- **Sensitivity check run (Stage 4's flagged parameter):** widened
+  after-window 7→30 days, narrowed before-window 60→30 days. Found a
+  **new birthday collision** — `hypnotic-rabbit` (Oct 19) now falls
+  inside 2025's widened after-window. **Real result from widening:**
+  after-window median drops from 20.5 (7-day) to 7.0 (30-day) — the
+  after-effect is short-lived, decaying back toward baseline within
+  roughly 1–2 weeks, not sustained for a month.
+- **Bug caught and fixed:** the on-chart annotation was positioned using
+  the old 60-day window's coordinates and fell off-screen once the window
+  narrowed to 30 days — repositioned.
+- **Readability fix:** raw daily spikes judged "harsh to read" at this
+  window width. Resolved with a **3-day centred rolling-average line**
+  (bold) per year on top of the raw daily points (kept, faded/thin) —
+  keeps Stage 3's "label spikes, don't smooth them away" principle intact
+  while fixing readability. A small pre-trip ramp is now visible on the
+  smoothed line starting around day −5 to −3, not across the full 30-day
+  window.
+- **Claim the chart supports, locked in by the student:** a sharp rise
+  during and right after the weekend, fading back toward baseline within
+  ~1–2 weeks — but **no comparable rise in the 30 days before**. A real
+  gap against the full Stage-1 proposition, which predicted a rise
+  before, during, *and* after.
+
+## Stage 6 — Verification (done)
+
+- **Null, stated concretely:** no significant increase in messages during,
+  before, or after these weekends — daily counts are just this chat's
+  normal noisy/spiky behavior, unrelated to the trip.
+- **Multiple comparisons, honestly disclosed:** only two window-width
+  comparisons were tried (60-before/7-after, then 30/30) — both showed
+  the same qualitative pattern (during+after elevated, before flat), not
+  cherry-picked to find a positive result.
+- **Shuffle test — computed exhaustively, not a gut estimate.** Student's
+  initial gut guess ("other events like football probably spike this
+  often too") was checked directly rather than trusted. Method: excluded
+  every day inside either weekend's 30-day-before/during/30-day-after
+  window, then took a 3-day sliding-window median across all 2091
+  remaining baseline days (~6 years). **Result: zero of 2091 baseline
+  3-day windows reach the real during-window median of 80 messages/day
+  — the closest is 69** (window ending 2022-08-21), still below. The
+  during-weekend spike is **the single most extreme 3-day stretch in the
+  chat's entire ~6-year history** — directly contradicts the student's
+  gut expectation that comparable spikes happen fairly often.
+- **Confounders:** 2024's accident and the Stage-1 boring result ("people
+  text more when excited/together, then it fades") remain the live,
+  accepted candidates — not further investigated this round, student's
+  explicit call.
+- **Held-out check:** a genuine third occurrence of this annual weekend
+  exists in real life but falls after the chat export's last message
+  date — unavailable, honestly noted as a real limitation rather than
+  worked around. Partial substitute: both years individually show a
+  similar during/after shape on the primary chart (not one year driving
+  it), and the per-author companion chart already ruled out 1–2 people
+  driving it.
+
+### Verdict on the Analysis 7 proposition
+
+**Partially supported — real for during/right-after, not for before.**
+The **during** effect is verified as genuinely unusual, not ordinary
+chat noise: the exhaustive shuffle test found it to be the most extreme
+3-day stretch in the entire ~6-year chat history (0/2091 comparable
+baseline windows). The **after** effect is real but short-lived — elevated
+in the first week (median 20.5), fading to only mildly above baseline
+(7.0) by 30 days out. The **before** half of the original proposition is
+**not supported at either window width tested** (60 or 30 days) — the
+before-window median (2.0) sits *below* the overall baseline (4.0), and
+the day-of-week confound check (Stage 4) found no clean "planning
+chatter" signal to explain even a weak rise. Read plainly: this group's
+buildup to the trip, if it exists at all, is a **few-day ramp right
+before departure** (visible on the smoothed chart around day −5 to −3),
+not a month-long anticipation effect.
+
+**Decision:** write this up as a real, partially-confirmed finding — the
+group visibly "shows up" for the trip and its immediate afterglow, verified
+as statistically unusual by the shuffle test, but the "excited anticipation
+for weeks beforehand" half of the original idea doesn't hold up. Not
+pursuing a sharper Stage 1 pass tonight — student's call, given only 2
+weekend events exist to test any narrower before-window hypothesis
+against.
+
+## Write-up
+
+- **File:** `notebooks/analysis/findings-friends-weekend.md` (+
+  `friends-weekend-timeseries.png`, `friends-weekend-period-medians.png`,
+  `friends-weekend-per-author.png` exported from
+  `05-friends-weekend-activity.ipynb`).
+- Walks through: original expectation → primary chart (v2, redesigned per
+  stage 5) → per-author robustness check → window-width sensitivity check
+  (60/7 vs. 30/30) + day-of-week confound check → stage-6 verification
+  (null, multiple comparisons, exhaustive shuffle test, confounders,
+  held-out) → the honest partial verdict (during/after real, before not
+  supported) → explicit list of what this check did not do.
