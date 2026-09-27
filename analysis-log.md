@@ -2089,3 +2089,24 @@ analysis.
   `fig.subplots_adjust(...)` — the rect version kept re-inserting a large
   blank gap between the subtitle and the plot that tight_layout's own
   heuristics wouldn't remove.
+
+### Further polish, after the v3 review
+
+- **"During the weekend" label moved** off the peak datapoints it was
+  covering — now sits in open space to the left with a leader line into
+  the band, and carries `(n=6 days)` directly, so a reader can judge the
+  during-median's small sample size at a glance rather than needing the
+  write-up.
+- **New 5-day build-up band added** (lighter shade than the during band,
+  days −5 to −0.5), labelled "5-day build-up" — makes stage 5's small
+  pre-trip ramp finding visible directly on the chart instead of only in
+  the write-up text.
+- **Explained on request:** the 3-day rolling average is a simple centred
+  mean (`messages.rolling(3, center=True).mean()`) — e.g. 2025's day 0
+  (53 messages) plots as (41+53+87)/3 = 60.3, averaging the day before,
+  the day itself, and the day after.
+- **New smoothed-only variant added**, `friends-weekend-timeseries-smoothed.png`
+  — same chart with the raw daily lines dropped entirely (birthday markers
+  kept, since they flag specific known days rather than general noise).
+  Footnote extended to explain the 3-day-average calculation itself, since
+  without the raw line next to it the smoothing is no longer self-evident.

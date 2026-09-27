@@ -34,12 +34,12 @@ rolling average, added after the raw version looked too spiky to read
 cleanly, but without deleting the actual spikes — they're still visible,
 just not the loudest thing on the page.
 
-The pattern: a sharp rise right around the trip that peaks during the pink
-"during" band, then decays back toward the dotted baseline line over roughly
-1–2 weeks. **What's missing is the month-long build-up I expected** — the 30
-days before the trip sit at or below the group's normal baseline, with only
-a small ramp in the final few days before departure, not a sustained
-anticipation effect.
+The pattern: a sharp rise right around the trip that peaks during the darker
+pink "during" band, then decays back toward the dotted baseline line over
+roughly 1–2 weeks. **What's missing is the month-long build-up I expected**
+— the 30 days before the trip sit at or below the group's normal baseline.
+The only real ramp is the lighter pink band marked "5-day build-up" —
+the final few days before departure, not a sustained anticipation effect.
 
 The gold stars mark three of the group's birthdays that happen to fall near
 one of the two weekends — flagged rather than removed, so it's clear which
