@@ -2688,3 +2688,96 @@ separately, placebo test) carried over from Analysis 10.
   bucketing changes the display, not the result.
 - **Student's provisional answer:** "people keep chatting during work" — only
   barracuda shows a clear evening shift.
+
+## Stage 4 — Encoding (done)
+
+- **Sketched two families** (`sketch-A-job-buckets-per-starter.png`,
+  `sketch-B-job-work-share-difference.png`, scratch):
+  - **A — distributions:** 7 small multiples, 4 buckets, share of an active
+    weekday's messages, before vs. after, control as black ticks.
+  - **B — categories (the stretch):** sorted dot plot of each starter's
+    difference-vs-control in work-hours share, zero line, ±12 as diamonds.
+- **Student chose A** — shows best what we're visualising, and meets the
+  assignment's "every option on x / likelihood on y". B answers the
+  two-outcome question faster but shows a difference, not a distribution.
+- **The single comparison (student):** the message distribution before and
+  after starting the job, compared with the control.
+- **Axes:** x = 4 categorical buckets (equally spaced but unequal in hours:
+  6/3/8/7h — to be stated on the chart); y = share, 0–1.
+- **Aggregation (student):** an average hides skewness and can be pulled by
+  outliers. Added: the per-day average protects against loud days, but a
+  1-message day weighs as much as a 50-message day, and the bar hides how
+  many active days sit behind it (tiger 25, penguin 28 after).
+- **Parameter that changes the conclusion:** the window (±6 vs ±12) —
+  **student: report it in the write-up, not on the chart.**
+
+### Build
+
+- **Notebook:** `notebooks/analysis/08-job-start-hour-of-day.ipynb` — runs
+  top to bottom; reproduces the Stage 3 numbers exactly.
+- **Images:** `job-start-hour-of-day-v1.png` (pre-critique),
+  `job-start-hour-of-day-v2.png` (4 buckets), `-v2b-two-buckets.png`,
+  **`job-start-hour-of-day-final.png`** (v2b + title), `job-start-placebo-null.png`.
+  Scratch, not part of the deliverable: `job-start-hour-first-look.png`,
+  `sketch-A-…`, `sketch-B-…`, `move-in-weekday-first-look.png`.
+
+## Stage 5 — Critique (done)
+
+- **First impression (student):** the blue bars — far left (barracuda, tall
+  evening) and second from right (penguin, tall work-hours): the two most
+  extreme cases, in opposite directions. That *is* the message.
+- **Where the opposite would have shown:** clarified together — if the
+  prediction held, every panel's after-work bar sits below the before-work
+  bar with the control ticks flat.
+- **Grouping:** two rows, clean on top / confounded below. Student asked about
+  also fading the confounded panels; flagged that it reads as hiding data
+  (they're the cases against the original prediction) → rows only.
+- **Colour:** only the work-hours bucket in colour (student's call).
+- **Buckets:** student proposed work vs. non-work. Flagged: it collapses the
+  distribution to one number (non-work = 1 − work) and loses where the
+  non-work messages go. Built both; **student chose v2b** (two buckets). v2
+  kept in the notebook.
+- **Active-days counts:** left off the chart (student's call).
+- **Title:** student saw that "users text more in the evening" isn't
+  supported; deferred until after the test, then set: **"People do not change
+  the moment of texting after getting a job."**
+
+## Stage 6 — Verification (test run; interview questions still open)
+
+- **Null:** placebo job starts — every month where a person's ±6 window fits
+  in the export and holds none of their real events (25–49 per person); same
+  statistic. Combined: mean over starters vs. 2,000 draws of one placebo per
+  starter. One-sided (prediction was negative). Seed 42.
+- **Result:**
+
+  | | real | share of placebos at least as negative |
+  |---|---|---|
+  | vibrant-barracuda | −0.12 | 14% |
+  | striking-rail | −0.05 | 16% |
+  | pliable-tiger | +0.12 | 88% |
+  | animated-elk ⚠ | +0.13 | 90% |
+  | humorous-stingray ⚠ | +0.00 | 55% |
+  | effervescent-penguin ⚠ | +0.16 | 100% |
+  | rib-tickling-curlew ⚠ | −0.06 | 20% |
+  | **clean (3), mean** | **−0.02** | **p = 0.30** |
+  | **all (7), mean** | **+0.03** | **p = 0.73** |
+
+- Even barracuda's clear shift happens in ~1 of 7 random months for them —
+  consistent with it vanishing at ±12.
+- **Not yet discussed with the student (Stage 6 interview):** how many
+  comparisons were looked at this session (Analyses 10 and 11, two
+  measures, two windows), and a held-out slice. Not recorded in goad as done.
+
+### Verdict on the Analysis 11 proposition
+
+**Not supported — the second of the two pre-agreed outcomes.** Starting a job
+did not measurably push weekday chatting out of 09:00–17:00: the real job
+starts don't stand out from ordinary months (clean p = 0.30, all p = 0.73).
+Student's claim: *people do not change the moment of texting after getting a
+job.* Against the assignment: requirement 3 asks for a *significant* shift;
+this is a well-tested *absence* of one, framed as a two-outcome question
+before looking — worth checking with the teacher whether that counts.
+
+### Write-up
+
+- `notebooks/analysis/findings-job-start-hour-of-day.md`.
