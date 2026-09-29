@@ -2467,3 +2467,224 @@ the tight time budget.
   the honest non-uniform verdict → what this didn't do (short baseline for
   striking-rail, no formal null test, n=4, no digging into *why*
   `animated-elk` differs).
+
+---
+
+# Analysis 10 — does moving in with a partner shift *which days* someone posts?
+
+New goad cycle, ~3 hour budget. Picks up the distributions assignment
+(`week4-distribution-requirements.md`) after Analyses 8 and 9 both came back
+null. Lesson carried over: Analysis 8's event (lockdown) was a diffuse,
+group-wide condition that pooled away; Analysis 9 compared *rates*, not a
+distribution's *shape*, so it could not have met requirement 3 even if
+positive. This cycle picks an event that directly changes one person's daily
+constraints on a known date.
+
+## Stage 1 — Question (done)
+
+- **Candidates named by the student:** one member moving abroad, people
+  starting jobs, people moving in with a partner. **Picked: moving in with a
+  partner.**
+- **Mechanism (student's words):** once living with a partner, the time after
+  work goes to the partner — so texting shifts toward the weekend rather than
+  weekday evenings.
+- **Variable:** day-of-week share (all 7 days on the x-axis, likelihood on the
+  y-axis). **Weekend = Fri + Sat + Sun**, fixed by the student before looking.
+- **Parked:** "fewer messages overall after moving in" — a rate question, not
+  a shape question, and Analysis 9 already showed the group's general decline
+  dominates rates.
+- **Proposition (student):** after moving in, a person's weekend share of
+  messages increases significantly compared to the rest of the group.
+  - Operationalised, agreed: *(mover's after − before change in Fri–Sun share)
+    − (rest of group's change over the identical windows)*, per mover.
+  - "Significantly": placebo move dates (same statistic at fake dates across
+    the timeline), agreed in advance for Stage 6.
+- **Falsification:** no such relative increase for most movers.
+- **Boring result:** (b) weekend share rising for *everyone* over 2020–2026 —
+  group drift the movers would just ride along. The rest-of-group control
+  exists to rule this out. Student doesn't yet know whether it's true. Also
+  named: "everyone texts more on weekends" is static, not the finding.
+- **Move-in dates (aliases only, month precision, from memory):**
+
+  | alias | moved in | job start nearby |
+  |---|---|---|
+  | striking-rail | 2025-08 | no |
+  | pliable-tiger | 2026-08 | no |
+  | rib-tickling-curlew | 2025-11 | yes, 2025-09 (just before) |
+  | fluffy-beaver | 2026-01 | no |
+  | humorous-stingray | 2023-07 | yes, 2023-09 |
+  | effervescent-penguin | 2024-07 | yes, 2024-09 |
+  | hypnotic-rabbit | 2025-07 | no |
+
+- **Confound flagged, accepted:** a job start within ~3 months of the move
+  (curlew, stingray, penguin) would push messages toward the weekend by the
+  same mechanism — a before/after split can't separate the two.
+- **Origin:** lived experience, prediction stated before looking.
+  **Audience:** teacher, classmates, the friend group. **Budget:** ~3h.
+
+## Stage 2 — Data (done)
+
+- **One row = one message.** **Claim unit = the mover** — n = 6. Within a
+  person, the independent unit is the **day**, not the message (Analysis 8's
+  lesson).
+- **pliable-tiger dropped as a mover** (only 1.2 months of data after the
+  08/2026 move; export ends 2026-09-08), but **kept in the data as a control**
+  — their move falls after every other mover's window.
+- **Alias confirmed:** "Fluffy Bear" = `fluffy-beaver`.
+- **Features, agreed:**
+
+  | feature | definition |
+  |---|---|
+  | `weekday` | 0–6 from `timestamp` — parquet times verified to equal the raw export's local clock times (`+00:00` is only a label) |
+  | `is_weekend` | Fri, Sat or Sun |
+  | `period` | `before` / `after`, per mover, symmetric **±6 months** around the 1st of the move month |
+  | `role` | `mover` / `control` |
+
+- **Control refined (student's pliable-tiger question surfaced it):** four
+  moves cluster in 07/2025–01/2026 (rabbit, rail, curlew, beaver), so "rest of
+  the group" would contain other movers mid-shift and shrink the difference.
+  **Control = only authors with no move-in of their own inside that mover's
+  ±6-month window.** Student agreed.
+- **Confounds:** humorous-stingray's move-in *is* their city move (same event,
+  confirmed) and has a job at 09/2023. Job-confounded movers (curlew, stingray,
+  penguin) **kept, but shown visually separate** from the 3 clean ones (rail,
+  rabbit, beaver).
+- **Considered and rejected:** switching to total volume because per-person
+  counts are small. Volume changes the hypothesis (how much vs. when) and
+  overlaps Analysis 9; the evidence here comes from consistency across 6
+  movers + the placebo test, not per-person precision. **Student chose to
+  keep day-of-week.** Messages-per-day count distribution parked.
+
+## Stage 3 — Shape (done) — checkpoint reached, effect not visible
+
+- **First look:** `notebooks/analysis/move-in-weekday-first-look.png` (scratch,
+  throwaway script — not the deliverable). Six small multiples, ±6 months,
+  mover before/after bars + control lines.
+- **Two measures of Fri–Sun share:** per message, and **per day** (share of
+  active days that fall on Fri–Sun, each day counted once). **Student prefers
+  per day** — it's what "shifting *when* you text" means, and it neutralises
+  loud days.
+- **Numbers (difference = mover's change − control's change):**
+
+  | mover | job? | per message | **per day** |
+  |---|---|---|---|
+  | striking-rail | – | −0.14 | +0.01 |
+  | hypnotic-rabbit | – | −0.11 | −0.07 |
+  | fluffy-beaver | – | −0.16 | −0.06 |
+  | rib-tickling-curlew | yes | −0.03 | +0.00 |
+  | humorous-stingray | yes | −0.30 | −0.21 |
+  | effervescent-penguin | yes | −0.01 | +0.02 |
+
+- **Extreme value:** humorous-stingray, Sunday 2023-06-25 = 52 of their 197
+  before-window messages (26%; group sent 100 that day). Student: an
+  extraordinary loud day, not an error. The per-day measure counts it once.
+- **Student's own reading:** "no clear picture across 6 graphs … roughly half
+  more weekend, others more weekday … no clear effect to be honest."
+- **Corrections to readings, from the assistant:** curlew's weekend share
+  actually *rose* (0.59 → 0.67 per message), just less than their control's;
+  the control lines are *the other people*, whose weekend share moved up to
+  14pp in one window on its own — so a single-person shift of ~10pp is within
+  normal group variation.
+- **Against the Stage 1 falsification rule:** no mover shows the predicted
+  increase beyond ~2pp on the per-day measure; if anything the sign is
+  negative. The proposition is heading toward "no".
+
+### Analysis 10 — status at the checkpoint
+
+**Paused, not finished.** Student chose to switch (option B) rather than
+finish this as a third null (the assignment's requirement 3 asks for a
+significant, explainable shift). Chart/placebo/write-up not built.
+
+**Exploratory lead, parked for later (student's request):** per *day*, movers
+show up on Fri–Sun just as often after moving in; per *message*, all 6 movers'
+weekend share fell more than their control's (clean movers −0.11, −0.14,
+−0.16). Candidate story: *after moving in, people still turn up on weekends
+but write less on those days.* **Data-suggested** — found on the same data it
+would be tested on, n = 3 clean movers — so only valid as a lead to check on
+other data (e.g. pliable-tiger once post-move data exists), not a conclusion.
+
+---
+
+# Analysis 11 — does starting a job move chat time from daytime to evening?
+
+Pivot inside the same ~3h session (~1h30 left at the start of this cycle).
+Setup (windows, control rule, per-day measure, clean vs. confounded shown
+separately, placebo test) carried over from Analysis 10.
+
+## Stage 1 — Question (done)
+
+- **Event:** starting a job. (Option C — a member moving abroad — dropped:
+  the move was within Europe, so no timezone shift.)
+- **Mechanism (student):** once working, fewer daytime messages on workdays,
+  more in the evening, fewer late at night.
+- **Student asked whether this is boring, and proposed flipping it** to
+  "activity increases while everyone should be working." Discussed: *boring*
+  = the static "chat quiets during work hours"; this is a within-person
+  shift at a dated event, which is exactly requirement 3. Analysis 8's own
+  finding (daytime share higher post-lockdown — hybrid-work phone use) makes
+  the outcome genuinely open. Flipping a believed prediction to get a better
+  story = prediction-shopping. **Student kept the original prediction.**
+- **Framing, two outcomes, both a story:** *Does starting a job push your chat
+  time from daytime to the evening — or do people just keep chatting during
+  work, as Analysis 8 hinted?*
+- **Primary statistic (one, to avoid multiple testing):** per active weekday,
+  share of that day's messages sent **09:00–17:00**, averaged per period;
+  *(starter after − before) − (control after − before)*. **Prediction:
+  negative.** Other hours shown in the chart, not tested.
+- **Weekdays = Mon–Fri** (differs from Analysis 10's Fri–Sun weekend on
+  purpose — a job runs Mon–Fri). Weekends kept as a later internal check.
+- **Falsification:** the weekday hour-of-day shape stays the same.
+- **Origin:** lived experience, job dates from memory (month precision),
+  prediction stated before looking.
+
+## Stage 2 — Data (done, reused from Analysis 10)
+
+| alias | job start | status |
+|---|---|---|
+| striking-rail | 2023-01 | clean |
+| pliable-tiger | 2024-09 | clean |
+| vibrant-barracuda | 2022-09 | clean |
+| animated-elk | 2022-09 | confounded — city move same month |
+| humorous-stingray | 2023-09 | confounded — move-in/city move 2023-07 |
+| effervescent-penguin | 2024-09 | confounded — move-in 2024-07 |
+| rib-tickling-curlew | 2025-09 | confounded — move-in 2025-11 |
+| fluffy-beaver | 2020-09 | **dropped** — export starts 2020-08-12 |
+| hypnotic-rabbit | before 2020 | no event — control |
+
+- Filter Mon–Fri; `hour` 0–23; `work` = 09:00 ≤ t < 17:00; ±6-month windows
+  around the 1st of the job month.
+- **Control = authors with no event of their own (job, move-in, city move)
+  inside that starter's window.** Same-month starters (barracuda/elk,
+  tiger/penguin) are automatically excluded from each other's controls.
+
+## Stage 3 — Shape (done)
+
+- **First look:** `notebooks/analysis/job-start-hour-first-look.png` (scratch).
+- **Per-day work-hours (09–17) share, difference vs. control:**
+
+  | starter | status | ±6 (primary) | ±12 (sensitivity) |
+  |---|---|---|---|
+  | striking-rail | clean | −0.06 | −0.06 |
+  | pliable-tiger | clean | +0.12 | +0.02 |
+  | vibrant-barracuda | clean | **−0.12** | −0.01 |
+  | animated-elk | ⚠ | +0.13 | +0.06 |
+  | humorous-stingray | ⚠ | +0.00 | −0.03 |
+  | effervescent-penguin | ⚠ | +0.16 | −0.07 |
+  | rib-tickling-curlew | ⚠ | −0.06 | −0.12 |
+
+- **Student's reading:** vibrant-barracuda clearly shifts toward the evening,
+  less active during the day; others show no real difference. Assistant
+  corrected curlew: the tall 13:00 bar after the start is a few busy
+  lunchtimes; per day, curlew's work share *fell* (0.59 → 0.48).
+- **Thin after-windows:** pliable-tiger 25 and effervescent-penguin 28 active
+  weekdays after the start (of ~130). Student asked about widening the window;
+  flagged that choosing the window after looking is a forking path. **Decision:
+  ±6 stays primary (fixed before looking); ±12 reported as sensitivity.**
+  ±12 flips the count (5/7 negative, all small) and barracuda's shift
+  disappears — it seems to fade after the first months. The window is the
+  parameter that changes the conclusion; it goes in the write-up.
+- **Buckets for the chart, agreed:** night 00–06, morning 06–09, **work
+  09–17**, evening 17–24. The work bucket *is* the primary statistic, so
+  bucketing changes the display, not the result.
+- **Student's provisional answer:** "people keep chatting during work" — only
+  barracuda shows a clear evening shift.
