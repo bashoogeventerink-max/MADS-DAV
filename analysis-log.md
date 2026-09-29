@@ -2781,3 +2781,29 @@ before looking — worth checking with the teacher whether that counts.
 ### Write-up
 
 - `notebooks/analysis/findings-job-start-hour-of-day.md`.
+
+### Stage 6 — interview completed (supersedes "questions still open" above)
+
+- **Null (student):** neither outcome true — no shift, neither less nor more
+  chatting during work hours. Refined together: the null is *the change at
+  the real start is no bigger than at a random month* — exactly what the
+  placebo months measure. "Keep chatting during work" coincides with the
+  null, which is why the two-outcome framing holds up.
+- **Comparisons:** student counted 2×2×6 = 24+; ~30 in total (A10 6×2, A11
+  7×2, pooled tests, the weekend lead). Many comparisons don't weaken a null.
+  **The Analysis 10 weekend lead is the most striking of ~30 looks, found
+  after looking → exploratory only**, to be tested on new data.
+- **Third variable (student):** the general decline in volume. Share measure
+  + same-month control → no direct bias, but fewer messages = noisier shares =
+  **less power to detect a real effect**. Also possible: the "before" period
+  (internship/thesis) was already work-like.
+- **Held-out slice — weekends** (student asked to run it): for
+  `vibrant-barracuda`, the only one who shifted, the weekend 09–17 share
+  dropped **even more** (−0.19 vs. control; 19/18 weekend days) → their weekday
+  shift is not job-specific. Weekend differences across starters range
+  −0.19 to +0.26, confirming ±0.12 is ordinary variation.
+- **Verdict (student):** no clear distribution shift across the group chat
+  after these tests; no significant story on these topics.
+- **Title:** "People do not change…" claims proof of no effect; with n = 7 and
+  noisy shares only *no detectable change* is defensible. Wording left to the
+  student.

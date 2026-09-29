@@ -62,6 +62,16 @@ It doesn't stand out. Even `vibrant-barracuda`'s shift happens in about 1 in 7
 random months for them. Widening the window to 12 months either side makes it
 disappear entirely (−12 pp → −1 pp) — so whatever happened there was short.
 
+## And the one person who did shift?
+
+A job only changes Monday to Friday — so the weekend is a check I never used to
+find anything. If `vibrant-barracuda`'s shift is about the job, their weekend
+should stay the same. It doesn't: their 09–17 share **drops at the weekend
+too, and by more** (−19 pp vs. the group, against −12 pp on weekdays). Whatever
+changed for them around September 2022, it wasn't only the job. Across all
+seven, the weekend numbers swing between −19 and +26 pp, which puts the
+weekday swings of ±12 pp well inside ordinary variation.
+
 ## Verdict
 
 **The second outcome: people keep chatting during work.** Starting a job did
@@ -84,6 +94,13 @@ during the workday seems to be normal, not something a job takes away.
 - **Only the work-hours share was tested.** The chart groups everything else
   as "outside work hours"; whether morning, evening or night changed on their
   own wasn't tested.
-- **Not checked on held-out data**, and this was the second question tried in
+- **Absence of evidence isn't proof.** With 7 people and noisy shares, a small
+  real effect could go undetected — the claim is *no detectable change*.
+- **Fewer messages in later years** make every share noisier, so the test gets
+  weaker over time.
+- **About 30 comparisons were looked at this session** (two analyses, two
+  measures, two windows, 6–7 people each). That doesn't weaken a null, but it
+  does mean nothing found along the way counts as a finding without new data.
+  This was the second question tried in
   the same session (the first — moving in with a partner vs. weekend
   texting — also came back empty; see `analysis-log.md`, Analysis 10).
