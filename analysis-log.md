@@ -2110,3 +2110,360 @@ analysis.
   kept, since they flag specific known days rather than general noise).
   Footnote extended to explain the 3-day-average calculation itself, since
   without the raw line next to it the smoothing is no longer self-evident.
+
+---
+
+# Analysis 8 — hour-of-day distribution, lockdown vs. after
+
+New goad cycle, for the week 4 (distributions) assignment. This is the
+**parked candidate from Analysis 1's Stage 4** ("hour-of-day distribution,
+lockdown vs. outside — a genuinely separate question, daily rhythm not
+overall trend"), picked up now instead of started fresh. Assignment
+requirements captured separately in
+`notebooks/analysis/week4-distribution-requirements.md`: x-axis must show
+every possible option (even zero-count), y-axis must be likelihood/relative
+frequency (not raw count), and the deliverable needs a significant,
+explainable *shift in shape* tied to an event in time — not a static single
+distribution.
+
+## Stage 1 — Question (done)
+
+- **Data:** same chat as all prior analyses (Aug 2020 – Aug 2026, 9
+  authors). Domain chosen for the x-axis: **hour of day (0–23)**.
+- **Known context reused, not re-derived:** Analysis 1's already-validated
+  NL lockdown/restriction window table — main lockdown 2020-12-14 to
+  2021-04-28 (incl. curfew), second lockdown 2021-12-19 to 2022-01-14.
+- **Suspicion:** during lockdown, working from home removes the
+  commute/office schedule constraint — people can stay up later and
+  message more during the day. After lockdown ends, people return to a
+  structured work schedule — daytime messaging drops, evening messaging
+  picks back up.
+- **Boring result to avoid** (already named in Analysis 1): "chat quiets
+  during work hours, picks up in the evening" — true in general, not
+  itself the finding. The finding has to be the *specific* shift between
+  periods, not just that a daily rhythm exists.
+- **Proposition:** the hour-of-day distribution of messages shifts between
+  the lockdown period(s) and the post-lockdown period — during lockdown,
+  daytime and late-night hours gain share at the expense of the typical
+  evening peak; after lockdown, the shape reverts toward a more
+  structured, evening-heavy pattern.
+- **Falsification:** if the hour-of-day shape looks basically the same
+  during lockdown and after (same peak hours, similar proportions), that
+  says no.
+- **Origin:** lived experience / a parked idea from a prior analysis
+  cycle, not a pattern noticed while skimming the data this time.
+- **Audience:** teacher, course/classmates, and the friend group itself —
+  same as all prior analyses. Needs to be legible to a non-technical
+  audience.
+- **Time budget:** ~3 hours for a first draft.
+
+## Stage 2 — Data (done)
+
+- **One row = one message** (timestamp, author, text), same as all prior
+  analyses.
+- **Claim unit:** the group's hour-of-day distribution as a whole — but
+  **pseudoreplication risk flagged and accepted as a check to do**: a
+  per-author companion view (small multiples, same pattern as Analysis
+  1's robustness chart) is needed to confirm the pooled shape isn't driven
+  by 1–2 chatty people rather than the whole group.
+- **New features, agreed:**
+  | Feature | Definition |
+  |---|---|
+  | `hour` | 0–23, derived from `timestamp` — the x-axis domain itself |
+  | `period` | categorical: `during` (both lockdown windows pooled — student's explicit choice over using only the first/longer window) vs. `after` |
+- **Open, deferred to Stage 3/4:** exact cutoff for where `after` starts —
+  right when each lockdown ends, vs. only once things fully normalized
+  (e.g. ~mid-2022, once travel restrictions were fully lifted
+  2022-09-17 per the Analysis 1 table).
+- **Missingness:** none expected — `hour` and `period` are both derived
+  mechanically from `timestamp`, same provenance as the existing lockdown
+  lookup table.
+
+## Stage 3 — Shape (done)
+
+- **Actual numbers, during (n=112 days, 2,049 msgs) vs. after (n=1,088
+  days, 16,469 msgs, cutoff = last lockdown end 2022-01-14):**
+
+  | hour | during | after | diff |
+  |---|---|---|---|
+  | 21 | 11.7% | 7.4% | +4.3pp |
+  | 19 | 11.3% | 8.3% | +2.9pp |
+  | 13 | 4.5% | 7.0% | −2.5pp |
+  | 10 | 4.6% | 6.6% | −2.0pp |
+  | 0 | 2.5% | 1.1% | +1.4pp |
+
+- **Student's own-words shape description:** "more active in the evening
+  during covid, less active during the day" — an evening hump (19, 21)
+  during lockdown that shrinks after; daytime hours (10, 13) thin during
+  lockdown, picking up after.
+- **Explicitly the OPPOSITE direction of the Stage 1 prediction** (student
+  expected daytime to gain *during* lockdown, evening to gain *after*).
+  Named back to the student rather than silently reconciled.
+- **Student's reaction, not smoothed over:** surprised, but offered a
+  plausible alternative mechanism on the spot — post-COVID, hybrid/WFH
+  work normalized using WhatsApp *during* work hours, rather than
+  lockdown itself freeing up daytime. Read plainly: the after-period isn't
+  "back to a 9-to-5 that ignores the phone" so much as "a new daytime
+  phone-use habit picked up from the WFH era persisting afterward."
+- **Interesting vs. not:** student judged hour 21 as the interesting
+  signal, not hour 0 (small base rate both sides, judged less interesting
+  than the large evening/day swing).
+- **Bucket vs. continuum:** kept `hour` at full 0–23 granularity, not
+  bucketed into morning/afternoon/evening/night — required by the
+  assignment's "show every possible option" rule, and matches what the
+  chart needs to show anyway.
+- **Independent units:** 112 during-days vs. 1,088 after-days — both
+  healthy, not thin.
+- **Per-author evenness** (pseudoreplication check from Stage 2): share
+  across 9 authors ranges 5.1%–15.3%, roughly 3× busiest-to-quietest —
+  "fairly evenly active" (Analysis 1's assumption) roughly holds on raw
+  share. Student still wants the actual per-author hour-shape small
+  multiples plotted before fully trusting the pooled shape (not just this
+  summary number).
+- **Sensitivity check, requested by student:** pushed the "after" cutoff
+  later — 2022-01-14, 2022-06-01, 2022-09-17 (travel restrictions fully
+  lifted), 2023-01-14. **Pattern is stable across all four** (hour 21 stays
+  ~6.9–7.7% after regardless of cutoff; hour 13 stays ~6.4–7.0%).
+  **Decision:** use the simplest cutoff (right after the last lockdown
+  ends, 2022-01-14) as the primary comparison — not re-litigating this
+  further.
+
+## Stage 4 — Encoding (in progress)
+
+- **Sketched two families** (temp scratchpad, not committed): obvious
+  (distributions — overlaid PMF, line and grouped-bar variants) and an
+  unexpected one (time — a month × hour heatmap over the Oct 2020–May 2022
+  transition, framing the shift as continuous rather than one before/after
+  split).
+- **Heatmap alternative rejected:** with ~30 days per month split across 24
+  hours, single spike days dominate individual cells (one cell hit 33% of
+  a month's messages) — the same birthday/bad-news spike problem Analysis
+  1 already flagged, not a real monthly pattern. Not pursued further.
+- **Grouped-bar PMF chosen as primary form** over the line variant — matches
+  the assignment's literal "every option shown, dice-roll style" framing
+  more directly than a connected line.
+- **Single comparison the primary plot exists to make:** does the
+  hour-of-day shape differ between `during` and `after`, and specifically
+  at which hours.
+- **Companion charts added:** (1) a residual/diff panel (during minus
+  after, per hour, zero-referenced) — same idiom as
+  `03.3-events-in-your-chat.ipynb`'s `SubtractBaseline` move, makes the
+  *shift* itself the direct subject of a chart; (2) per-author small
+  multiples (same pattern as Analysis 1) — the Stage 2/3 pseudoreplication
+  check.
+
+### Build
+
+- **Notebook:** `notebooks/analysis/06-lockdown-hour-of-day.ipynb` (new,
+  numbered after the existing 01–05 course-adjacent notebooks). Loads
+  `load_own_chat()`, applies the same `timestamp`-string-to-datetime coercion
+  as `03.3`, adds `hour` via `TimeFeatures`, tags `period` via `FlagDates`
+  over the pooled lockdown windows.
+- **Images saved:** `hour-of-day-lockdown-vs-after.png` (primary),
+  `hour-of-day-lockdown-diff.png` (residual), `hour-of-day-lockdown-per-author.png`
+  (robustness).
+- **Per-author robustness read:** elevated evening share (peaking somewhere
+  in the 16–22 range depending on the author) shows up for most of the 9
+  people, not just 1–2 — `humorous-stingray` (peak ~23% at hour 19) and
+  `hypnotic-rabbit` (peak ~21% at hour 21) are the most extreme individual
+  swings, but the direction is broad-based across the group.
+- **Spike-day check, run before trusting hour 21 (Stage 5 honesty check,
+  done early):** of 242 during-lockdown messages at hour 21, **86 (35.5%)
+  come from a single day: 2021-03-17.** That date is the **2021 Dutch
+  general election** already in this project's own election-date table
+  (Analysis 4/6). **This is a real, unresolved confound** — a meaningful
+  chunk of the headline hour-21 spike is election-night chatter, not
+  generic "people stayed up later during lockdown." Not yet decided how to
+  handle (exclude the day, label it, or accept it as a partial explanation)
+  — needs the student's call before Stage 5 critique is complete.
+
+### Correction: election days excluded from both sides
+
+- **Student's call:** exclude the confound day — and checked whether other
+  elections (this project's own 5-election table from Analysis 3/4/6) could
+  have a similar effect, on **either** side of the during/after split, not
+  just `during`.
+- **Checked which of the 5 election dates actually have messages:**
+  2021-03-17 (173 msgs, falls in `during`) and 2023-11-22 (68 msgs, falls in
+  `after`) do; 2020-11-03 (1 msg) falls in neither window as defined;
+  2024-11-05 and 2025-10-29 have **zero** messages that exact day.
+- **Both real election days excluded, one from each period, for a fair
+  correction — not one-sided.**
+- **Result:** hour 21's gap **collapses from +4.3pp to about +1pp** — most
+  of the original hour-21 spike was the 2021 election, not lockdown. **Hour
+  19 survives essentially unchanged** (+2.9pp → ~+3.0pp) — not an election
+  artifact.
+- **Revised headline, narrower and more honest than the first read:** the
+  lockdown hour-of-day effect is real but centered on **hour 19**, not on
+  both 19 and 21 as first thought.
+- **Chart updated:** `hour-of-day-lockdown-vs-after-v2.png` is now the
+  primary chart (v1 kept in the notebook/folder as the pre-correction
+  record, same precedent as the friends-weekend v2/v3 versioning).
+- **Notebook clarity fix** (student feedback: "hard to estimate a
+  distribution from these charts, maybe only the bar chart"): added an
+  explicit note under the diff and per-author charts that they are
+  supporting/robustness evidence, not meant to be read as a distribution on
+  their own — the grouped-bar chart is the one that answers "what does the
+  distribution look like."
+
+## Stage 5 — Critique
+
+**Deferred, not skipped.** Student asked for a `checklist.md`-guided
+walkthrough of the corrected chart, but Stage 6's verification result (below)
+reshaped the finding enough that critiquing the original chart first would
+have been wasted effort. Revisit against the final chart if this analysis
+gets picked up again — not done as of this entry.
+
+## Stage 6 — Verification (done)
+
+- **Method:** same `NullDistribution`/shuffle-test idiom as the
+  friends'-weekend analysis, applied to hour 19 specifically (the survivor
+  of the election correction). Unit of observation: the **day**, not the
+  message — 111 `during`-days vs. 1,087 `after`-days (election day already
+  excluded from each), each day's own share of its messages sent at hour 19.
+  2,000 shuffles, seed 42.
+- **Result: essentially at chance.** Observed gap ≈ 0 (−0.0051, i.e. `after`
+  is negligibly *higher*). Two-sided p = 0.808. The real value sits in the
+  middle of the shuffled cloud, not a tail.
+- **Why the pooled (message-weighted) and day-level (equal-weight-per-day)
+  views disagree, investigated rather than left as a mystery:** most days
+  have **zero** hour-19 messages at all — 84/111 during-days, 792/1,087
+  after-days. Hour-19 activity is concentrated on a handful of unusually
+  active evenings, not a daily habit. **Top 5 during-days account for 73.8%
+  of all hour-19-during messages.** The single biggest — 91 messages, more
+  than double the runner-up — is **2020-12-14, the first day of the
+  lockdown window itself** (near-certainly the lockdown-announcement
+  evening). #2 is Christmas Eve 2020 (39 messages).
+- **Student's call: report the null honestly (option 1)**, rather than
+  reframing the whole analysis around the single announcement-night event.
+
+### Verdict on the Analysis 8 proposition
+
+**Not supported as a sustained pattern.** The pooled hour-of-day comparison
+looked like a real shift (hour 19 +3pp, hour 21 +4.3pp before the election
+correction), but a day-level null test — the unit-of-analysis-aware version
+of the same comparison — puts the real value dead center of the shuffled
+cloud (p=0.81). What looked like "lockdown shifted our daily rhythm toward
+evening chatting" is, on inspection, two extraordinary evenings (the
+lockdown-announcement night, one Christmas Eve) plus one unrelated election
+night — not a multi-month condition changing when 9 people chat with each
+other.
+
+### Write-up
+
+- **File:** `notebooks/analysis/findings-hour-of-day-lockdown.md` (+
+  `hour-of-day-lockdown-vs-after-v2.png`,
+  `hour-of-day-lockdown-per-author.png`,
+  `hour-of-day-lockdown-hour19-null.png`, all from
+  `06-lockdown-hour-of-day.ipynb`).
+- Walks through: prediction (opposite of what was found) → primary chart →
+  per-author robustness → election-day confound + correction (fair,
+  both-sides) → day-level null test → the honest null verdict → what this
+  check did not do.
+
+### Parked for next cycle
+
+Student wants to continue looking for **other** distribution-shaped
+questions after this one — explicitly interested in a variable/event where a
+*sustained* shift (not a couple of loud days) might actually survive a
+day-level null test. Candidates offered: message length, day-of-week
+instead of hour-of-day, author-share tied to a personal move, or fitting a
+distribution family outright (the `04.2`/`04.4` technique, unused this
+session). **Student picked fitting a distribution family — continued below
+as Analysis 9.**
+
+---
+
+# Analysis 9 — does moving to the city change how much someone posts?
+
+New goad cycle, ~45 minute budget (tighter than Analysis 8's 3 hours).
+Picks up the "fit a distribution family" idea parked above, using a fresh
+event (personal moves) rather than revisiting lockdown a third time.
+
+## Stage 1 — Question (done)
+
+- **Variable:** daily message count, fit via Poisson/negative binomial
+  (the `04.2`/`04.4` technique, unused elsewhere this session).
+- **Event:** 4 of the 9 authors have known city-move dates from lived
+  experience (real names known to the student, not written here or
+  anywhere committed — aliases only, same anonymisation convention as
+  every other analysis): `striking-rail` (Aug 2021), `animated-elk` (Sep
+  2022), `effervescent-penguin` (Jul 2023), `humorous-stingray` (Sep 2023).
+  A 5th person was already city-based before the export started — no
+  before-window, excluded.
+- **Design, confirmed with student:** fit each mover's own distribution
+  before/after **their own** move — 4 separate comparisons, never pooled
+  across people. Same precedent as the friends-weekend analysis (overlay
+  separate events, don't average).
+- **Proposition:** moving to the city decreases a person's own daily
+  message rate in the group chat — same predicted direction for all 4.
+- **Falsification:** no decrease (flat or higher) for most/all of the 4,
+  that says no.
+- **Boring result guarded against, named by the assistant and confirmed
+  by the student as a real, previously-unconsidered risk:** Analysis 1
+  already found this chat's overall volume declining since lockdown ended
+  — an individual mover's dip could just be riding that general decline.
+  **Control:** compare each mover's own before/after ratio against the
+  *rest of the group's* ratio over the identical calendar window.
+- **Origin:** lived experience (move dates from memory, prediction stated
+  before looking). **Audience/time budget:** same as Analysis 8, ~45 min
+  for this one specifically.
+
+## Stage 2 — Data (done)
+
+- One row = one message, same as always. **Claim unit: each mover, judged
+  against their own before/after split** — 4 mini-analyses, not n=4000
+  messages.
+- **Features:** per-mover before window (export start → move date) / after
+  window (move date → export end); daily count reindexed over every
+  calendar day including zero-message days (needed for an honest rate, not
+  just posting days); the same for the rest of the group over the
+  identical windows, as the control.
+- **Sample-size note:** `striking-rail`'s before-window is short (~1 year,
+  move closest to export start) vs. 2–3 years for the other three —
+  flagged, not a blocker.
+
+## Stages 3–4 — Shape/Encoding (compressed for time)
+
+Given the 45-minute budget, moved directly to build rather than a full
+interview pass — reused `04.4`'s established fit (`DistributionFitter`,
+best-likelihood family per group) and a single grouped-bar chart (person's
+ratio vs. group's ratio per mover, zero-line at 1.0) rather than per-mover
+histogram overlays.
+
+### Build
+
+- **Notebook:** `notebooks/analysis/07-city-move-distribution.ipynb`.
+- **Image:** `city-move-rate-ratio.png`.
+- **Result:**
+
+  | mover | before rate | after rate | own ratio | group ratio (same window) | relative |
+  |---|---|---|---|---|---|
+  | striking-rail | 0.82 | 0.80 | 0.98 | 0.71 | 1.38 |
+  | animated-elk | 1.68 | 0.95 | 0.56 | 0.72 | 0.78 |
+  | effervescent-penguin | 1.49 | 1.06 | 0.71 | 0.71 | 1.00 |
+  | humorous-stingray | 1.38 | 1.11 | 0.80 | 0.69 | 1.16 |
+
+  Group's own ratio is consistent (~0.69–0.72) across all 4 different
+  calendar windows — a nice consistency check against Analysis 1's
+  declining-trend finding, computed 4 independent ways.
+
+## Verdict
+
+**Not supported as a uniform pattern.** Only `animated-elk` shows a
+move-specific extra decline beyond the group's general trend.
+`effervescent-penguin` tracks the group exactly. `striking-rail` (the
+student's own data) shows **no decline at all**, contradicting the
+prediction. `humorous-stingray` declined slightly *less* than the group.
+**Student's explicit call:** stop here rather than push further robustness
+work on a result that didn't hold up uniformly — the group-comparison ratio
+serves as this pass's verification, no formal permutation test run, given
+the tight time budget.
+
+### Write-up
+
+- **File:** `notebooks/analysis/findings-city-move-distribution.md` (brief,
+  per student's request) — question → control design → the table/chart →
+  the honest non-uniform verdict → what this didn't do (short baseline for
+  striking-rail, no formal null test, n=4, no digging into *why*
+  `animated-elk` differs).
