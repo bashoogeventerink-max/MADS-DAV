@@ -2807,3 +2807,214 @@ before looking — worth checking with the teacher whether that counts.
 - **Title:** "People do not change…" claims proof of no effect; with n = 7 and
   noisy shares only *no detectable change* is defensible. Wording left to the
   student.
+
+---
+
+# Analysis 12 — does moving abroad make someone start more conversations?
+
+New goad cycle, ~1h budget (extendable if results warrant; a second hour is
+reserved for another data find). Follows four nulls (Analyses 8–11). Student's
+standard, stated before choosing: a chart needs a story a reader gets quickly,
+with data behind it — a well-tested null (Analysis 11) is strong analysis but
+weak storytelling.
+
+## Stage 1 — Question (done)
+
+- **Event:** `humorous-stingray` moved abroad, 07/2023 (within Europe — no
+  timezone shift). It is a **package**: moving abroad + moving in with a
+  partner (same event as Analysis 9's city move and Analysis 10's move-in) +
+  a new job at 09/2023. The claim is about the package, not one component.
+- **Origin: data-suggested.** Student's prediction was *fewer* messages after
+  the move (less contact). A scratch first look
+  (`notebooks/analysis/move-abroad-first-look.png`, throwaway script, not the
+  deliverable) showed the opposite:
+
+  | ±6 months | before | after | ratio |
+  |---|---|---|---|
+  | stingray, messages/day | 1.09 | 1.89 | ×1.74 |
+  | control (6 people), per person-day | 1.17 | 1.23 | ×1.06 |
+  | stingray, days with 0 messages | 73% | 57% | |
+
+  Relative ×1.64 (±12 months: ×1.88). The jump is guaranteed to be there —
+  it is where it was found — so it is **not** the evidence. Evidence must come
+  from measures not yet looked at.
+- **Mechanism (student):** WhatsApp replaces seeing the group in person, so
+  Stingray proactively shares more.
+- **Proposition (student):** after moving abroad, a **larger share of
+  Stingray's messages start a conversation** compared with before, by more
+  than the control's change over the same months.
+  - Conversation start = first message after **>12h** of group silence
+    (student's choice; >24h gave only 93 starts in all of 2023 for the whole
+    group — too few).
+- **Falsifier (option a):** the start share does not rise relative to the
+  control. If it *falls*, the answer is "others ask, Stingray replies" — the
+  competing mechanism, also reportable. Student first named both mechanisms in
+  the punchline; flagged that "both" can't lose, student chose (a).
+- **Boring version (student):** "Stingray sends more messages after the move"
+  — true, no why.
+- **Arc:** expected fewer messages (less contact) → activity went up instead
+  → because Stingray shared more about the new life.
+- **Audience:** teacher, classmates, the friend group.
+- **Scope (1h):** keep the per-day count distribution (main chart, req. 1–3),
+  placebo months (significance), conversation-start share (mechanism), other
+  job starters' messages/day (reference table). Dropped unless time is left:
+  media messages, fade-over-time.
+
+## Stage 2 — Data (done)
+
+- **One row = one message. Claim unit = one person** (`humorous-stingray`,
+  n = 1). The claim describes Stingray only; significance has to come from
+  within-person comparison (placebo months), not from other people.
+- **Features (agreed):**
+
+  | feature | definition |
+  |---|---|
+  | `is_start` | message after >12h of silence in the whole chat |
+  | `period` | before / after, ±6 months around 2023-07-01 (±12 as check) |
+  | `role` | Stingray / control (no own life event inside the window; 6 people at ±6m) |
+  | `daily_count` | messages per person per calendar day, zero days kept (a real 0, not missing) |
+  | placebo months | Stingray windows holding none of their real events |
+  | job-starter reference | other 6 starters' messages/day, relative to control |
+
+- **Mechanism measure: (ii) Stingray's share of all the group's conversation
+  starts** ("who opens the chat"). Rejected: (i) starts / Stingray's messages
+  — dilution: more messages inside conversations can hide more starts;
+  (iii) starts per day — rises with volume alone.
+- **Note:** a busier Stingray opens more conversations by chance, so the start
+  share is read against Stingray's share of *all* messages in the same window.
+
+## Stage 3 — Shape (done)
+
+- **Feature that matters: `daily_count`** (main chart). Shape: most days at 0,
+  drops off fast, long thin tail up to 52. Median is 0 in both periods and the
+  mean is pulled by loud days → **report the full distribution.**
+- **Every value on the x-axis**, tail capped at a **10+** bar (req. 1).
+- **Extreme value:** Stingray's 52-message day, 2023-06-25 (before window).
+  Student read the day (`data/processed/stingray-2023-06-25.txt`, git-ignored):
+  a group trip to Groningen with an overnight stay, Stingray sent many
+  pictures. Real, not an error, not about the move → **kept.**
+- **Conversation starts are few:** whole group 111 / 98 starts per ±6m
+  window; Stingray's count will be small (one start ≈ 1pp). **Main window
+  changed to ±12 months** (group 215 / 190 starts). Trade-off accepted: the
+  control shrinks from 6 to 4 people (`animated-elk`, `vibrant-barracuda` have
+  2022-09 events inside ±12m).
+
+## Stage 4 — Encoding (interrupted → reframe)
+
+- **Sketches** (scratch): `sketch-A-move-abroad-daily-count.png`
+  (distributions, ±12m before/after, Stingray vs control) and
+  `sketch-B-move-abroad-timeline.png` (time, monthly messages/day, 3-month
+  rolling, whole export).
+- **Sketch B changed the story (student spotted it):** Stingray was *above*
+  the control in early 2022, far *below* it mid-2022 → spring 2023, rising
+  from ~April 2023 — before the move. The ±12 "before" window is mostly a dip.
+- **Student's context:** internship in Switzerland (H2 2022) → back in NL to
+  finish the thesis (early 2023 — still quiet while physically close) → moved
+  to Austria with partner (07/2023) → job (09/2023). Stingray was already
+  abroad before the "move", so "less contact after moving away" never applied.
+- Student chose to **reframe and continue** (over placebo-first or stopping).
+
+## Stage 1 (reframed) — Question (done)
+
+- **Event:** one transition, student life → settled life abroad (thesis end,
+  move to Austria, partner, job). Cannot be separated; claim is about the
+  transition.
+- **Simpler explanation adopted (student):** the dip was the studies, not the
+  distance.
+- **Proposition:** after settling abroad (07/2023–06/2024), Stingray's
+  messages per day **relative to the control** are back at their
+  pre-internship level (**01–06/2022**). **Not true if** clearly below (no
+  full recovery) or clearly above (something new after the move).
+- **Expectation stated before looking (student):** back at the early-2022
+  level. The early-2022 comparison has not been looked at yet.
+- **Punchline (student kept this wording):** Stingray went quiet during the
+  internship and thesis, not because of the distance. Once settled abroad,
+  they came back to their old level — further away than ever. Distance didn't
+  reduce the chatting; studying did.
+- **Dropped:** conversation-start share (the earlier mechanism measure).
+- Origin still data-suggested (the jump was seen first); the baseline test is
+  the new evidence.
+
+## Stage 2 (reframed) — Data (done)
+
+- One row = one message; claim unit = Stingray (n = 1).
+- **Features:** `daily_count` (zeros kept); `phase` = **baseline 01–06/2022 ·
+  dip 07/2022–06/2023 · settled 07/2023–06/2024**; `role` = Stingray / control
+  (no own event 01/2022–06/2024: `pliable-tiger`, `rib-tickling-curlew`,
+  `fluffy-beaver`, `hypnotic-rabbit`); `relative_level` = Stingray's
+  messages/day ÷ control's, per phase.
+- **Season:** full settled year kept against a Jan–Jun baseline (student's
+  choice) — mismatch reported as a limitation.
+- **Margin, set before looking (student): 25%** — settled relative level
+  within 0.75–1.25× the baseline relative level counts as "back at the old
+  level". Stage 6 checks this against Stingray's ordinary half-year swings.
+- Transparency: Sketch B already gave a rough impression of early 2022; the
+  formal comparison is not yet computed.
+
+## Stage 3 (reframed) — Shape (done)
+
+- Carried over: long-tailed `daily_count`, full distribution, every value with
+  a 10+ cap. The Groningen day (2023-06-25) now sits in the **dip** phase —
+  it no longer touches baseline vs. settled.
+- **Main measure (student): mean messages per day**, relative to the control
+  — captures how much Stingray says, but loud days can pull it. **Check:**
+  share of days posting at all (robust to loud days).
+- Units: baseline 181 days, settled 366 days, one person.
+
+## Stage 4 (reframed) — Encoding (done)
+
+- **Sketches:** A (distributions, before/after — outdated, "before" was
+  mostly the dip), B (time, whole export), **C (distributions, three phases)**
+  — `sketch-C-move-abroad-three-phases.png` (scratch).
+- **Student's reading of C:** settled-phase busier days (≈4–6 messages)
+  return close to the baseline, but there are still more zero days than at
+  baseline (~61% vs ~50%; dip ~72%) → a **partial recovery**. Corrected: the
+  chart shows messages per day, not conversation length (student's
+  assumption: more messages ≈ longer conversations — untested).
+- **Chosen:** C as the main chart.
+- **Single comparison:** baseline vs. settled in strong colours; dip lighter
+  ("what happened in between"); control as a smaller reference.
+- **Parameter to check:** the baseline window — also run with 2021 + H1 2022.
+- Student wants to try an **area-style chart** instead of grouped bars.
+
+## Analysis 12 — parked (2026-10-04), before Critique/Verification
+
+**Status:** Stages 1–4 done (after one reframe). Stage 5 (critique) and
+Stage 6 (verification: 25% margin, placebo / half-year swings, longer
+baseline, active-day check, job-starter reference) **not run**. No notebook
+or final chart yet — only scratch sketches.
+
+**Conclusions so far (descriptive, untested):**
+- The original question ("moving abroad → more texting") fell apart on
+  context: Stingray was already abroad (internship) before the move, so the
+  "jump" after 07/2023 is mostly **recovery from a study-period dip**.
+- Reframed story: quiet during internship/thesis — even while back in NL —
+  then back up once settled abroad. **By eye the recovery is partial:**
+  busier days return to baseline, zero days don't (≈50% → 72% → 61%).
+- Whether that counts as "back at the old level" (within 25%, set before
+  looking) is **not yet tested**.
+- Limits already known: n = 1, one person's life phase; data-suggested
+  origin; season mismatch (Jan–Jun baseline vs full settled year); control is
+  4 people; the transition bundles thesis end, move, partner and job.
+
+**Student's doubt:** whether an n = 1 life-phase story makes a strong
+distribution chart for the assignment — the shift is visible but partial,
+and the story leans on context only the group knows.
+
+**Next steps if resumed:**
+1. Stage 5 critique on a proper build of C (baseline vs settled emphasised;
+   dip faded; control as ticks). Try an **area / filled-step version** —
+   note that a smooth area suggests values *between* counts (2.5 messages)
+   that can't exist; a filled step keeps the counts discrete.
+2. Stage 6: 25% margin test on mean messages/day relative to control;
+   Stingray's ordinary half-year-to-half-year swings as the yardstick;
+   longer baseline (2021 + H1 2022); active-day share as check; other job
+   starters as reference.
+3. Write-up only if Stage 6 supports a clear story.
+
+**Parked candidates for the next cycle (student's ideas + suggestions):**
+- **Response time around the friends' weekend** (student) — see chat
+  discussion; repeats yearly, so n = number of weekends, not 1.
+- **Response time, city vs non-city movers** (student).
+- Hour-of-day on NL match days vs ordinary days (suggested).
+- Message length (`n_words`) around a fixed event (suggested).
