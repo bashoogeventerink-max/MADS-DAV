@@ -3089,3 +3089,130 @@ movers". Same 9-person chat; event dates from Analysis 7 (2024-04-19..21,
   step + Stage 3 shape plots, event weekends not shown).
 - **Transparency:** the prototype script printed both event weekends' medians;
   the assistant has seen them, the student chooses when to see them.
+
+## Stage 3 — Shape (done)
+
+- **Reply gaps (ordinary weekends, 6,328):** long-tailed; half within
+  **4 minutes**, 23% at 0 minutes, mean 28.5 → **median per weekend** stays.
+- **Timestamps are minute-only** (raw export `HH:MM`, no seconds). A % threshold
+  is unrealistic at 1–2 minute medians (10% would only be easier to pass, not
+  more realistic). **Test changed to a rank (student):** *both* friends'
+  weekends have a lower median reply gap than **80% of the comparable
+  weekends**.
+- **Comparable weekends (student): ordinary Fri–Sun with ≥ 50 reply gaps**
+  (≈ 21). Reason: busy weekends have more rapid back-and-forth, and the
+  friends' weekends were the 1st and 5th busiest of 289 — "faster than equally
+  busy weekends" is the stricter test of "faster because we're together".
+- **Birthday and Groningen days** removed from the comparison weekends.
+- **Units:** 2 event weekends vs ≈ 21 comparable → the claim is
+  **descriptive** (student agrees n = 2 is too small for proof).
+- **For Stage 6:** remaining volume difference (events ≈ 150 / 110 gaps vs
+  comparison ≥ 50); the 6 h and ≥ 50 cut-offs.
+- **Chart preference (student):** show *all* reply gaps, not two medians —
+  a **cumulative distribution (ECDF)**, friends' weekends vs comparable
+  weekends. The rank of the medians stays the test.
+- **Open:** tie rule for equal (whole-minute) medians.
+
+## Stage 4 — Encoding (done)
+
+- **Settled before the sketches:** birthdays (all 9, day/month against
+  aliases) — a birthday on Fri/Sat/Sun removes that whole weekend; Groningen
+  weekend 2023-06-23..25 removed; **a tie counts against the claim** (assumed
+  from the student's "good point", to confirm). → **20 comparable weekends**
+  (1 dropped for a birthday).
+- **Rank test (pre-agreed: both weekends faster than 80%):**
+  | Weekend | Median gap | Reply gaps | Comparable weekends beaten |
+  |---|---|---|---|
+  | 2024 | 1 min | 153 | 50% |
+  | 2025 | 3 min | 109 | 25% |
+  → **fails for both** — the proposition is not supported on its own test.
+- **Sketches** (scratch, `notebooks/analysis/`):
+  - A `sketch-A-reply-gap-ecdf.png` — ECDF of all reply gaps (student's
+    preference). 2024 ≈ the comparable weekends; 2025 *slower*.
+  - B `sketch-B-reply-gap-rank.png` — one dot per weekend; ties overlap, so
+    20 weekends look like ~9 dots (fix if chosen).
+  - C `sketch-C-reply-gap-over-time.png` — median per weekend over time; the
+    busy (≥ 50) weekends are almost all fast, all years.
+- **Student's reading:** in A the friends' weekends don't stand out (2024 on
+  top of the comparable weekends, 2025 slower); in C many busy weekends have a
+  low median. **"The null is true"** — story: fast on the friends' weekend,
+  but no faster than any busy weekend.
+- **Chart (student):** the ECDF doesn't meet "likelihood of each option" →
+  **probability mass function** (whole minutes, so not a smooth density).
+  Long tail → **option C**: one bar per minute 0–10, then 11–20, 21–60,
+  61–360, height = share of replies **per minute** (corrected for bin width).
+  Comparison: each friends' weekend vs the comparable weekends.
+- **Parameter:** the ≥ 50 busy line. Student's first reason (raise it so the
+  friends' weekend becomes an outlier) named as parameter-shopping — and likely
+  backwards, since C shows the busiest weekends are the fastest. Reframed as a
+  fairness check (events had 153 / 109 gaps). **≥ 50 stays primary;** Stage 6
+  checks ≥ 30 and ≥ 75.
+- **Build choice (assistant, for critique):** comparable weekends shown as the
+  average of the per-weekend distributions (each weekend one vote, as in
+  notebook 08), not pooled gaps (busy weekends would count more).
+
+## Stage 5 — Critique (done)
+
+- **Draft:** `notebooks/analysis/draft-reply-gap-pmf.png` — two panels
+  (2024, 2025), grey = comparable weekends, colour = friends' weekend.
+- **First glance (student):** the friends' weekends "lose" at 0 minutes, 2025
+  more than 2024; 2024 has more replies at 1 minute. Student read both as
+  slower overall — **corrected:** 2024 is mixed (≈ equal share within 1
+  minute; its median beat 50% of comparables); only 2025 is clearly slower.
+- **Grouping:** two panels invite 2024 vs 2025, which is not the point →
+  **one graph**, both friends' weekends (kept separate) against the rest.
+- **Colour / the null:** the message ("no difference") isn't visible in the
+  data shown → show the **spread of the comparable weekends**, so a reader can
+  see whether the friends' weekends fall inside ordinary variation.
+- **Delete:** duplicate legend and duplicate panel.
+- **Claim:** student said "a bit slower"; the pre-registered claim is **"not
+  faster"**. "Slower" is data-suggested and only holds for 2025.
+  **Falsifying region:** friends' bars clearly above the comparable range at
+  0–1 minutes.
+- **Revision v2:** `notebooks/analysis/draft-reply-gap-pmf-v2.png` — one
+  panel; grey bars = comparable average; grey whisker = middle 80% of the
+  comparable weekends (10th–90th percentile, matching the 80% test); 2024 and
+  2025 as dots; one legend; divider before the wider bins. Title is a
+  placeholder; wording is the student's.
+
+## Stage 6 — Verification (done)
+
+- **Busy-line sensitivity (agreed in Stage 4; ≥ 50 primary):**
+  | Busy line | Comparable weekends | 2024 beats | 2025 beats |
+  |---|---|---|---|
+  | ≥ 30 | 67 | 69% | 43% |
+  | ≥ 50 | 20 | 50% | 25% |
+  | ≥ 75 | 10 | 30% | 10% |
+  Never reaches 80% → the "not faster" result holds at every line. The
+  higher the line, the *less* special the friends' weekends look (busier =
+  faster), as expected in Stage 4.
+- **Null (student):** reply time on the friends' weekend is the same as on
+  other busy weekends. Each comparable weekend works as a placebo (as the
+  placebo months in Analysis 11): under the null, beating ≥ 80% happens ~20%
+  of the time per weekend, ~4% for both.
+- **Comparisons:** ~5 measures, 4 sketches, 3 busy lines, 14 bins × 2 weekends
+  on the final chart. The **2024 1-minute dot** above the 80% band is a side
+  note, not a finding: with 28 dots, ~5–6 outside the band are expected by
+  chance (student: "many weekends are just as fast").
+- **Third variable — volume:** the friends' weekends were still busier than
+  the comparison weekends; busier = faster, so this works *for* the claim and
+  still doesn't produce it — it can't explain the null away.
+- **Limitations:** n = 2 weekends; 2024 accident (worried messages) not
+  checked; no held-out slice (the planning weeks before would need a Mon–Thu
+  comparison); minute-only timestamps.
+
+### Verdict on the Analysis 13 proposition
+
+**Not supported.** Both friends' weekends fail the rank test set before
+looking (2024 beats 50%, 2025 beats 25% of 20 equally busy weekends; 80%
+needed), and this holds at every busy line. Student's verdict: the friends'
+weekend brings more messages (Analysis 7), but **no faster replies than other
+busy weekends**. With n = 2, "not detectably faster" is the defensible
+wording, not "significantly". Chart title confirmed by the student.
+
+### Write-up
+
+- `notebooks/analysis/findings-friends-weekend-reply-gap.md` (draft
+  suggested by the assistant, for the student to edit).
+- Final chart: `notebooks/analysis/friends-weekend-reply-gap-final.png`
+  (the v2 design; title kept as proposed).
