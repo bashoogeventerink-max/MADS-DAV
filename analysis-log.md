@@ -3216,3 +3216,165 @@ wording, not "significantly". Chart title confirmed by the student.
   suggested by the assistant, for the student to edit).
 - Final chart: `notebooks/analysis/friends-weekend-reply-gap-final.png`
   (the v2 design; title kept as proposed).
+
+---
+
+# Analysis 14 — do city people start their day later in the chat?
+
+New goad cycle (2026-10-05, evening), from the parked candidate "city vs
+non-city". Student will ask the teacher tomorrow whether a well-tested null
+counts for requirement 3.
+
+## Stage 1 — Question (done)
+
+- **Design (student chose option a):** a **group comparison**, city vs
+  non-city people — not the move as an event. Flagged: a group comparison is
+  not a shift at a moment in time, so on its own it doesn't meet requirement 3.
+- **Suspicion (student, lived experience):** city friends live a different
+  life, with more weekday evening activities; their messages come later in
+  the day. Two mechanisms separated — (3) later start of work → later first
+  message (morning shifts) vs (5) more evening activities → later replies.
+  **Chosen: mechanism 3.**
+- **Measure:** time of a person's **first message of the day**, **weekdays
+  only** (Mon–Fri), only on days that person sent **≥ 5 messages** (a quiet
+  day makes anyone's first message look late).
+- **Groups:** city = `striking-rail` (the student), `animated-elk`,
+  `effervescent-penguin`, `humorous-stingray` (abroad, counts as city) + the
+  person already city-based before the export; non-city = the other 4.
+- **Boring result (student):** the daily distribution only shows that people
+  sleep at night and work by day.
+- **Proposition:** at least **4 of the 5** city people have a later typical
+  first-message time than **all 4** non-city people. Otherwise: no.
+- **Origin:** lived experience; the student is one of the city people, so the
+  impression includes their own behaviour (kept in, student's choice).
+- **Punchline (student):** city friends are online at different times than
+  their non-city friends.
+- **Not pursued:** election message length — already tested in Analysis 3
+  (not supported for the group; only `pliable-tiger`, likely volume).
+
+## Stage 2 — Data (done)
+
+- **One row = one message; claim unit = person** (5 city vs 4 non-city), one
+  number per person. Days are repeated measurements of the same person.
+- **Features (agreed):**
+  | Feature | Definition |
+  |---|---|
+  | `day` | calendar day starting at **06:00** (student) — a message before 06:00 belongs to the previous day, so a late night doesn't count as an early start |
+  | `first_message_time` | per person per weekday (Mon–Fri): time of their first message after 06:00 |
+  | `messages_that_day` | that person's own count; only days with **≥ 5** count |
+  | `typical_start` | per person: median `first_message_time` |
+  | `is_city` | city / non-city |
+- **Groups (student; move dates corrected vs Analysis 9's log):**
+  city = `striking-rail` (Sep 2021), `pliable-tiger` (city before the
+  export; moved in with partner 2026, stayed), `animated-elk` (Sep 2022),
+  `humorous-stingray` (Jul 2023, abroad), `effervescent-penguin` (**Jul
+  2023**; moved to another city in 2025, stays city). Non-city =
+  `vibrant-barracuda`, `rib-tickling-curlew`, `fluffy-beaver`,
+  `hypnotic-rabbit`.
+  **Correction to Analysis 9's log:** Rail Sep 2021 (not Aug), Stingray
+  Jul 2023 (not Sep).
+- **Period:** Aug 2023 – Sep 2026 (everyone in their final group). Student
+  first chose option B (leave Penguin out), which was written for a wrong 2025
+  Penguin date; after the correction: all 5 vs 4, original test kept.
+- **Missingness:** a person needs **≥ 20 qualifying weekdays** to count.
+
+## Stage 3 — Shape (done)
+
+- **Counts only were looked at** (no city/non-city split). Qualifying
+  weekdays (≥ 5 messages) after Aug 2023 are rare (312 person-days).
+  `hypnotic-rabbit` (6) and `striking-rail` (19) fall under 20 days; student
+  kept ≥ 5 messages and 20 days.
+- **Two humps** in the pooled first-message time: morning (08–12) and
+  evening (18–20). Student's reading: an evening first message comes from a
+  day without the phone, or a conversation that only starts in the evening —
+  two kinds of days. The overall median (12:30) falls in the dip.
+- **Student: keep only morning days** (first message before 18:00); per
+  person the median over those.
+- **Validity (limitation):** this measures first appearance in the chat, not
+  waking up or starting work. Student holds it's a fair proxy, since many
+  messages are sent before lunch.
+- With morning days only, `animated-elk` also drops (15 days) → **3 vs 3**.
+  Options shown with their chance of "yes" by luck (random order): 3v3 all
+  later 5%; 5v3 (15 days) "4 of 5" 7%; 5v3 "all 5" 2%.
+- **Final test (student, option a):** all 3 city people (`pliable-tiger`,
+  `humorous-stingray`, `effervescent-penguin`) have a later median morning
+  first-message time than all 3 non-city people (`vibrant-barracuda`,
+  `fluffy-beaver`, `rib-tickling-curlew`). 5% by chance. The student is no
+  longer in the test.
+
+## Stage 4 — Encoding (done)
+
+- **Test result (pre-agreed: all 3 city later than all 3 non-city): fails.**
+  Median morning first message: `humorous-stingray` 10:09 (city),
+  `effervescent-penguin` 10:21 (city), `vibrant-barracuda` 10:55,
+  `fluffy-beaver` 11:31, `pliable-tiger` 12:07 (city),
+  `rib-tickling-curlew` 12:15. Two of three city people are the *earliest*.
+- **Sketches** (scratch, `notebooks/analysis/`):
+  - A `sketch-A-city-first-message-hours.png` — share of morning days per
+    hour, per group (each person one vote). City higher at 08–09.
+  - B `sketch-B-city-first-message-people.png` — one dot per person (the
+    test).
+  - C `sketch-C-city-first-message-vs-volume.png` — start time vs messages
+    per active weekday; no clear pattern with 6 dots.
+- **Student's reading:** A goes against the expectation — city people have
+  more first messages at 08–09. New explanation (student): non-city people
+  work early and have no time to text; city people text before work. B: also
+  against; `pliable-tiger` is late, but is known to always go to bed and get
+  up late (a personal trait, not the city).
+- **Student wants to treat "city people start earlier" as a finding —
+  pushed back:** it is data-suggested, and the same mechanism ("city people
+  start work later") now explains *both* directions, so it can't lose. At
+  most a lead for data that didn't suggest it.
+- **Chart: A** (note: A pools 3 people per group; the test is per person).
+- **Naming fix:** "morning days" was a misnomer — the 18:00 cutoff sits in
+  the dip between the two humps, so it splits **daytime** from **evening**
+  days. A stricter cutoff (e.g. 12:00) only as a Stage 6 sensitivity check,
+  since the results are now seen.
+- **Parameter to check (student):** the 20-day minimum (brings back
+  `striking-rail` and `animated-elk`, 15 days each).
+
+## Stage 5 — Critique (done)
+
+- **First glance (student):** city more active earlier — 08 and 09 stand out
+  for city; 12, 15, 16 also higher for city.
+- **Grouping:** only 3 people per group, so hour-to-hour jumps may be noise.
+- **Colour:** purple too pale → stronger colour. **Delete/shorten:** x-axis
+  label; "morning days" → "daytime days".
+- **Claim (student):** city people have more time to text before work.
+  **Pushed back again:** that's a mechanism the chart can't show, and "city
+  earlier" is data-suggested. For the *pre-agreed* claim the falsifying
+  region was city bars higher at 12–17 (city later) — that didn't happen →
+  defensible claim: **city people do not start later**.
+- **Agreed held-out check for "city earlier":** the movers *before* their
+  move, when they were non-city.
+- **Revision:** `notebooks/analysis/city-first-message-v2.png` — Sketch A with
+  orange for city, shorter x label; title is a placeholder.
+
+## Stage 6 — Verification (done)
+
+- **Held-out check, rule fixed before running:** if the movers were already
+  earlier than the non-city people before moving → a trait, not the city.
+  | Mover | Before move | After (Aug 2023+) | Non-city, same months before |
+  |---|---|---|---|
+  | `humorous-stingray` | 11:06 | 10:09 | Beaver 11:06, Curlew 11:48, Barracuda 13:51 |
+  | `effervescent-penguin` | 11:40 | 10:21 | same |
+  | `animated-elk` | 10:46 | 10:07 (15 days) | Beaver 10:36, Curlew 12:13 |
+  Not earlier than everyone before; ~1 h earlier after → by the rule the
+  lead holds up on data that didn't suggest it.
+- **Caveats:** non-city people also shift between periods (`vibrant-barracuda`
+  13:51 → 10:55, 26 days, possibly their 2022 job). The move is a **package**
+  with new jobs (Stingray new job abroad Sep 2023, Penguin job Sep 2024) →
+  city can't be separated from job / life stage.
+- **Sensitivity:** 15 days → 4 of 5 city people earliest, `pliable-tiger`
+  late; "city later" fails everywhere. 12:00 cutoff leaves 3 people —
+  uninformative.
+- **Comparisons:** ~10 decisions this cycle (student first estimated 3–4).
+
+### Verdict on the Analysis 14 proposition
+
+**Not supported — reversed.** City people do not start their day later in
+the chat; if anything earlier. The "earlier" lead is data-suggested but
+held up on the movers' before-move data (~1 h earlier after moving). Student
+explains it from experience (city people can start work later, so have time
+before work) — **that reason is untested** (no work-start data) and the
+shift is confounded with new jobs.
