@@ -3018,3 +3018,74 @@ and the story leans on context only the group knows.
 - **Response time, city vs non-city movers** (student).
 - Hour-of-day on NL match days vs ordinary days (suggested).
 - Message length (`n_words`) around a fixed event (suggested).
+
+**Update (2026-10-05):** stays parked. Student judged the n = 1, partial-
+recovery story not strong enough for the assignment; moved on to the parked
+candidate "response time around the friends' weekend" (Analysis 13).
+
+---
+
+# Analysis 13 — do we reply faster around the friends' weekend?
+
+New goad cycle (2026-10-05), started from the parked candidate "response time
+around the friends' weekend". Chosen over "response time, city vs non-city
+movers". Same 9-person chat; event dates from Analysis 7 (2024-04-19..21,
+2025-09-19..21).
+
+## Stage 1 — Question (done)
+
+- **Suspicion (student):** at the friends' weekend, or just before, we have a
+  reason to reply faster ("where are you?", "do you want a drink?", planning,
+  sharing photos). Being physically close means quicker replies.
+- **Measure, sharpened in discussion:** the student first proposed the gap
+  between consecutive messages, then time per 5–10 messages. Both restate
+  message *volume*, which Analysis 7 already showed rises around the weekend.
+  **Chosen: reply gap** = minutes from a message to the next message by a
+  *different* author. Gaps over **6 hours** = new conversation, not a slow
+  reply (student's threshold; to be checked for sensitivity later).
+- **Boring result (student):** people reply faster in the evening and off
+  work. Because the weekend is Fri–Sun, the **comparison is other Fridays–
+  Sundays only**, so the weekend-vs-workday effect is not what gets measured.
+- **Proposition:** the median reply gap during the weekend and the 3 days
+  around it is **at least 20% lower** than on comparable days (other Fri–Sun)
+  outside that range. **No** if the decrease is under 20%.
+- **Scope:** only the two friends' weekends. Birthdays and the Groningen day
+  were considered and left out of this hypothesis.
+- **Origin:** lived experience. The reply-gap measure has not been looked at;
+  Analysis 7 looked at volume over the same weekends.
+- **Punchline (student):** reply time drops sharply around group events,
+  because there is something to coordinate.
+- **Student's own worry:** few messages during the weekend itself means a
+  small sample and high variance (6 event days in total).
+- **Open for Stage 2:** the "3 days around" window includes Mon–Thu days
+  while the comparison is Fri–Sun only; whether birthday/Groningen days are
+  also removed from the comparison days.
+
+## Stage 2 — Data (done)
+
+- **One row = one message** (timestamp, author, text); photos and stickers
+  count as messages.
+- **Features (agreed):**
+  | Feature | Definition |
+  |---|---|
+  | `reply_gap_min` | minutes from the *last* message of the previous author's run to the first message by a different author; empty when the same author continues |
+  | `new_conversation` | gap > 6 h → not a reply, dropped |
+  | `weekend` | Fri–Sun block, named after its Friday; a reply belongs to the day it was sent |
+  | `event` | `2024` / `2025` / `none` |
+- **Window — student chose option A:** only the friends' weekend itself
+  (Fri–Sun) vs other Fri–Sun blocks. The "3 days around" part of the Stage 1
+  proposition is dropped (Mon–Thu days would face the weekday/weekend
+  comparison again). **Proposition now:** the event weekend's median reply gap
+  is ≥ 20% lower than on ordinary Fri–Sun weekends.
+- **Claim unit (agreed):** one value per weekend = its median reply gap.
+  Ordinary weekends form the reference distribution; the 2 event weekends are
+  placed in it. Row unit (gap) ≠ claim unit (weekend); n = 2 events. Whether
+  this is also the chart is a Stage 4 decision.
+- **Missingness:** quiet weekends have few reply gaps under 6 h. Student set a
+  **minimum of 2 reply gaps** per weekend (low → sensitivity check in Stage 6).
+- **Still open:** whether birthday and Groningen days are removed from the
+  ordinary weekends.
+- **Build:** `notebooks/analysis/09-friends-weekend-reply-gap.ipynb` (reply-gap
+  step + Stage 3 shape plots, event weekends not shown).
+- **Transparency:** the prototype script printed both event weekends' medians;
+  the assistant has seen them, the student chooses when to see them.
