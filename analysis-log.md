@@ -3378,3 +3378,18 @@ held up on the movers' before-move data (~1 h earlier after moving). Student
 explains it from experience (city people can start work later, so have time
 before work) — **that reason is untested** (no work-start data) and the
 shift is confounded with new jobs.
+
+### Correction after a first look at the move itself (scratch, 2026-10-05)
+
+`notebooks/analysis/move-city-first-look.png` (throwaway script; `striking-rail`
+left out to keep their data unseen). Before vs **the full after-move period**,
+with the non-city friends over the same months:
+| Mover | Before → after | Non-city, same split | Net vs non-city |
+|---|---|---|---|
+| `humorous-stingray` | 11:06 → 10:09 | 11:48 → 11:12 | ≈ −20 min |
+| `effervescent-penguin` | 11:40 → 10:27 | 11:48 → 11:12 | ≈ −37 min |
+| `animated-elk` | 10:46 → **11:16** | 11:28 → 11:37 | ≈ **+21 min** (later) |
+The Stage 6 "all three ≈ 1 h earlier" leaned on Aug 2023+ only; Elk's 10:07
+was 15 days. Over Elk's full after-period they are *later*. And the non-city
+friends also moved ≈ 35 min earlier after Jul 2023. **The lead weakens to:
+2 of 3 movers ≈ 20–40 min earlier than the general drift; 1 later.**
