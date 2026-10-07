@@ -2111,6 +2111,24 @@ analysis.
   Footnote extended to explain the 3-day-average calculation itself, since
   without the raw line next to it the smoothing is no longer self-evident.
 
+### Feedback received on the finished chart (parked, not acted on)
+
+Logged in `notebooks/analysis/feedback-friends-weekend.md`, same pattern as
+`feedback-football-tournaments.md`. It is a week 2 (time series) assignment
+chart, logged to pick back up later:
+
+1. The story is a good find.
+2. The data and visualisation back up the story.
+3. The shuffle test should be improved to guard against spurious
+   correlation. Right now it checks whether other stretches reach the same
+   **level** (avg messages/day). Instead, it should measure the weekend's
+   **increase** over its own local baseline (4–5 weeks before + 4–5 weeks
+   after), then repeat this for ~10,000 randomly placed fake weekends and
+   count how often a similar or higher increase occurs. Open design
+   questions (difference vs. ratio, mean vs. median, overlap with the real
+   weekends, 10,000 draws vs. ~2,000 possible positions, pooled vs.
+   per-year) are listed in the feedback file.
+
 ---
 
 # Analysis 8 — hour-of-day distribution, lockdown vs. after
@@ -3393,3 +3411,117 @@ The Stage 6 "all three ≈ 1 h earlier" leaned on Aug 2023+ only; Elk's 10:07
 was 15 days. Over Elk's full after-period they are *later*. And the non-city
 friends also moved ≈ 35 min earlier after Jul 2023. **The lead weakens to:
 2 of 3 movers ≈ 20–40 min earlier than the general drift; 1 later.**
+
+---
+
+# Analysis 15 — is animated-elk the fastest to reply? (reply-time distribution)
+
+Started 2026-10-06 as a curiosity, after reviewing which distribution families
+Analyses 1–14 assumed (Poisson in 4, negative binomial in 9; everything else
+shuffle/placebo/ECDF without a family). Notebook:
+`notebooks/analysis/11-reply-speed-elk.ipynb` (runs top to bottom).
+
+## Data type and shape (student decisions)
+
+- **Reply** = a message directly after someone else's message (same as Analysis 13).
+- **Continuous, recorded in whole minutes** (the export has no seconds). Student
+  first chose +0.5 min, then **spreading** (a 0-minute gap is not zero time).
+  **Correction (assistant):** both timestamps are rounded down, so a recorded
+  gap of k minutes is really in (k−1, k+1) — spread over that range, not over
+  [k, k+1). The uniform version created a fake spike at 1–2 min that no family
+  could fit; the earlier "1–3 min excess" was mostly that artefact.
+- **Two processes:** replies within a conversation vs new conversations (second
+  bump around 10³ min). **Student: cut at the dip**, not the 6 h from Analysis 13.
+  Dip = **401 min** with the corrected spreading (392 with the uniform one;
+  6 h holds ~the same share). Per author the dip is unstable (252–716 min, 3
+  authors without one) → one pooled cut.
+- **Not independent:** consecutive log gaps correlate 0.38; nights slower
+  (median 12 vs 5 min) → all uncertainty from resampling **days**, never gaps.
+
+## Family
+
+- **Predicted before fitting:** not exponential (median 3 vs mean 26 min; an
+  exponential has median ≈ 0.69 × mean).
+- With the start fixed at 0 (a free start degenerates on the tied values —
+  positive log-likelihoods, nonsense winners beta/gamma): **lognormal wins**
+  (KS 0.055), Weibull 0.090, gamma 0.129, **exponential 0.395** (prediction held).
+- Per author σ ≈ 2 for everyone → authors differ in *location*, not spread.
+  animated-elk fits worst; the misfit is an excess of very fast replies, the
+  same shape for everyone but strongest for elk. A **mix of two lognormals**
+  (fast + slow) fits better for 7 of 9: elk 67% fast (median 0.5 min) / 33% slow
+  (24 min); rest 56% / 44% (0.8 / 30 min). The slow process is about the same —
+  the difference is *how often* someone replies in fast mode.
+
+## Per author (corrected spreading, 1,000 day resamples)
+
+| author | typical (geo. mean) | 95% CI | within 6 min |
+|---|---|---|---|
+| animated-elk | **2.0 min** | 1.7–2.3 | **70%** (66–73%) |
+| humorous-stingray | 3.4 | 2.9–4.0 | 58% |
+| fluffy-beaver | 3.5 | 3.0–4.1 | 58% |
+| others | 3.7–4.9 | | 51–57% |
+
+- elk is **fastest of all 9 in 1,000/1,000 resamples** on both measures.
+- **Threshold sweep** (1, 2, 3, 6, 10, 30, 60 min): elk rank 1 at every
+  threshold; lead ~12 points at 1–6 min, shrinking to 2–4 at 30–60 min.
+
+## Tests (fixed before looking)
+
+1. **Quiet-period test** (student: 60 min silence; ≥ 1.5× general share) — split:
+   - first to reply after silence: 18.9% vs general 14.8% → **1.27×** (CI 1.16–1.39)
+     → **not met**;
+   - speed advantage after silence **3.3×** (2.5 vs 8.2 min) vs 2.3× within
+     conversations → **held up**, the "only fast in lively conversations"
+     explanation predicted the opposite.
+   - Student verdict: one half held up (speed), the other not (being first more
+     often). Not moved after the fact.
+2. **Shuffle test** (teacher's feedback; student: share within 6 min, shuffle
+   author labels within each day, 2,000×, seed 42, threshold **10%**):
+   shuffled mean 62%, highest 65%; real **70% never reached (p < 0.001)**.
+   Within conversations: same. Shuffling everything: 58% → the step to 62% is
+   **context** (elk is active on faster days); ~8 points remain that are elk's own.
+
+## Chart (student choices)
+
+- Form: densities of both groups on one log axis (V1-2), not the decomposed
+  panels; the model bar moved to a separate supporting chart.
+- Title: *"The group's fastest thumbs belong to the only one with the 🔔 on"* —
+  two true facts side by side, no causal claim. Subtitle carries the numbers.
+  Earlier "makes sure he responds quickest" dropped: causal, not tested.
+- Direct labels instead of a legend; footnote as bullets incl. the shuffle test
+  and "notifications always on: known from the group, not measured".
+- Files: `reply-speed-elk-vs-rest-draft.png` (main),
+  `reply-speed-model-share.png` (supporting, not for the reader).
+
+## Leads (data-suggested, not tested)
+
+- **The notification bell** explains the pattern from lived experience
+  (elk is the only one with notifications always on). The data shows faster,
+  not why. A test would need a bell-off period or another person turning it on.
+
+## Stage 5 — Critique (done)
+
+- **First impression (student):** orange is higher at the start — the message.
+- **Claim (student):** animated-elk is faster in responding. Sharpened to the
+  title's ranking + scope: faster than *each* of the other 8, within
+  conversations, 2020–2026.
+- **Falsification (student):** one of the others, or the others as a whole, just
+  as fast. "As a whole" = curves overlapping left of the 6-min line; "one of the
+  others" was invisible on the pooled chart → range of the 8 added.
+- **Not shown (student):** replies after 401 min — defensible, a new
+  conversation can start. Also not on the chart: the failed half of the
+  quiet-period test (claim is speed only) → belongs in the write-up.
+- **Changes applied:** data lines lighter (student keeps them — a model never
+  fits every bin; the ~1 min peak is the rounding grid); "each of the other 8:
+  51–58%" under the annotation; footnote bullet "fastest of all 9 in 1,000/1,000
+  day resamples and at every threshold 1–60 min"; subtitle removed (numbers were
+  duplicated in the annotation, and it coloured the rest orange).
+
+## Open
+
+- **Revisit earlier distribution charts** with the family in mind (plan agreed
+  2026-10-06, order to be chosen): 13 (geometric mean per weekend removes the
+  tie rule; corrected spreading), 4 (Poisson SEs too narrow → negative binomial
+  or week bootstrap), 3 (message length on a log scale), 12 (overlay
+  Poisson/negative binomial on the daily counts), 8 (per-day PMF), 9 (CIs from
+  the fitted negative binomial).
