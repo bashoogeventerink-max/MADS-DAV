@@ -1527,7 +1527,7 @@ Same chat data, same three tournament windows as Analysis 5
   legible to a non-technical audience; this is a deferred follow-up, not
   the in-class deadline work, so no hard time pressure named yet.
 
-## Stage 2 — Data (in progress)
+## Stage 2 — Data (done)
 
 - **New feature (theme 1 — NL trajectory) → new match-level lookup table,
   student-confirmed** (web-sourced, one correction applied: Morocco match
@@ -3525,3 +3525,215 @@ shuffle/placebo/ECDF without a family). Notebook:
   or week bootstrap), 3 (message length on a log scale), 12 (overlay
   Poisson/negative binomial on the daily counts), 8 (per-day PMF), 9 (CIs from
   the fitted negative binomial).
+
+---
+
+# Analysis 16 — are faster replies shorter? (relationship, lesson 5)
+
+Started 2026-10-12 for the lesson 5 assignment (relationships). Example graph
+the course gives: `img/relationship.png` (hour vs log message length, one dot
+per message). Notebook: not yet created.
+
+## Stage 1 — Question (done)
+
+- **Ideas considered:** (1) message volume declines over time — dropped: a time
+  series (lesson 3, partly analysis 1), suggested by the data itself, and its
+  own boring version. (2) busier chat → shorter messages — chosen and sharpened.
+- **Student's own devil's advocate:** messages per day vs reply gap is coupled
+  by construction (more messages in a fixed day → smaller gaps). So x became
+  **reply gap**, not daily count; one point per day was dropped for the same
+  reason (a day's median gap mostly encodes that day's count).
+- **Proposition:** within a conversation, a reply that comes sooner after
+  someone else's message is shorter. **Falsified if** the slope is flat or
+  reverses (faster replies are longer).
+- **Origin:** the student's memory of the chat over the years (fast
+  back-and-forth → short, emoji-ish replies; depends on what was sent: funny,
+  regular, heavy), not a plot.
+- **Unit:** one reply (row); the claim is about **9 people** → slope per author,
+  evidence = "negative for k of 9", not one pooled p-value.
+- **Threats named:** author mix / Simpson (animated-elk fastest per analysis 15;
+  pliable-tiger in most conversations); **typing time** (longer messages take
+  longer to type; timestamps rounded to the minute) → to be checked with a
+  threshold (keep only gaps ≥ T min).
+- **Audience:** teacher, classmates, friends in the group. Student expects
+  little surprise ("logical").
+
+## Stage 2 — Data (done)
+
+- **Reply / gap / conversation:** reuse analysis 15 (author change, gap < 401
+  min, corrected jitter). Student keeps the jitter: most replies are 0–1 min.
+- **Length:** words, an emoji counts as 1 word.
+- **Drop** system/media lines: `<Media weggelaten>` (also stickers), deleted
+  messages, (live) location shares, contact cards (.vcf). Strip the
+  `<Dit bericht is bewerkt>` marker, keep the message.
+- **Emoji share:** later idea, not this claim.
+- **Replies per author** (before dropping media): 863–1,912 at all gaps;
+  401–899 at gap ≥ 5 min; 324–739 at gap ≥ 10 min (hypnotic-rabbit fewest).
+- **Typing-time check (student):** same per-author slope re-run on replies with
+  gap ≥ T, **sweep T = 1, 3, 5, 10 min** — a robustness run, separate from the
+  main all-gaps analysis.
+- **Pipeline steps:** parse timestamps → drop system/media lines → strip edit
+  marker → mark replies + jittered gap → word count (emoji = 1).
+
+## Stage 3 — Shape (done)
+
+- **Words per reply** (13,179 replies after cleaning): student's read — most
+  under 10, steep decline after ~4. Median 5, IQR 2–8, 99% < 36, max 238.
+  (The bar at 60 in the first look was the clip pile-up, not data.)
+  Plot: `notebooks/analysis/reply-length-shape-first-look.png`.
+- The existing `n_words` column matches "words, emoji = 1" for only 1% of
+  replies (≈1 word lower on average) → compute our own count.
+- Whole-number counts → horizontal stripes on a log axis; **transparency** for
+  now, no vertical jitter.
+- **Gap:** lognormal (analysis 15), continuous, whole minutes, jittered.
+- **Both axes log** (student): raw scales squash the cloud and let a few
+  extremes drive a line.
+- **Extremes kept.** Longest reply (238 words) is real: pliable-tiger, 2023
+  election discussion, **gap 1 min** — the top 5 longest are all
+  pliable-tiger (two on the 2020 US election) → author and topic matter.
+- **Measurement issue found:** the gap is time since the other person's
+  message, not writing time; long replies written in parallel get short gaps
+  (works *against* the claim). Options: (a) time since own previous message —
+  a different question, check only; (b) drop "impossible" replies (words >
+  ~40/min of gap) — **rejected: a diagonal cut creates a negative slope by
+  construction**; (c) the T sweep — a vertical cut, can't create a slope; at
+  T = 10 almost every reply fits its gap. **Chosen: (c), and report the count
+  of impossible replies without dropping them.**
+- To handle: 0-word replies (0.1%) can't be logged.
+
+## Stage 4 — Encoding (done)
+
+- **Sketched:** A pooled log–log scatter (straight + lowess), B ECDF of words
+  per gap bucket (< 1, 1–10, 10+ min — student's alternative), C one panel per
+  author. Files: `sketch-A-reply-length-pooled.png`,
+  `sketch-B-reply-length-distribution.png`,
+  `sketch-C-reply-length-per-author.png`.
+- **Student's reads:** A — no strong relation, small rise ~4 → 6 words with
+  longer gaps (slope 0.03 on log–log = **10× slower reply ≈ 7% more words**,
+  r = 0.08). B — fast replies have more short ones, margins close (one-word
+  replies ~15% vs ~10%, medians 4 vs 5). C — stingray, pliable-tiger, rabbit
+  clearest. **All 9 slopes 0.00 to +0.05, none reversed** (claim-level evidence
+  at n = 9).
+- 815 replies (6.2%) are "impossible" (> 40 words/min of gap) — counted, kept.
+- **Chosen:** A as the main picture **+ a side panel with the 9 per-author
+  slopes** as dots and a zero line (later also the T sweep). A alone can't show
+  n = 9 or rule out Simpson.
+- **Lowess** = a check that a straight line is fair; its bends (above the line
+  ~2 min, below ~40–50 min) are **not claimed** (frac = 0.3 is a parameter).
+- **Jitter floor, chosen before seeing numbers:** gaps < 1 min clipped to
+  "≤ 1 min" for plot and fit (on a log axis the jitter's fake far-left
+  positions pull the slope). Raw jitter and "fit only ≥ 1 min" go in the
+  write-up as robustness checks.
+
+## Stage 5 — Critique (done)
+
+- **Notebook:** `notebooks/analysis/12-reply-length.ipynb` (runs top to bottom),
+  draft `notebooks/analysis/reply-length-draft.png`.
+- **Main numbers (floor at 1 min, chosen before seeing them):** pooled slope
+  0.037 → **10× slower reply ≈ 9% more words** (r = 0.08); ≈ +24% (≈ 4 → 5
+  words) across ≤ 1 to 300 min. Per author **8 of 9 positive**, fluffy-beaver
+  −0.001; **5 of 9** day-resampled 95% intervals clear zero (stingray, curlew,
+  tiger, rail, elk). (With raw jitter all 9 were ≥ 0 — the floor changed that.)
+- **First impression (student):** no big effect, near-straight line, small
+  rise — "not my prediction".
+- **Correction (assistant):** against the stage 1 falsification rule (flat or
+  reversed) this is a **small effect in the predicted direction**, not a
+  falsification. Stage 1 never set a size that would matter — a gap to name in
+  the write-up.
+- **Student's size framing:** ~half a word on a median of 5 ≈ 10%. Judged
+  "not a strong relationship".
+- **Slopes panel:** student first wanted to drop it (read the intervals as "no
+  relationship"); kept after seeing 5/9 clear zero — it is the n = 9 evidence.
+- **Colour:** two lines competed → only the straight line orange, lowess thin
+  grey dashed, slope dots orange (assistant's suggestion, not vetoed).
+- **Lowess above the line at ≤ 1 min — student:** long replies written while
+  others keep posting land in that column (the stage 3 parallel-writing issue,
+  working against the claim).
+- **Where the opposite would show:** a falling line, dots left of zero.
+
+## Stage 6 — Verification (done)
+
+Rules fixed before running (assistant's proposal, student didn't object; the
+student added that discussions are fast *and* long, so a growing slope under
+the third-variable check is reported too). Cells at the end of
+`12-reply-length.ipynb`.
+
+| Check | Result | Rule triggered? |
+|---|---|---|
+| T sweep (gap ≥ 1/3/5/10 min) | slope 0.020 / 0.047 / 0.064 / **0.082**; 9/9 positive from T = 3 | no — slope *grows* |
+| Null (words shuffled within author × day, 1,000×) | shuffled 0.008–0.021, real 0.037, **0/1,000** | no |
+| + log length of previous message (student's stand-in for topic) | pooled gap slope 0.036 → 0.033 (**−8%**) | no |
+| Held-out years | 2020–22: 0.037 (8/9 +) · **2023–26: 0.039 (9/9 +)** | no |
+| Robustness | raw jitter 0.032 (9/9 +) · only ≥ 1 min 0.020 (7/9 +) | reported |
+
+- The null is **not centred at 0**: ~0.015 of the 0.037 is between days (slow
+  days are also wordy days); the rest is within a day.
+- "Intervals above 0" moves between 5 and 6 with the random draw → report
+  "5–6 of 9"; "positive for 8–9 of 9" is the steadier count.
+- **Student's reading of the sweep:** the relationship lives in replies after
+  10+ min (≈ 21% more words per 10× slower there, vs ≈ 9% overall).
+- **Comparisons:** not answered yet by the student (2 ideas, 3 sketches, 3
+  jitter options, 9 authors, 4 thresholds).
+
+## Leads (data-suggested, not tested)
+
+- **Flat fast range = live hot topics** (student): football, election
+  results, events → fast *and* not short. Testable against the event dates in
+  analyses 3–5.
+- **Slow end = new topic** (student): replies near the 401-min cut are close
+  to conversation openers (new topic, new question), which may be longer for
+  reasons unrelated to speed.
+
+## Title
+
+- Working title (student): *"Slower replies give a longer message length for
+  most users, but the effect is smaller than expected"*. Student notes no
+  expectation was ever recorded → "smaller than expected" can't be claimed as
+  such. To finalise.
+- **Final title (student, one wording fix by assistant — "conversations" →
+  "reply", since the gap is a reply gap):** *"When people take time to
+  respond, their reply has roughly 24% more words"*; subtitle gives the range
+  (≈ 5 h vs ≤ 1 min, ≈ 5 vs 4 words) and 8 of 9 people. Footnote: data
+  definition, the ≥ 10 min result (21% per 10×), the three checks, and the
+  parallel-writing caveat.
+- **Comparisons (student):** "I looked at the three versions (overall, per
+  user and over distribution). After that, I made a combination of overall and
+  per user." (The 1-min floor was chosen before seeing its numbers.)
+- **Final chart:** `notebooks/analysis/reply-length-final.png` (last cell of
+  `12-reply-length.ipynb`).
+
+### Verdict on the Analysis 16 proposition
+
+**Supported in direction, small in size.** Faster replies are shorter — or,
+read the other way, a reply that takes longer has more words — for **8 of 9
+people** (fluffy-beaver ≈ 0), and 9 of 9 once replies under 3 minutes are
+left out.
+
+### Findings (written up 2026-10-12)
+
+- **Claim level:** n = 9 people (13,161 replies, 2020–2026). Evidence is one
+  slope per person, not one test over all replies.
+- **Effect size:** log–log slope 0.037 → a **10× slower reply has ≈ 9% more
+  words**; from ≤ 1 min to ≈ 5 h that is **≈ 24% (≈ 4 → 5 words)**. r = 0.08:
+  speed explains very little of how long any single reply is.
+- **Where it lives:** stronger in slower replies — among replies after 10+ min,
+  10× slower ≈ 21% more words (all 9 people). Below a few minutes the
+  relationship is close to flat.
+- **What was tested, and held:**
+  - typing time / parallel writing: T sweep 1–10 min — slope grows, never
+    disappears;
+  - chance: 0 of 1,000 shuffles (word counts within person × day) as steep;
+  - length of the message being replied to (stand-in for topic): −8%;
+  - held-out years: 2023–26 alone gives the same slope (0.039, 9/9 positive);
+  - jitter choices: raw jitter 0.032, only ≥ 1 min 0.020 — same direction.
+- **What was not tested:** topic itself (not in the data), time of day, the
+  live-event and new-topic explanations (see Leads). About 0.015 of the slope
+  is between days (slow days are wordy days), so part of the effect is
+  day-level, not reply-level.
+- **Measurement limits:** timestamps in whole minutes; the gap is time since
+  someone else's message, not writing time (6.2% of replies have more words
+  than fit their gap — kept, and they work against the result). Stage 1 set no
+  expected size, so "smaller than expected" can't be claimed.
+- **How the version was chosen:** three framings looked at (pooled, per
+  person, distribution), combined pooled + per person; the 1-min floor was
+  fixed before seeing its numbers.
