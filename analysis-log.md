@@ -3737,3 +3737,494 @@ left out.
 - **How the version was chosen:** three framings looked at (pooled, per
   person, distribution), combined pooled + per person; the 1-min floor was
   fixed before seeing its numbers.
+
+---
+
+# Analysis 17 — are we texting at work? (hour of day, weekday vs weekend)
+
+Started 2026-10-13 as the next relationship chart (lesson 5). Notebook: not
+yet created.
+
+## Stage 1 — Question (done)
+
+- **Ideas considered:** (1) reply speed vs time of day: student found the
+  plain story stale ("evenings are faster because people have time"); turned
+  into the distraction question below. (6) people per conversation vs
+  speed/duration, with birthdays handled: parked (see below).
+- **Framing (student):** focus on **distraction at work** only; the
+  "free time in the evening" story is dropped as a claim. The weekend at the
+  same hours is kept as the **baseline**: 8–17 covers ~9 of ~16 waking hours,
+  so ~55% of messages would land there at an even pace, and a share alone
+  can't say "a lot".
+- **Proposition (student):** on weekdays the group texts more during working
+  hours than on weekends at the same hours.
+- **Expected size (student):** weekday share in 8–17 about **20% higher**
+  than the weekend share, **relative** (e.g. weekend 50% → weekday 60%).
+- **Chart (student):** x = hour of day (0–23), y = share of messages in that
+  hour, two lines (weekday vs weekend), 8–17 shaded. Chosen over a two-group
+  yes/no version, which would be a comparison, not a relationship.
+- **Working hours (student):** weekdays 08:00–17:00. Everyone in the group is
+  in the same time zone (incl. those who moved abroad); no weekend workers.
+- **Threats named:**
+  - wake-up time: people are awake at 08:00 on weekdays and often not on
+    weekends; this alone inflates weekday mornings. The hour-by-hour chart
+    shows it; a single in/out-of-hours number would hide it;
+  - "distracted rather than working" can't be seen in the data: a lunch break
+    or a quiet day looks the same. The claim is about **activity during
+    working hours**;
+  - Dutch public holidays are weekdays but not workdays (small);
+  - lockdown (analysis 8) may change the weekday pattern.
+- **Later check (student's idea):** bursts (one author, several messages in a
+  short window) as a distraction signal, compared to weekend bursts. Kept as a
+  check after the main chart, not the main question.
+- **Falsified if (student):** the weekday share in 8–17 is not higher than
+  the weekend share (equal or lower). Higher but well under +20% → supported
+  in direction, smaller than expected.
+- **Share computed (student):** both pooled (all messages together) and as
+  an average of daily shares. Student is also interested in differences
+  **between weekdays** (Mon–Fri). *To settle in stage 2: which is the main
+  chart and which are checks.*
+- **Audience:** same as analysis 16 (teacher, classmates, friends in the
+  group).
+
+## Stage 2 — Data (done)
+
+- **Main chart (student):** pooled share per hour (all messages together),
+  because it shows the overall difference at once. Checks: average of daily
+  shares, per weekday (Mon–Fri). Fixed before seeing any numbers.
+- **Unit (student):** one message; a burst of 5 counts as 5.
+- **Cleaning (student):** media, deleted messages, locations and contact
+  cards are **kept** (still activity on the phone), unlike analysis 16.
+- **Lockdown (student):** split during vs not during, as a check. Reuse the
+  analysis 8 windows: 2020-12-14 to 2021-04-28 and 2021-12-19 to 2022-01-14.
+- **Years:** all (2020–2026).
+- **Public holidays (student):** counted as **weekend days** (nobody works).
+- **Lockdown "after" (student):** starts when restrictions fully ended,
+  2022-09-17 (analysis 1 table).
+- **System lines (student):** drop. Checked: the processed file has **no**
+  stand-alone system rows (it starts 2020-08-12 with a real message; group
+  creation lines are already gone). A handful of system lines are glued onto
+  the end of a real message by the parser (different date format); the row is
+  still a real message, so it stays one message. Those glued lines contain
+  real names, so the anonymisation leaks in message text.
+- **Data:** 22,517 messages, 9 authors, 2020-08-12 to 2026-09-08.
+- **Holidays counted as weekend (student):** New Year's Day, Easter Monday,
+  King's Day, Ascension Day, Whit Monday, Christmas (25 + 26 Dec). **Not**
+  Good Friday, **not** Liberation Day (also not in 2020/2025).
+- **Lockdown check groups (student, option b):** `during` = everything from
+  the start of the data up to 2022-09-17 (the whole working-from-home
+  period), `after` = from 2022-09-17. Chosen over analysis 8's two windows
+  only: fits the working-from-home argument and keeps all data.
+- **Pipeline steps:** parse timestamps → hour → day type (Sat/Sun or
+  holiday = weekend) → period (during/after) → counts.
+
+## Stage 3 — Shape (in progress)
+
+Notebook: `notebooks/analysis/13-work-hours-texting.ipynb` (counts only, no
+shares yet).
+
+- **Groups:** during/weekday 6,695 msgs on 368 active days (18.2/day),
+  during/weekend 2,810 / 154 (18.2), after/weekday 7,912 / 605 (13.1),
+  after/weekend 5,100 / 307 (16.6). 35 holidays with messages, 28 on Mon–Fri
+  moved to weekend.
+- **Per weekday:** Saturday busiest (4,203), Mon/Tue quietest (~2,700).
+- **Student's reads:**
+  - weekdays peak in the evening, 18–21;
+  - wake-up effect visible: weekdays ramp up 07–08 (180 → 443), weekends
+    start later (24 → 115); weekday nights 01–05 almost empty (35 msgs),
+    weekend nights not (228);
+  - working-from-home: weekday volume per day changed between periods while
+    weekend stayed similar → "good follow-up". *Direction to recheck: weekday
+    per day was higher **during** (18.2) than after (13.1).* Whole-day counts,
+    not working hours; the chat also declines over time (analysis 1).
+
+- **Student's plan change (2026-10-13):** during vs after working-from-home
+  promoted from a check to a **second question**: how has the working-hours
+  pattern changed since? Came from seeing the whole-day counts above (not the
+  shares) → data-suggested. *Expectation to record before its chart is drawn.*
+- **`active_days`** = days with at least one message in that group; silent
+  days are not counted, so "per day" is per active day.
+
+## Stage 4 — Encoding (in progress)
+
+- **Draft 1** (`work-hours-draft.png`): x = hour 0–23, y = share of that day
+  type's messages (%), pooled, weekday blue vs weekend orange, 08–17 shaded.
+- **Headline numbers:** share in 08–17 weekday **48.9%**, weekend **50.7%**
+  → ratio **0.97** (expected ≈ 1.20; falsified if not > 1).
+- **Student's read:** claim not supported — the weekend has the same share in
+  working hours as weekdays, so people are not relatively more active during
+  working hours on weekdays. (Wording note: this is about the *share* of the
+  day's messages, not the amount.) Outside the band: weekdays start earlier
+  (07–09) and also run later in the evening (21–23); weekends have more after
+  midnight.
+- **Expectation for during vs after (student, recorded before the chart):**
+  during working from home, weekdays had more messages, **and** a larger share
+  of weekday messages fell in working hours than after. No size given.
+  Falsified if the weekday 08–17 share during is not higher than after.
+- **Draft 2** (`work-hours-period-draft.png`): same chart, one panel per
+  period. Share in 08–17: during weekday **48.4%** / weekend 49.5% (ratio
+  0.98); after weekday **49.3%** / weekend 51.3% (0.96). Weekday share during
+  is not higher than after → expectation not met by the stage-1-style rule.
+  The during-weekend line is jagged (2,810 msgs on 154 active days: a few busy
+  days can dominate one hour).
+- **Student's read of draft 2:** after lockdown, fewer messages late in the
+  evening (after 20:00); in both periods weekday working hours have a lower
+  share than the evening after work, less strongly after; during, weekends a
+  bit more share in working hours than weekdays; after, weekday and weekend
+  close. *Checked against the numbers:* the late-evening drop is a **weekend**
+  change (weekend 20–22h ≈ 24.5% → 15.8%; weekday ≈ 22.3% → 24.2%). The
+  weekday–weekend gap in 08–17 is **larger** after (2.0 pp) than during
+  (1.1 pp), not smaller.
+- **Jagged during-weekend line (student):** more variance from the smaller
+  sample. Addition: messages come in conversations, so the effective sample is
+  days (154), not messages; one busy day can set an hour. Planned check:
+  average of daily shares (each day weighs once).
+
+## Stage 6 — Verification (done, student's read to come)
+
+Rule (stage 1 falsification applied to each check): changes the conclusion
+only if weekday/weekend ratio in 08–17 > 1 with a 95% day-resampled interval
+above 1.
+
+| Check | Weekday ÷ weekend (95%) | Rule triggered? |
+|---|---|---|
+| Pooled, all days | 0.97 (0.87–1.09) | no |
+| Daily average, all days | 0.98 (0.90–1.06) | no |
+| During, pooled / daily | 0.98 (0.79–1.22) / 1.02 (0.88–1.18) | no |
+| After, pooled / daily | 0.96 (0.84–1.09) / 0.96 (0.87–1.06) | no |
+| Mon / Tue / Wed / Thu / Fri, daily | 0.98 / 1.00 / 0.99 / 0.97 / 0.96, all intervals include 1 | no |
+
+- **Expected +20% is outside** the all-days intervals (upper ends 1.09 /
+  1.06): the data rules out the expected size, not just "no evidence".
+- **During alone is too uncertain** to rule out +20% on the pooled basis
+  (0.79–1.22): 154 weekend days.
+- **Second question (weekday 08–17 share, during − after):** pooled −0.9 pp
+  (−8.1 to 7.2), daily −0.4 pp (−5.7 to 4.6). No shift either way; the
+  intervals are wide, so "no change" is the honest read, not "proven equal".
+- **Days are small:** median 9 msgs per weekday, 11 per weekend day.
+- **Student's conclusion (draft):** the expected relationship is not backed
+  by the data; no big difference between working hours on weekdays and the
+  same hours on weekends, "so work has no influence on when people send their
+  biggest share of messages". *Open:* last clause overreaches (weekday/weekend
+  do differ outside 08–17: earlier start, later evenings, fewer nights); "no
+  big difference" to be sized; during/after not yet in the conclusion; panel
+  or footnote not decided.
+- **Student's revisions:**
+  - (1) the share of messages in working hours does not change from weekday
+    to weekend; weekdays have more messages earlier and later in the day;
+  - (3) working from home changed how much was sent overall, and since going
+    back to the office people send less; the weekday working-hours share does
+    not change between the two periods. *Note:* the volume part can't be split
+    from the chat's general decline over time (analysis 1), and "does not
+    change" = no clear change, wide ranges.
+- **During/after in the final chart (student):** footnote.
+- **Size, stated in shares:** weekday 48.9% vs weekend 50.7% of messages in
+  08–17 (1.8 pp; weekday 3% lower relative). Plausible range for weekday:
+  ≈ 44–55% (ratio 0.87–1.09). +20% would have meant ≈ 61%.
+
+## Story (student, 2026-10-13)
+
+- **Chart message:** A — "we don't text more at work": the 08–17 share is the
+  same on weekdays and weekends. **B visible as context** in the same chart
+  (weekday starts earlier and ends later, weekend has nights).
+- **During/after:** footnote.
+
+## Title and final chart
+
+- **Student's title proposal:** *"Especially after covid, we send more of our
+  text messages on weekdays earlier and later in the day compared to the
+  weekend"* — this tells **B** (untested), not the chosen story A, and "after
+  covid" was not tested for those hours. *Open:* rewrite for A (B can go in a
+  subtitle), or switch story to B with new checks.
+- **Final chart** (`work-hours-final.png`, last cell of the notebook): pooled
+  hourly shares, 08–17 band with "weekdays 49%, weekends 51%", light
+  highlights for B (weekend nights 0–2, weekdays start earlier 6–7, weekday
+  evenings run later 21–23), data-definition footnote incl. range and
+  during/after. Title is a placeholder until the student writes it.
+- **Student's title v2:** *"Workrhythm gives earlier and later responses!"*,
+  punchier: *"Weekdays let's authors stay up longer"*. Still story B; "stay up"
+  is about sleep (not in the data), "responses" is about replies (not
+  measured here). *Open:* title for A, or test B (same method on 21–23, 6–7,
+  0–2) and switch the story.
+- **Final title (student):** *"Office hours don't change the time we text"*.
+
+### Verdict on the Analysis 17 proposition
+
+**Not supported.** The weekday share of messages in 08–17 (49%) is no higher
+than the weekend share (51%); ratio 0.97 (0.87–1.09), so the expected +20%
+is ruled out. Holds per weekday, with every day weighted once, and in both
+the working-from-home period and after (no clear change between them).
+Weekday routine does show at the edges (earlier start, later evenings, no
+nights) — context, not tested.
+
+## Leads (data-suggested, not tested)
+
+- **C — weekend evenings went quiet after reopening:** weekend share 20–22h
+  ≈ 24.5% during → 15.8% after; weekdays level. Fits "out or together in
+  person on weekend evenings". Needs its own stage 1 (and the chat's overall
+  decline doesn't explain a *share* shift).
+- **B explanations (student to pick):** alarm clock (earlier weekday start),
+  home in the evening (later weekday evenings), nights out (weekend 0–2h).
+
+## Parked candidate
+
+- **People per conversation vs reply speed or duration** (topic 6), with
+  birthday conversations handled (detect by text, e.g. "gefeliciteerd";
+  colour or drop them and compare with/without; same question for New Year,
+  election nights, match days). Note: conversation length *in messages* is
+  tied to the number of people by definition, so use speed or duration in
+  minutes.
+
+---
+
+# Analysis 18 — do we reply faster when the conversation is about football?
+
+Chosen 2026-10-13 from the student's next ideas. Dropped/skipped for now:
+emoji/length by time of day; messages per day vs length (largely answered in
+analysis 16); seasons (only 6 values per month, overall decline; daylight or
+temperature per day noted as a cleaner version).
+
+## Stage 1 — Question
+
+- **Idea (student):** the group replies faster when the topic is football
+  (NL matches from analyses 5–6, but also clubs or players mentioned).
+- **Relationship form (student):** x = share of football messages in a
+  conversation, y = reply speed in that conversation.
+- **Expectation (student):** conversations mostly about football have replies
+  about **20% faster** than conversations with no football.
+- **Falsified if (student):** no change in reply time, i.e. no negative
+  relation between reply time and football share.
+- **Conversation (student):** analysis 15's cut — a gap > 401 min starts a new
+  conversation.
+- **Keyword list v1 (student):** clubs/countries: Twente, Ajax, PSV,
+  Feyenoord, Heracles, PSG, Manchester City, Arsenal, Manchester United,
+  Tottenham (Spurs), Juventus, Barcelona, Real Madrid, Nederland(s elftal),
+  Frankrijk, Argentinië, Engeland, Spanje. Words: voetbal, wedstrijd,
+  football, goal(s), kaart, overtreding.
+- **Keyword list v2 (student, after review of false hits):**
+  - clubs: FC Twente, Ajax, PSV, Feyenoord, Heracles, PSG, Manchester City,
+    Arsenal, Manchester United, Tottenham/Spurs, Juventus, FC Barcelona, Real
+    Madrid; countries **dropped** (holidays/news);
+  - words: voetbal, wedstrijd, football, goal(s), kaart (kept despite
+    ticket/map risk), overtreding, + Oranje, EK, WK, Eredivisie, Champions
+    League, penalty, scheids(rechter), doelpunt, elftal, buitenspel, VAR;
+  - players: Ronaldo, Messi, Mbappé, Neymar, + other popular players.
+- **"Mostly about football" (student):** ≥ 25% of a conversation's messages
+  match — one message names it, the follow-ups usually don't repeat the word.
+- **Reply speed per conversation (student):** median reply gap.
+- **List check (student agreed):** hand-label ~50 matched messages (false
+  hits) and ~50 unmatched messages from NL match days (misses). Glued
+  system-line rows left out (real names).
+- **Still open for later stages:** compare at the same hour / day type
+  (evenings, weekends, live matches are fast anyway).
+
+## Stage 1 — done (2026-10-13)
+
+## Stage 2 — Data (in progress)
+
+Notebook: `notebooks/analysis/14-football-reply-speed.ipynb`.
+
+- **Keyword hits (list v2 + assistant's extra players, to review):** 244 of
+  22,517 messages (1.1%). Top terms: wedstrijd 46, penalty 21, voetbal 18,
+  ajax 18, goal 13, van dijk 13, oranje 11, kaart 10, messi 9, wk 9.
+- **Label check:** samples in `data/processed/football-label-check.csv`
+  (gitignored): 50 matched (pool 242) + 50 unmatched text messages on NL
+  match days (pool 614). Glued system-line rows and media excluded. Student
+  to label `y`/`n`.
+- **Size problem (counts only, no reply speeds looked at):** 1,579
+  conversations (401-min cut); 125 contain any match; **22 reach ≥ 25%**, and
+  only **4 of those have ≥ 5 messages** — most ≥ 25% conversations are 1–4
+  messages, where a median reply gap barely exists. The ≥ 25% vs none
+  comparison has almost no data. *To decide with the student after labelling.*
+- **Label check results (student):**
+  - matched: **2 of 50 wrong** (both "kaart": a protest quote, "van de
+    kaart") → ~96% of hits are football;
+  - match-day unmatched: **11 of 50 are football** (players Schouten,
+    Hooiveld, Weghorst, Bergwijn; a score "4-3"; countries Argentinië,
+    Engelse, Senegal; "topspits"; group position; "het spel"). ≈ 22% of 614
+    → ~135 missed vs 55 matched on match days → the list catches only
+    **~1 in 3** football messages there.
+  - "Van Dijk" is also a surname in the chat → 13 hits unreliable.
+- **Consequence:** few false hits, many misses. Missed football messages sit
+  in the "no football" side, which **weakens** any real effect: a null
+  result would partly reflect the list.
+- **Approach (student):** a (football share continuous) and b (lower
+  cut-off). *Open: which is main, which is check.*
+- **List v3 (student):** drop "van dijk"; keep "kaart" (few hits; note: both
+  sampled kaart hits were wrong); add Schouten, Hooiveld, Weghorst, Bergwijn,
+  spits, topspits. Scores ("4-3", same form as dates) and countries not added
+  (assistant's default from earlier choices — student can change). Now 246
+  matches; on match days 65 of 669 text messages (was 55).
+- **Label check 2:** fresh sample (check-1 rows excluded so the new words
+  aren't checked on the sample they came from):
+  `data/processed/football-label-check-2.csv`, 50 matched (pool 196) + 50
+  match-day unmatched (pool 554). Student to label.
+- **Main vs check (student):** **b (cut-off) is the main chart**, a
+  (continuous share) the check. *Open: the cut-off value, fixed before any
+  reply times are seen.*
+- **List v4 (student):** v3 + countries (Nederland, Frankrijk, Argentinië,
+  Engeland, Engelse, Spanje, Senegal). Matches 246 → **383**; country hits:
+  nederland 73, spanje 25, frankrijk 12, engeland 12, argentinië 11,
+  engelse 4, senegal 2. On NL match days only 65 → 78: most of the ~139 new
+  hits fall on other days → precision to be checked.
+- **Label check 3** (for v4, replaces check 2, which is not used):
+  `data/processed/football-label-check-3.csv`, fresh 50 matched (pool 333) +
+  50 match-day unmatched (pool 539), check-1 rows excluded. Student to label.
+- **Still open:** cut-off value and minimum conversation length (main chart b).
+- **Label check 3 results (student, list v4):**
+  - matched: **2 of 50 wrong**, both "Nederland" (an ING payment request
+    "met elke bank in Nederland"; someone planning to come to Nederland) →
+    ~96% again;
+  - match-day unmatched: **11 of 50 football** (Van Persie, Blind, keeper,
+    "extra minuten", Qatar, "schot op doel", Kroaten, "wereldkampioen",
+    "scoren", a score "2-0", "op t werk kijken", "links geven"). ≈ 22% of 539
+    → ~119 missed vs 78 caught → list v4 catches **~40%** on match days.
+  - Student's idea: ignore "Nederland" from the one author who isn't into
+    football. *Discussed:* a rule built from one message, on an anonymised
+    person — prefer a general fix (drop payment requests) or accept.
+- **Rule for main chart b (student):** football conversation = **≥ 2
+  matching messages**, and every conversation needs **≥ 5 messages**.
+  Counts (v4, no speeds looked at): 1,055 conversations ≥ 5 msgs → 56 with ≥ 2
+  hits, 98 with 1 hit, 901 with 0.
+- **New threat (counts only):** football conversations are **longer**
+  (median 24 msgs vs 13 for no-football). Long conversations may be faster
+  anyway, and a count rule (≥ 2 hits) favours long conversations. *Open:*
+  what to compare against (0 hits only, or ≤ 1), and how to handle length.
+- **Student's decisions after check 3:** drop payment requests from the data
+  (general rule, not per person; 30 messages); add safe words keeper,
+  wereldkampioen, Qatar, scoren/scoort/scoorde/gescoord, Van Persie; leave
+  out "Blind" and scores. One more check round, then the list is final.
+- **List v5:** 384 of 22,487 messages; on match days 88 of 669 matched.
+- **Label check 4 (last round):** `data/processed/football-label-check-4.csv`,
+  fresh 50 matched (pool 291) + 50 match-day unmatched (pool 493); check 1 and
+  3 rows excluded. Student to label.
+- **Student asked to rethink the design** (unit, x, y) — options given in
+  chat; decision after check 4.
+- **Label check 4 results (student, list v5 — final list):**
+  - matched: **0 of 50 wrong**;
+  - match-day unmatched: **6 of 50 football** (scores "1-0 achter", "2-0"
+    ×2, "Ons Wout", "half uur extra", "hands") → ≈ 12% of 493 → ~59 missed
+    vs 88 caught → list v5 catches **~60%** on match days.
+  - Remaining misses are mostly scores and nicknames; list closed here.
+- **Design (student):** **A** (unit = conversation, football by ≥ 2 hits,
+  ≥ 5 msgs) first, B (unit = reply) second. Student: the miss rate is about
+  match-day talk and matters less for this analysis. *Noted:* misses were
+  measured on match days because football talk is dense there; outside match
+  days the miss rate is unknown. Misses push football conversations into the
+  "no football" group, which weakens the contrast.
+- **Length problem:** to be handled after A is set up (student).
+- **List v6 (student):** include scores and nicknames after all (scores had
+  been left out on the assistant's suggestion: they look like dates/ranges).
+  Added: score pattern `d-d` (single digits, not part of a date or time) and
+  "Wout(je)". Matches 384 → **449**. Score/nickname-only hits: 67.
+- **Label check 5:** only the new hits, 40 of 67:
+  `data/processed/football-label-check-5.csv` (36 scores, 4 Wout). Main risk:
+  ranges ("2-3 dagen"). Student to label.
+- **Reply definition (student):** reuse analyses 15/16 (author change, within
+  conversation, same jitter).
+- **Expectation, revised (student):** football conversations' median reply
+  time **≥ 10% faster** than no-football conversations (conservative; was
+  20%). Falsified if not faster.
+- **x versions (student's proposal):** (1) football share within the
+  conversation (continuous); (2) categorical, e.g. 0 vs 1 mention. *Open:*
+  categories (0 / 1 / ≥ 2 suggested) and which version is main.
+- **Label check 5 results (student):** > 80% of score/nickname hits are
+  football match talk → kept. (Lower than the keyword hits, ~96–100%.)
+  **List v6 is final.**
+- **Categories (student):** three groups, **0 / 1 / ≥ 2** football messages
+  per conversation (≥ 5 msgs). Expected pattern: steps, 0 slowest, ≥ 2
+  fastest. Continuous share = check.
+- **Chart (student):** option 2 (dots + group medians joined by a line), log
+  y; option 4 (split by length) as the length check; continuous share as a
+  second check. 95% ranges from resampling days (explained).
+
+## Stage 4/6 — first results (2026-10-13)
+
+Rules fixed in the notebook before running (see notebook markdown).
+
+- **Groups (≥ 5 msgs, ≥ 1 reply):** 0 → 900 conversations (median length
+  13), 1 → 89 (17), 2+ → 63 (25).
+- **Main** (`football-reply-draft.png`): median of conversation medians
+  **0: 8.6 min (7.6–10.2) · 1: 4.4 (2.1–6.4) · 2+: 1.6 (0.9–2.7)** → 2+ is
+  **81% faster** than 0; steps in the expected order. Expected ≥ 10%.
+- **Length check** (`football-reply-length-check.png`), median 0 / 1 / 2+:
+  - 5–10 msgs: 19.0 / 6.8 / 2.5 (2+ n = 10, range 1–29) — steps, very uncertain;
+  - 11–25 msgs: 7.9 / 5.6 / **9.4** (2+ n = 22) — **no step; 2+ slower**;
+  - 26+ msgs: 1.8 / 1.5 / 0.7 (2+ n = 31) — steps, 2+ ≈ 62% faster.
+  Rule ("not faster in most bands") not triggered (2 of 3), but the pooled
+  81% is partly length: long conversations are fast at any football level.
+- **Continuous check** (`football-reply-share-check.png`): 86% of
+  conversations at 0%. Curve drops from 0% to ~1%, rises to ~10%, then
+  slowly falls. Share = hits ÷ length, so low shares are mostly **long**
+  conversations (1–2 hits in many messages) → the share mixes in length the
+  other way. Hard to read; mostly shows the 0 vs > 0 jump.
+- **Not yet checked:** live NL matches (fast by nature: the mechanism or a
+  special case?), hour of day / day type.
+- **Student's read of the main chart:** relationship clear; football groups
+  are small (63, 89 vs 900); "how much faster" hard to read on a log axis
+  without labels → readable version `football-reply-draft-2.png` (minutes on
+  the axis, medians labelled; title to come from the student).
+- **Same-length comparison** (log reply ~ group + log length, ranges from
+  resampling days): 2+ **41% faster** than 0 (16–57%); 1 **20% faster**
+  (−43% to +11%, includes no difference). Unadjusted was 81% / 48% → about
+  half of the raw gap is length. 2+ still clears the ≥ 10% expectation.
+- **11–25 band, 2+ slower — student's idea:** conversations many people join
+  slowly (birthdays, polls, general questions). *Checked by term counts:* the
+  22 conversations are carried by score, Nederland, WK, penalty, wedstrijd,
+  keeper — match talk, not planning or birthdays (birthdays would sit in the
+  0 group anyway). With n = 22 (range 4.7–13.7 min) chance is a live option.
+- **Live matches (student):** that *is* the effect meant. *Open:* does the
+  claim cover football in general or mainly tournament matches? Match-day
+  split would show how much rests on NL match days.
+- **Student:** 11–25 band = chance or unknown variables (*noted: possible,
+  not certain*); claim is about football **in general**; test the
+  same-length rates properly, then title (B).
+
+## Stage 6 — Verification (done)
+
+Same-length comparison (2+ vs 0, log length controlled), ranges from
+resampling days; rules fixed in the notebook before running.
+
+| Check | 2+ conv. | 2+ vs 0 (95%) | Rule triggered? |
+|---|---|---|---|
+| Main (same length) | 63 | −41% (−58 to −14) | — |
+| Without NL match days | 54 | **−42%** (−61 to −14) | no |
+| Without tournament periods | 33 | **−51%** (−70 to −24) | no |
+| + time of day and weekend | 63 | −28% (−48 to −2) | no (shrinks 32%, < half) |
+| 2020–22 only | 37 | −47% (−65 to −17) | no |
+| 2023–26 only | 26 | −19% (−52 to +32) | no (same direction, range incl. 0) |
+| Null: groups shuffled within length deciles | — | shuffled −42% to +57%; **1/1000** as fast | no |
+
+- "In general" holds: removing match days or whole tournaments keeps (or
+  strengthens) the effect.
+- Part of it is *when* football is discussed: with time of day and weekend
+  the effect drops to ≈ 28%, range close to 0.
+- Weaker and uncertain in recent years (fewer football conversations).
+- **Honest size range for the claim:** ≈ 30–40% faster at the same length
+  (raw chart: 1.6 vs 8.6 min).
+
+## Title and final chart (done)
+
+- **Title (student, from three suggestions):** *"Kick-off: football
+  conversations move faster"*. "Make … faster" avoided: the tests show
+  association, and part is timing.
+- **Subtitle:** 2+ football messages 1.6 min vs 8.6 min without; about a
+  third faster at the same conversation length (covers 28–41%).
+- **Footnote (student: shorter data line, concise limits, no "not tested",
+  keep the checks):** data, list definition, limits (~60% found, ~96% right,
+  misses shrink the gap; "1" not clearly faster), checks.
+- **Y label** explains reply time: median minutes before someone else
+  replies.
+- **Final chart:** `notebooks/analysis/football-reply-final.png` (last cell of
+  `14-football-reply-speed.ipynb`).
+
+### Verdict on the Analysis 18 proposition
+
+**Supported.** Conversations with 2+ football messages have faster replies
+than conversations without football: 1.6 vs 8.6 min raw, about 40% faster at
+the same length (14–58%), ≈ 28% once time of day and weekend are included.
+Holds without NL match days and without tournaments (football in general);
+1/1,000 shuffles as fast. Above the ≥ 10% expectation. A single football
+message is not clearly faster; the effect is weaker and uncertain in
+2023–26.
+
