@@ -4227,4 +4227,9 @@ Holds without NL match days and without tournaments (football in general);
 1/1,000 shuffles as fast. Above the ≥ 10% expectation. A single football
 message is not clearly faster; the effect is weaker and uncertain in
 2023–26.
+- **Polish after commit 3300f0a (student):** y label shortened to "Median
+  reply time in conversation"; football groups' dots orange and stronger
+  (fewer dots, so they were hard to see), no-football dots stay light blue;
+  footnote line added explaining dot / black point / bar (95% range of the
+  median, resampling days) — the bar was not explained on the chart before.
 
