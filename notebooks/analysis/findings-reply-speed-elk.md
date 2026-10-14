@@ -34,7 +34,8 @@ its two bumps (replies vs. new conversations).
 
 ![Reply time of animated-elk vs the rest of the group](reply-speed-elk-vs-rest-draft.png)
 
-Both curves are probability densities on a log time axis: where a curve is
+Thick lines are a fitted mix of two lognormals (a fast and a slow way of
+replying); thin lines are the data. Both curves are probability densities on a log time axis: where a curve is
 higher, more of that person's replies fall in that time range. The orange curve
 is higher on the left (seconds to a few minutes) and lower on the right.
 `animated-elk` replies within 6 minutes **70%** of the time. The rest of the

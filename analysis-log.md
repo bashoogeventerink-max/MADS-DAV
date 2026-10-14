@@ -4233,3 +4233,89 @@ message is not clearly faster; the effect is weaker and uncertain in
   footnote line added explaining dot / black point / bar (95% range of the
   median, resampling days) — the bar was not explained on the chart before.
 
+
+---
+
+# Teacher feedback 2026-10-13 — distribution (Analysis 15) and relationship (Analysis 18)
+
+- **Distribution (learn site, graded):** remove the dashed 6-min line (adds
+  little); describe the shuffle test to the point — one line on randomly
+  reassigning the name is enough, the mechanism is already strong.
+  - Applied: dashed line removed (the "replies within 6 min" annotation stays);
+    the two shuffle bullets replaced by one (student picked the wording):
+    "giving animated-elk's name to random replies on the same day (2,000×)
+    never reached 70% within 6 min (p < 0.001)". The "shuffling within
+    conversations / context 58% → 62%" bullet is kept for now.
+- **Relationship (in class):** clear overview, colours good. Footnote down to
+  one sentence on a statistical test, the rest to the report; bigger footnote;
+  shorter subtitle.
+  - Applied: footnote = one shuffle-test sentence at font size 10 (was 7);
+    subtitle shortened to "Typical reply: 1.6 min with 2+ football messages,
+    8.6 min without"; the point/bar explanation moved onto the chart as a small
+    annotation; everything else moved to
+    `notebooks/analysis/findings-football-reply-speed.md` for the report.
+- **Follow-up (student, same day):** the Analysis 15 footnote cut to **one
+  line**, the shuffle-test sentence only, at font size 10 (was 8 with 7
+  bullets). The other notes (resampling rank, context share, reply definition,
+  minute timestamps, bell not measured, thick vs thin lines) were already in
+  `findings-reply-speed-elk.md`, except the thick/thin line explanation, which
+  was added there. Figure shortened to close the empty footnote space.
+- **Second follow-up (student):** the four "replies within 6 min" lines removed
+  (70% / 56% / each of the other 8: 51–58%); in their place two grey labels
+  with leader lines: "thin lines: the data" and "thick lines: fitted mix of two
+  lognormals (a fast and a slow way of replying)". Open: the 70% now appears
+  only in the footnote's shuffle sentence.
+
+## Rubric check — relationship hand-in (2026-10-14, student's answers)
+
+**Criterion 1 — preattentive & gestalt (student: "Uitstekend", several principles used)**
+- First impression (second look): the declining trend first, then the two groups.
+- Similarity: colour separates football (orange) from no-football (blue).
+- Connection: the line joins the three medians. Justified because the x-axis is
+  discrete and ordered (0 → 1 → 2+), not unordered categories.
+- Proximity: dots grouped into columns per football level.
+- Contrast/intensity (for the reflection text): orange is stronger than the light
+  blue so the small football groups (89, 63 dots) stand out against the 900
+  no-football dots; black medians sit on top of faint dots.
+
+**Criterion 2 — text integration & clutter (in progress)**
+- Student: the text tells the story; the subtitle reads more categorical than
+  the relationship chart. The number the reader takes away is 1.6 vs 8.6 min.
+- Length as alternative explanation (student, option C): chart stays as is; the
+  reflection text explains that length was tested as an alternative explanation
+  and the effect remains (≈ 40% faster at the same length, ≈ 28% with time of
+  day and weekend; shuffle test within length deciles 1/1,000).
+- Clutter (student): considered (a) dropping the subtitle because it repeats the
+  point labels and (b) moving the dot/point/bar annotation into the footnote.
+  **Decision: keep both as they are.** Subtitle = message for the scanning
+  reader, point labels = values the log axis makes hard to read (hierarchy, not
+  repetition). The annotation stays on the chart as the teacher asked on
+  2026-10-13 (footnote one sentence).
+
+**Criterion 3 — story (student's words, to polish in the reflection text)**
+- What the group wouldn't have guessed: the group is known to reply slowly, but
+  when the topic is football it replies faster. Wording to fix: not "everybody"
+  likes football (one member doesn't); keep association language, not "influences
+  our behaviour" (title avoids "make faster" on purpose).
+- Answer to "obviously, during matches" (student, after rereading Stage 6): the
+  effect stays when match days and tournaments are left out (−41% → −42%
+  without NL match days, −51% without tournaments). Overlapping ranges, so
+  "at least as strong", not "stronger".
+- **Sentence for the reflection text (student adopted the assistant's suggested
+  wording, after explaining the reasoning):** "Football conversations stay
+  faster even with NL match days and tournaments left out: the effect doesn't
+  shrink, so it isn't just 'we're all watching the same match'."
+
+**Criterion 4 — spurious correlations (student's answers, with corrections discussed)**
+- Alternatives tested (student first named 2; Stage 6 has 5 + shuffle): length,
+  NL match days, tournaments, time of day + weekend, period (2020–22 / 2023–26);
+  shuffle test within length deciles.
+- Time of day: effect survives but is **smaller** (41% → 28%, range to −2%).
+  Accounting for it makes the claim more believable, not the effect stronger
+  (student first said "stronger"; corrected).
+- 2023–26: 26 football conversations, range −52% to +32% → effect can't be
+  shown clearly for recent years; not evidence of no effect.
+- Keyword list misses (~40%): missed football sits in "0", making "0" look too
+  fast → the gap is **underestimated**, so 41% is conservative.
+- **Biggest weakness (student):** time of day — it was tested and shows the
+  largest relative drop in the effect.
