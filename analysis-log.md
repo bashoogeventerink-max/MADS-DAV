@@ -4319,3 +4319,50 @@ message is not clearly faster; the effect is weaker and uncertain in
   fast → the gap is **underestimated**, so 41% is conservative.
 - **Biggest weakness (student):** time of day — it was tested and shows the
   largest relative drop in the effect.
+
+## Reflection text — relationship hand-in (2026-10-15 to 2026-10-17)
+
+Written under `## Reflection` in `notebooks/analysis/findings-football-reply-speed.md`,
+four paragraphs, each drafted by the student and reviewed in rounds.
+
+- **P1 story (student's text):** opens with the size of the gap ("five times as fast",
+  8.6 vs 1.6 min) rather than a judgement that the group is "slow" — student chose
+  this to avoid assuming what the reader thinks. Overall median (7.6 min, median of
+  conversation medians, n = 1,052) computed and dropped: nearly equal to the "0"
+  median because 900 of 1,052 conversations are "0". Rivalry as a cause left out
+  (not tested); "might be related to … football fans" kept as a hedge.
+- **P2 eye (student's content, condensed by the assistant at the student's request):**
+  continuity + contrast (decline first), similarity (colour), connection (line,
+  allowed because x is ordered), proximity (columns).
+- **P3 text choices (student filled a skeleton; shortened by the assistant):**
+  subtitle = scanning reader, point labels = exact values on a log axis; annotation
+  stays on the chart; length check in the text, not on the chart. Corrected: the
+  length check is not in the footnote (the footnote is the shuffle test).
+- **P4 chance (student's content, condensed by the assistant):** baseline unified
+  to 41% (same length, 14–58%). Assistant added the last step of the keyword-miss
+  argument ("so the 41% is probably an underestimate"); student to keep only if they
+  can defend it. Shuffled range (−42% to +57%) dropped from the text.
+- **Student's questions answered:** ~60% = recall of football *messages*, measured
+  only on NL match days (label check 4: 6 of 50 unmatched were football → ~59
+  missed vs 88 caught); ~96% = precision. The underestimate argument is reasoning,
+  not measured — it assumes missed football conversations are as fast as found ones.
+
+## Atlas setup (2026-10-17)
+
+- Installed atlas 0.66.2 via the teacher's `install.sh` (read first: it only downloads
+  the prebuilt binary from github.com/raoulg/atlas releases into `~/.local/bin`).
+- MCP: `claude mcp add --scope user atlas -- atlas mcp` → connected. Codex not
+  installed here, so the `codex mcp add` line was skipped.
+- Copy of the repo: `../MADS-DAV-atlas`, a local `git clone` of `mywork` (at c159292),
+  so gitignored data (the chat export) is not copied. Atlas writes to `.atlas/` in the
+  repo it reads; that folder carries its own `.gitignore` (`*`), so it never gets
+  committed.
+- First run: `atlas analyze` — 44 modules, 31 entry points (scripts/notebooks), 6.3% of
+  calls not followed (mostly matplotlib/pandas calls on local objects). `atlas view`
+  wrote `.atlas/wa_analyzer.html`.
+- `atlas check`: 37 questions in 4 principles — gives 31 (functions without a return
+  type annotation, mostly in analysis notebooks 11–14 and `network_analysis.py`),
+  places 4 (`data.py` loaders decide their own data paths, incl. `load_own_chat`),
+  doors 1 (`wa_analyzer/__init__.py` has no `__all__`), nothing 1.
+- Open for the student: which questions to act on, and whether to run Atlas on the
+  real repo too. Relevant to the 10 Nov goal of `.py` scripts instead of notebooks.
