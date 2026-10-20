@@ -4366,3 +4366,34 @@ four paragraphs, each drafted by the student and reviewed in rounds.
   doors 1 (`wa_analyzer/__init__.py` has no `__all__`), nothing 1.
 - Open for the student: which questions to act on, and whether to run Atlas on the
   real repo too. Relevant to the 10 Nov goal of `.py` scripts instead of notebooks.
+
+# Analysis 19 — who writes like whom? (high-dimensional graph)
+
+Started 2026-10-20 after working through the lesson 6 notebooks. Draft due Thu
+2026-10-22 21:30 (no reflection text yet). Parked as a lead: COVID period
+during vs after, compared by content (sentence embedding on conversations) —
+needs a different tool from style, so not in the same draft.
+
+## Stage 1 — Question (in progress)
+
+- **Idea (student):** who writes like whom — interesting because the group has
+  mixed backgrounds (study, moving away from the hometown, ...).
+- **Tool (follows from the question):** character-trigram counts (style/habit),
+  not a sentence embedding (content).
+- **One point (student, first idea):** a selected window of messages per
+  person, fed to the trigram counts. A single message was the first thought;
+  dropped because short messages carry too few trigrams (notebook 06.4).
+- **Finding (student):** whether there are clear groups within the group.
+- **Background labels (student):** study background known for every author;
+  how to group them is still open. Only pseudonyms on the chart.
+- **Still open:**
+  - window size in messages or in characters — lesson 6 says chunks must be
+    equal size (a count vector grows with length);
+  - what "clear" means: compare against real author labels vs shuffled labels
+    (silhouette / 1-NN in the original space), then against background groups;
+  - links, emoji and "haha" are habits too — a cluster may be "people who
+    share links", not "people from the same study".
+- **Next (Wed 2026-10-21, 20:00–21:30):** student brings a window size
+  (characters, and points per author it leaves) and a split of study
+  backgrounds fixed before looking at the plot; then Stage 2 — chunks and
+  trigram counts.
