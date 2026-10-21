@@ -4374,7 +4374,7 @@ Started 2026-10-20 after working through the lesson 6 notebooks. Draft due Thu
 during vs after, compared by content (sentence embedding on conversations) —
 needs a different tool from style, so not in the same draft.
 
-## Stage 1 — Question (in progress)
+## Stage 1 — Question (done 2026-10-21)
 
 - **Idea (student):** who writes like whom — interesting because the group has
   mixed backgrounds (study, moving away from the hometown, ...).
@@ -4397,3 +4397,31 @@ needs a different tool from style, so not in the same draft.
   (characters, and points per author it leaves) and a split of study
   backgrounds fixed before looking at the plot; then Stage 2 — chunks and
   trigram counts.
+
+### Stage 1 — continued (2026-10-21)
+
+- **Window (student, revised):** messages per author glued together and cut
+  into equal windows of **hundreds of characters** (first guess was 20 = one
+  message: ~18 trigrams, mostly 0/1 counts, so no frequencies to show habits).
+  Exact size set in Stage 2 from the quietest author's total characters.
+- **Points per author (student):** 30–40 is enough.
+- **Background split (student, fixed before any plot):** technical (3),
+  economics/business (3), education (2: health person trained as a teacher
+  first; historian followed didactics/teaching courses). First split had
+  health and history as groups of 1 — a group of one is just that author's
+  own cluster, so it can't show background.
+- **Caveat for the caption:** a background claim rests on 8 people, however
+  many windows there are.
+- **Expectation (student):** technical people separate from the rest;
+  education sits closer to economics/business. Guessed reason: shorter, more
+  efficient messages. Note: shorter messages = more message breaks per window,
+  so length can leak into the trigram counts as a "habit"; check in Stage 6.
+- **Falsified if (student):** authors in one background group are not closer to
+  each other than to authors in another group. Measured in the full trigram
+  space between *different* authors (e.g. author centroids, as in 06.4), not
+  read off the 2D plot (t-SNE makes clusters from noise; projections fill
+  their frame). Chance baseline: shuffle the group labels over the 8 authors
+  (only 560 distinct splits of 3/3/2, so all can be tried).
+- **Step before it (suggested by the assistant, student agreed):** authors
+  must first separate at all — score with real author labels vs shuffled
+  labels (silhouette or 1-NN). If not, stop: there is no style to group.
