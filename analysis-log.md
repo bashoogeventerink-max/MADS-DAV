@@ -4425,3 +4425,37 @@ needs a different tool from style, so not in the same draft.
 - **Step before it (suggested by the assistant, student agreed):** authors
   must first separate at all — score with real author labels vs shuffled
   labels (silhouette or 1-NN). If not, stop: there is no style to group.
+
+## Stage 2 — Data (in progress, 2026-10-21)
+
+- **Characters per author** (after dropping media/deleted/location/glued
+  system lines, 1,532 rows): 9 authors, 51.5k (hypnotic-rabbit) to 145.3k
+  (pliable-tiger); median message length 20–31 characters.
+- **9th author (student):** economics/business → groups technical (3),
+  economics/business (4), education (2). Shuffle baseline: 9!/(3!·4!·2!) =
+  1,260 distinct splits.
+- **Window (student):** 1,500 characters → ~34 windows for the quietest author
+  (recount after cleaning).
+- **Windows per author (student):** the same number for everyone (balanced, as
+  in 06.4), so talkative authors don't dominate the 1-NN score and the plot.
+- **Why 1,500 (student):** enough characters to recognise habits, while still
+  enough windows per author to show in the graph.
+- **Why balanced (student):** a fair comparison; with more windows an author's
+  behaviour is estimated better. Added: unbalanced, a 1-NN score is pushed up by
+  guessing the talkative author, and they fill the plot.
+- **Cleaning choices (student, first round):** keep links (sharing links is
+  behaviour); keep capitals; glue messages with a line break, so message length
+  is part of the counts (behaviour too).
+- **Link facts:** URLs are 0.5% (pliable-tiger) to 6.6% (fluffy-beaver, 86
+  links) of an author's characters; median URL 44 characters. Some messages are
+  empty (NaN) — drop them before gluing.
+- **Links (student, final):** replace each URL with a `<URL>` placeholder —
+  keeps the habit of sharing, drops the content (domains, IDs).
+- **Stage 6 reminder (student asked):** rerun with a space instead of a line
+  break between messages, to see whether message length drives the result.
+- **Claim unit vs row unit:** rows = windows (~34 × 9); the background claim is
+  about people, so n = 9 (groups of 3, 4, 2).
+
+## Stage 2 — done (2026-10-21)
+
+## Stage 3 — Shape (in progress)
