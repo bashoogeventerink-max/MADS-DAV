@@ -4491,3 +4491,32 @@ Notebook: `notebooks/analysis/15-who-writes-like-whom.ipynb`.
 ## Stage 3 — done (2026-10-21)
 
 ## Stage 4 — Encoding (in progress)
+
+- **Step 1 (authors separate at all?) — run early, since it decides whether a
+  background graph makes sense:** silhouette by author 0.004 vs shuffled
+  −0.011 (highest of 200 shuffles −0.008) → better than every shuffle, but
+  small. Leave-one-out 1-NN: **61% same author** (chance 11%). Stage 6 caveat:
+  an author's windows can be neighbours in time (same conversation), so part
+  of this may be shared topic, not style — check by excluding nearby windows.
+- **Sketches:** `sketch-A-style-projection.png` (PCA on counts: 9% of variance
+  in 2 components, little visible; t-SNE perplexity 30: author regions show,
+  e.g. humorous-stingray, animated-elk, hypnotic-rabbit, vibrant-barracuda),
+  `sketch-B-style-author-distances.png` (author-centroid Manhattan distances:
+  closest pairs effervescent-penguin/vibrant-barracuda 641,
+  striking-rail/vibrant-barracuda 648, effervescent-penguin/pliable-tiger 656;
+  hypnotic-rabbit far from most). Background groups not on the sketches yet.
+- **Family (student):** (a) t-SNE of the windows, with the group test as a
+  number from the full trigram space in the subtitle/caption (t-SNE keeps
+  membership, not distances between regions, so the "who is close to whom"
+  claim rests on the number).
+- **Encoding (student):** colour = background group (3 colours); marker shape
+  = author within a group.
+- **Parameter (student):** perplexity — sweep (e.g. 5, 15, 30, 50). If the
+  regions don't hold across perplexities, the picture doesn't support the
+  group hypothesis. Added: what survives is membership; positions, sizes and
+  gaps change anyway — the number decides, the picture illustrates.
+- **Next (Thu 2026-10-22, draft due 21:30):** student writes the author →
+  group mapping to `data/processed/author-groups.csv` (gitignored: pseudonym +
+  study background could identify people); then perplexity sweep coloured by
+  group, the group test (within vs between group centroid distance against
+  all 1,260 splits), first real draft, submit.
