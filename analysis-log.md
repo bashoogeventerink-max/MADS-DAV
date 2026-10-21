@@ -4459,3 +4459,35 @@ needs a different tool from style, so not in the same draft.
 ## Stage 2 — done (2026-10-21)
 
 ## Stage 3 — Shape (in progress)
+
+Notebook: `notebooks/analysis/15-who-writes-like-whom.ipynb`.
+
+- **Shape check that matters (student):** common vs rare trigrams — rare ones
+  should matter, typical words shouldn't dominate; first idea: drop the most
+  common trigrams.
+- **Standardising:** explained (each trigram gets the same spread — another
+  answer to the same problem; lesson rule: same unit → usually don't).
+  Student chose **option C**: raw counts first, read back which trigrams drive
+  the distance, then decide.
+- **Independent units:** n = 9 people. Student first said the bigger group
+  looks more different; corrected: bigger group = more stable average,
+  education (2) is fragile.
+- **Other histograms skipped:** windows are equal size, nothing is averaged
+  across people.
+- **Implementation notes:** lesson's `NormaliseText` lowercases and collapses
+  whitespace (would undo capitals and line breaks), so a `CleanForStyle` step
+  only drops non-text rows and swaps links for `<URL>`. `CountVectorizer` gets
+  `lowercase=False`. Windows are cut at exactly 1,500 characters.
+- **Result:** 20,969 messages kept; 34–98 windows per author → balanced to
+  34 × 9 = 306 windows, 15,602 trigrams.
+- **Readback (option C):** common trigrams do *not* dominate: top 10 = 3%,
+  top 50 = 9%, top 200 = 25% of all distance; half of the distance is spread
+  over 641 trigrams. Trigrams in fewer than 3 windows: 55% of the vocabulary,
+  4% of the distance. Near the top: laughing (`aha`, `hah`), `Ik ` and `\nIk`
+  next to `ik ` — capitals and line breaks are visible in the counts.
+- **Decision (student):** keep the raw counts with all trigrams — no trigrams
+  dominate, so nothing is dropped and nothing is standardised.
+
+## Stage 3 — done (2026-10-21)
+
+## Stage 4 — Encoding (in progress)
