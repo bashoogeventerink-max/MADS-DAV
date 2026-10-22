@@ -4520,3 +4520,46 @@ Notebook: `notebooks/analysis/15-who-writes-like-whom.ipynb`.
   study background could identify people); then perplexity sweep coloured by
   group, the group test (within vs between group centroid distance against
   all 1,260 splits), first real draft, submit.
+
+### Stage 4 — continued (2026-10-22, morning)
+
+- **Mapping (student):** economics 4 (striking-rail, animated-elk,
+  effervescent-penguin, hypnotic-rabbit), technical 3 (vibrant-barracuda,
+  fluffy-beaver — student wrote "Fluffy Bear", read as fluffy-beaver,
+  humorous-stingray), education 2 (pliable-tiger, rib-tickling-curlew). Stored
+  in gitignored `data/processed/author-groups.csv`.
+- **Group test (step 2):** same-group minus different-group centroid distance
+  = −1.9; 47% of the 1,260 splits hang together at least as well (range −38.3
+  to +41.9). Mean distance within: technical 728, economics 736, education 757.
+- **Perplexity sweep** (`sketch-C-style-perplexity-sweep.png`, 5/15/30/50):
+  per-author regions survive (e.g. hypnotic-rabbit, animated-elk,
+  vibrant-barracuda, pliable-tiger); the group colours do not form regions.
+  Red/green in the sketch: change colours for the draft.
+- **Fluffy Bear = fluffy-beaver (student confirmed).**
+- **Reading (student):** technical people don't group with each other more
+  than with other groups; the groups made and the writing habits don't
+  correspond — student first called it a disappointment.
+- **Encoding kept (student):** colour = group, shape = author; the colour
+  comparison is the strong part.
+- **Finding reframed:** not a disappointment — an expectation written down
+  before looking, tested fairly, and rejected; people do have their own style,
+  it just doesn't follow study background.
+- **Perplexity (student):** 15 — the per-person clumps are clearest. First
+  reason was "the colours group a bit better"; flagged: that picks the view
+  that fits the rejected hypothesis, so the choice is made on the per-person
+  clumps instead. Caption says the clumps also appear at 5, 30 and 50.
+- **Title (student):** "Group members have their own writing style, but study
+  background does not predict that style" ("does not matter" → "does not
+  predict": 9 people, 3 groups, so claim only what was tested).
+- **Draft:** `notebooks/analysis/who-writes-like-whom-draft.png` — t-SNE
+  perplexity 15, colour = group (validated palette: blue/orange/aqua, colour-
+  blind safe; aqua below 3:1 contrast, so the legend labels carry it), shape =
+  author; subtitle carries 61% vs 11% and 47% of 1,260 splits; footnote on
+  what t-SNE does and doesn't keep.
+
+## Stage 4 — done (2026-10-22)
+
+## Stage 5 — Critique (tonight, 20:00–21:30, then submit)
+- Open point for the student: in this render the blue (economics) dots sit
+  mostly left/centre and orange (technical) mostly right — does the picture
+  suggest groups that the 47% says aren't there?
