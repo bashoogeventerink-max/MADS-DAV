@@ -4563,3 +4563,36 @@ Notebook: `notebooks/analysis/15-who-writes-like-whom.ipynb`.
 - Open point for the student: in this render the blue (economics) dots sit
   mostly left/centre and orange (technical) mostly right — does the picture
   suggest groups that the 47% says aren't there?
+- **First look (student):** colours first, then that each group is spread
+  widely — no colour owns one part of the graph.
+- **Accidental grouping (student):** no clear clustering by colour; e.g.
+  orange sits left, middle and right.
+- **Delete (student):** the t-SNE explanation in the footnote (keep
+  "perplexity 15"); everything else is needed. Raised: the audience is
+  non-technical and lesson 6.6 is about what one may not read from t-SNE, so
+  perhaps a shorter version rather than none — student to decide.
+- **Opposite result (student, first answer):** "clusters by colour closer to
+  each other and each colour more spread out" — second half reversed; to
+  restate.
+- **Footnote (student):** kept as is.
+- **Opposite result (student, restated):** if background predicted style, each
+  colour would sit together in one specific part of the graph (e.g. top
+  right), apart from the other colours.
+
+## Stage 5 — done (2026-10-22)
+
+## Stage 6 — Verification (in progress, 2026-10-22)
+
+- **Second grouping (student, after the draft):** lives in the city (5) vs not
+  (4), stored in gitignored `data/processed/author-city.csv`. Not run yet —
+  expectation and reason to be written down first. Counts as comparison #2
+  (with 9!/(5!·4!) = 126 possible splits only).
+- **Check A1 — time/topic (student chose; prediction written before running):**
+  each window may only match windows more than half a year away. Student
+  expects 61% → about **50%**; would change the title if it drops **below
+  30%**.
+- **Result A1:** 1-NN same author with matches > half a year apart: **55%**
+  (chance under this rule 11%; every window still had own-author candidates
+  that far away). Down from 61%, above the student's prediction (50%) and far
+  above the 30% threshold → the title's first half stands. Earlier numbers
+  unchanged after adding window dates (same windows).
