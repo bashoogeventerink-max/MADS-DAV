@@ -4596,3 +4596,22 @@ Notebook: `notebooks/analysis/15-who-writes-like-whom.ipynb`.
   that far away). Down from 61%, above the student's prediction (50%) and far
   above the 30% threshold → the title's first half stands. Earlier numbers
   unchanged after adding window dates (same windows).
+- **City grouping, before running (student):**
+  - expectation: "55%" — mixed up with the 1-NN number; the city test reports
+    the share of the 126 splits that hang together at least as well (low =
+    city people closer). To restate on that scale.
+  - why: city people may have a different style — shorter messages, more
+    laughing sounds, relatively more emoji.
+  - asked what a "split" is and whether background had so few (answered:
+    background 1,260 splits for 3/4/2; city 126 for 5/4; smallest possible
+    result 1/126 ≈ 0.8%).
+- **City threshold (student, fixed before running):** a finding only if fewer
+  than **5%** of the 126 splits hang together at least as well (first said 15%;
+  changed after: 1 in 7 random splits would pass, and with two groupings
+  tested ~28% chance of a lucky "finding").
+- **Result city:** real split −5.9; **29%** of the 126 splits hang together at
+  least as well → above 5%, **not a finding**. Mean distance within: city 715
+  (5 people), not city 765 (4). Reported as grouping 2 of 2 tested.
+- **Next (tonight, 20:00–21:30):** submit the draft by 21:30 (unchanged).
+  Later for the final (10 Nov): checks A2 (space instead of line break) and A3
+  (lowercase / phone autocapitalisation), city result in the reflection text.
