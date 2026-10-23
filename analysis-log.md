@@ -4626,3 +4626,11 @@ Notebook: `notebooks/analysis/15-who-writes-like-whom.ipynb`.
   Caveats: grouping #3, suggested by the picture itself (same data can't
   confirm it); t-SNE distances between clumps don't mean anything (6.6).
   → not a new draft; at most a line in the reflection text.
+- **Reading t-SNE (discussed 2026-10-23):** closeness *inside* a clump is
+  readable (nearest neighbours kept); closeness *between* clumps is not —
+  in the sweep the hometown trio is adjacent at perplexity 15 but not at 5,
+  30, 50. Picture spots, full-space number decides. Candidate paragraph for
+  the reflection text (validity: limits of the chosen model).
+- **Draft handed in (student, 2026-10-23).** Next (Tue 27 Oct block): rubric
+  check against the 5 criteria, checks A2/A3, then reflection text; final for
+  the report draft on 3 Nov.
