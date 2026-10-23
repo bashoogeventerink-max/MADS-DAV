@@ -4615,3 +4615,14 @@ Notebook: `notebooks/analysis/15-who-writes-like-whom.ipynb`.
 - **Next (tonight, 20:00–21:30):** submit the draft by 21:30 (unchanged).
   Later for the final (10 Nov): checks A2 (space instead of line break) and A3
   (lowercase / phone autocapitalisation), city result in the reflection text.
+- **Pattern spotted on the plot (student, 2026-10-23):** the three people still
+  living in their hometown (vibrant-barracuda, rib-tickling-curlew,
+  fluffy-beaver) look close together in the t-SNE draft. Checked in the full
+  trigram space (sketch B author-centroid distances, all 84 possible trios of
+  9): trio mean 710; **21 of 84 trios (25%) are at least as close**. Pairs:
+  beaver–barracuda 688 (5th closest of 36), curlew–barracuda 701 (8th),
+  beaver–curlew 741 (23rd, above the median 729.5). Closest trio:
+  effervescent-penguin, striking-rail, vibrant-barracuda (655).
+  Caveats: grouping #3, suggested by the picture itself (same data can't
+  confirm it); t-SNE distances between clumps don't mean anything (6.6).
+  → not a new draft; at most a line in the reflection text.
