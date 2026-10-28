@@ -4634,3 +4634,291 @@ Notebook: `notebooks/analysis/15-who-writes-like-whom.ipynb`.
 - **Draft handed in (student, 2026-10-23).** Next (Tue 27 Oct block): rubric
   check against the 5 criteria, checks A2/A3, then reflection text; final for
   the report draft on 3 Nov.
+
+## Story — what makes each person's clump? (2026-10-27)
+
+- **Question (student):** version 1 — which typing habits make each person
+  their own clump (describing the clumps, not a new grouping test; "why do
+  they have these habits" can't be answered from this data).
+- **Predictions (student, written before the readback):**
+  - animated-elk: quick, so short messages; sends "haha" little.
+  - pliable-tiger: uses emoji and smileys a lot.
+  - vibrant-barracuda: asks a lot of questions (e.g. proposing a beer at the
+    weekend).
+- **Plan:** per author, the trigrams whose average count differs most from
+  the other eight (more and less), plus four direct measures for the
+  predictions (median message length, "haha" per 1,000 characters, emoji per
+  1,000 characters, "?" per 1,000 characters). Check the lists for names or
+  places before anything goes on the graph.
+- **Result (rank of 9, 1 = highest):**
+  - animated-elk: median message 20 characters (#8, joint shortest) → short
+    messages **confirmed**; "haha" 3.9 per 1,000 characters (**#1**) →
+    "little haha" **wrong way round**: laughing trigrams (`aha`, `hah`, `\nHa`)
+    are the top of their list.
+  - pliable-tiger: emoji/smileys 8.9 per 1,000 (#2; humorous-stingray 10.8,
+    rib-tickling-curlew 8.6) → **partly**; their trigram list is common words
+    (`en `, `het`, `dat`, `een`), not emoji. Emoji are single characters spread
+    over many different trigrams, so trigrams under-show that habit.
+  - vibrant-barracuda: "?" 6.4 per 1,000 (**#1**, next 4.6), `n?\n` in their
+    top trigrams → **confirmed**. Beer/weekend (content) not checked.
+- **Across people:** laughing splits the group (more: animated-elk,
+  effervescent-penguin, rib-tickling-curlew; less: hypnotic-rabbit,
+  striking-rail, fluffy-beaver); so does a capital "Ik" at the start of a
+  message (autocapitalisation? → check A3). The top 16 trigrams cover only
+  5–8% of each author's distance to the rest: a clump comes from many small
+  differences, not one signature habit.
+- **Privacy:** no names spotted in the top lists; student to check before any
+  trigram goes on the graph.
+- **Student's reading (2026-10-27):**
+  - animated-elk's laughing: idea — quick reactions (e.g. to memes), "haha"
+    as a typical quick reply. Not checked yet.
+  - Labels: unsure whether labelling clumps by what makes them different is
+    a valid method; proposed grouping hypnotic-rabbit, animated-elk,
+    effervescent-penguin as "shorter messages". Numbers say otherwise:
+    hypnotic-rabbit (31, #1) and effervescent-penguin (30, #2) have the
+    *longest* median messages, animated-elk the shortest (20).
+  - 5–8%: "laughing helps these people form their clump" — still to turn
+    into a sentence for a non-technical reader.
+  - New idea: hypnotic-rabbit writes formally ("ik kan helaas niet", "ik kan
+    wel"). Fits the readback in part: capital `Ik `, `nie`/`iet` (niet),
+    little laughing; "short" does not fit (longest messages). To define
+    "formal" in countable terms before checking.
+- **"Formal" for hypnotic-rabbit — predictions (student, before running):**
+  - messages starting with a capital: ranks high (read as top 3 of 9);
+  - full words instead of chat spelling: highest (#1);
+  - polite words (helaas, graag, bedankt, sorry, ...): high (top 3);
+  - emoji: least (#9) — note: already in the earlier table (4.8, #5).
+  Measured on all cleaned messages (not the balanced windows); "full words"
+  = fewest chat short forms (k, nie, ff, idd, mss, wss, gwn, ...) per 1,000
+  words. Capitals may be phone autocapitalisation (check A3).
+- **Result "formal" (hypnotic-rabbit, rank of 9):**
+  - capital start 99.0% (#4) → not top 3, but the measure barely
+    discriminates: 8 of 9 people sit at 96–100% (phone autocapitalisation
+    likely); only animated-elk is lower (91.6%).
+  - chat short forms 4.9 per 1,000 words (3rd fewest) → not #1;
+    effervescent-penguin (3.1) and humorous-stingray (4.6) use fewer.
+  - polite words 9.8 per 1,000 words (**#1**; effervescent-penguin 8.1) →
+    **confirmed**.
+  - emoji #5 of 9 (earlier table) → "least" **not confirmed**.
+  - Reading: "polite" holds, "formal" in general only partly; and
+    "short" was already contradicted (longest messages).
+
+### Impressions tracker — what the student expected vs what the data says
+
+Kept up to date from here on (student asked, 2026-10-27). Rank = of 9, #1 = highest.
+
+| # | Person | Impression (student, before looking) | Measure | Result | Verdict |
+|---|---|---|---|---|---|
+| 1 | animated-elk | short messages | median message length | 20 chars, joint shortest | ✅ |
+| 2 | animated-elk | says "haha" little | haha per 1,000 chars | #1 of 9 | ❌ opposite |
+| 3 | pliable-tiger | many emoji/smileys | emoji per 1,000 chars | #2 | 🟡 |
+| 4 | vibrant-barracuda | asks many questions | "?" per 1,000 chars | #1, clear gap | ✅ |
+| 5 | hypnotic-rabbit | short messages (said after the length table was shown) | median message length | 31 chars, longest | ❌ opposite |
+| 6 | hypnotic-rabbit | often starts with a capital (top 3) | % starting with capital | #4, 99.0% — measure barely separates people | ❌ |
+| 7 | hypnotic-rabbit | most full words (#1) | chat short forms per 1,000 words | 3rd fewest | ❌ |
+| 8 | hypnotic-rabbit | polite (top 3) | polite words per 1,000 words | #1 | ✅ |
+| 9 | hypnotic-rabbit | fewest emoji (#9) | emoji per 1,000 chars | #5 | ❌ |
+
+So far: 3 right, 1 partly, 5 wrong (2 of them the opposite).
+Earlier expectations (groupings): technical people write alike — rejected
+(47% of splits); city people write alike — rejected (29%); hometown trio
+(spotted on the plot) — not a finding (25%).
+
+## Method questions (student, 2026-10-27) — per-person work parked
+
+- **Leftovers after cleaning (new):** 66 messages still carry WhatsApp's
+  `<Dit bericht is bewerkt>` marker (fluffy-beaver 17, animated-elk 13,
+  effervescent-penguin 13, hypnotic-rabbit 8, humorous-stingray 8, others
+  ≤ 5) and 1 `<Video note omitted>`. Text WhatsApp adds, not typed by the
+  author → leaks into the trigrams. Small (~1,600 of ~0.9M characters) but
+  uneven over authors. Student to decide: strip it, or keep as "edits
+  messages" behaviour. Other hits ("media", "afbeelding", "verwijderd") are
+  normal words.
+- **Scree (new, in notebook):** no elbow; PC1 4.8%, PC2 4.3%, then ≤ 2.6%
+  each; 46 components for 50% of the variance. A 2D linear projection can't
+  hold this structure → supports choosing t-SNE over PCA. (A scree belongs to
+  PCA; t-SNE has no ordered components.)
+- **PC1 / PC2 loadings (new):**
+  - PC1: + laughing (`aha`, `hah`, `\nHa`) and message breaks; − common words
+    in running sentences (`en `, `het`, ` te`). animated-elk far on + (+13.7);
+    hypnotic-rabbit, striking-rail on −.
+  - PC2: + common words and laughing (pliable-tiger +8.4); − capital `Ik `,
+    `kan`, `dag`, `avo`/`ond` (avond), `iet` (niet) — hypnotic-rabbit −9.3.
+    The − side looks partly like content (making/declining plans).
+- **Student's answers on the method questions:** keep raw counts (no
+  standardising) and character 3-grams; no k-means needed. Remove the edit
+  marker and the video-note row (done); also wants to remove URL messages —
+  this reverses the Stage 2 decision (`<URL>` kept as "shares links"
+  behaviour), so the reason is asked first, not run yet.
+- **Rerun after stripping `<Dit bericht is bewerkt>` and dropping
+  `<Video note omitted>` (2026-10-27):** 20,968 messages; humorous-stingray
+  54 → 53 windows (still 34 per author after balancing); 15,648 trigrams.
+  1-NN same author 61% → **64%**; > half a year apart 55% → **56%**; group
+  test 47% → **52%** of 1,260 splits; city 29% → **28%** of 126. Every
+  verdict unchanged. hypnotic-rabbit median length 31 → 30 (now tied #1
+  with effervescent-penguin).
+- **Why the numbers moved more than ~1,600 characters explain:** removing
+  the marker shifts where every later window is cut for the authors who
+  edited messages, so a different random 34 windows are drawn. The 3-point
+  change is mostly *which windows*, not the marker → the numbers carry about
+  that much sampling wobble; worth a line in the reflection text (or a check
+  over several seeds).
+- **Draft PNG regenerated** with the new numbers (64%, 52%); the handed-in
+  version stays in git (`git show 6fa8117:notebooks/analysis/who-writes-like-whom-draft.png`).
+- **34 windows per person (student asked):** the quietest author,
+  hypnotic-rabbit (~51.5k characters after cleaning), gives 51.5k / 1,500 =
+  34 full windows; every other author gets a random 34 of theirs (Stage 2
+  "balanced" choice, seed 42).
+- **Links removed entirely (student, 2026-10-27):** reverses Stage 2's
+  `<URL>` placeholder. Student's reason: sharing links is behaviour, but "it
+  cannot be attributed to a specific author". (Open: the placeholder already
+  removed everything the author didn't type; a cleaner reason may be "sharing
+  links is behaviour, not *typing* style" — student to restate.) Link-only
+  messages drop out (20,766 messages kept).
+- **Rerun:** 1-NN same author **67%** (was 64%, 61% at the draft); > half a
+  year apart **56%**; study-group test **51%** of 1,260 splits; city **33%**
+  of 126. Verdicts unchanged. Still 34 windows per author; 15,565 trigrams.
+  hypnotic-rabbit is the extreme author on PC2 (−8.7; next vibrant-barracuda
+  −4.2) and on the negative end of PC1 (−8.4).
+- **Next questions (student):** (a) can PCA bring out a style pattern to show
+  the clumps better? (b) a story around hypnotic-rabbit: left the shared
+  school around 15, working in an office from ~18, while the others went to
+  college/university. Approach discussed before running anything.
+- **Student's answers (2026-10-27):**
+  - Graph: **A** (t-SNE, hypnotic-rabbit highlighted, others grey); B (PCA with
+    named axes) maybe later.
+  - Style or content: "both are important" → check both: trigrams (how) and
+    words (what).
+  - Prediction (a): "hypnotic-rabbit will be on the edge of the cloud", and
+    their dots are close to each other. As stated it is a t-SNE position, which
+    t-SNE doesn't keep (6.6) → asked to restate in full-space terms (rank of 9
+    on own-match, distance to the rest, tightness) with a threshold for
+    dropping the story. Not run yet.
+  - Watch-out: hypnotic-rabbit's 34 windows are *all* their windows
+    (consecutive, same conversations), others are a random 34 of more → own-
+    match may be pushed up for them; report the > half-year version too.
+- **Predictions (student, before running):** hypnotic-rabbit top 2 of 9 on
+  distance to the rest ("most formal") and top 2 on tightest clump ("really
+  consistent type of conversations"). Own-match rank not predicted. Words
+  expected at the top of their list: "kan", "niet", "ik", "helaas".
+  Threshold for dropping the story not set (open) — prediction read as
+  holding if top 2 on both.
+- **Result "does hypnotic-rabbit stand out?" (rank of 9, 1 = stands out most):**
+  - distance to the rest: 1,767, **#2** (rib-tickling-curlew #1, 1,773) →
+    prediction ✅; but the whole range is small (1,706–1,773, ~4%).
+  - tightness: **#5** → prediction ❌. Tightest: vibrant-barracuda (#1),
+    effervescent-penguin (#2).
+  - own match: 88% (#2) → **68% (#3)** with matches > half a year apart: part
+    of it came from back-to-back windows (the caveat). vibrant-barracuda: 94%
+    → 94%, #1 on both, unaffected by the time rule.
+  - Reading: hypnotic-rabbit is *far from the rest* but not the tightest or
+    most recognisable; vibrant-barracuda is the most recognisable and the
+    tightest, while sitting closest to the rest (#9 on distance). Two kinds of
+    "standing out" — student to choose which story the graph tells.
+- **Result words (hypnotic-rabbit vs the other eight, 713 words used ≥ 20×):**
+  ik #1, niet #2, kan #6, helaas #11 → prediction ✅. Also high: vanavond,
+  gefeliciteerd, verjaardag, kaarten, gezellig, thanks, wij, mee, bij, and one
+  first name (privacy — never on a graph, not repeated here). Lower: dat,
+  wel, ja, een, man, haha, hahaha. Reads as replying to plans ("kan helaas
+  niet vanavond") and congratulating on birthdays → part of the "polite"
+  result is content, not style.
+
+### Impressions tracker — update (2026-10-27)
+
+| # | Person | Impression (student, before looking) | Measure | Result | Verdict |
+|---|---|---|---|---|---|
+| 10 | hypnotic-rabbit | far from the rest (top 2) | mean distance to others' windows | #2 | ✅ |
+| 11 | hypnotic-rabbit | tightest clump (top 2) | mean distance between own windows | #5 | ❌ |
+| 12 | hypnotic-rabbit | writes "kan", "niet", "ik", "helaas" | word rate vs the rest | ranks 6, 2, 1, 11 of 713 | ✅ |
+
+So far: 5 right, 1 partly, 6 wrong.
+- **Story choice (student, 2026-10-27):** story 1, hypnotic-rabbit; reason:
+  no clear picture why vibrant-barracuda is so distinct, the story is better
+  for hypnotic-rabbit. Student asked for a suggested rephrasing and a new draft.
+- **Draft 2** (`notebooks/analysis/who-writes-like-whom-draft-2.png`): same
+  t-SNE (perplexity 15), hypnotic-rabbit blue (#2a78d6, validator pass),
+  others grey without labels (grey clumps don't show, names would only
+  suggest positions); label = words used more, laughs least, most polite
+  words; subtitle 67% vs 11% and "2nd most different of nine, partly in what
+  they write". **Working title** (assistant's suggestion, for the student to
+  rewrite): "Nine friends, nine writing styles — and one who says 'kan helaas
+  niet' where the others laugh". Draft 1 kept unchanged in git.
+- **Open for the student (critique):** title overclaims "where the others
+  laugh" (striking-rail 0.4 and fluffy-beaver 0.7 haha per 1,000 vs 0.3);
+  grey cloud doesn't show the "nine styles" half; the tested result (study
+  background doesn't predict style, 51%) is gone from the graph; the clump
+  sitting on the edge is t-SNE luck, though it matches the full-space #2.
+- **Student's answers on draft 2 (2026-10-27):** title option C, short and
+  punchy, hinting at the different path (left the shared school ~15, working
+  from ~18); title only about hypnotic-rabbit; the study-background result
+  moves to the reflection text as the starting point that led here; "most
+  different" → "different"; point 4 unfinished ("Maybe we can"). Also: move
+  the dot explanation to the footnote, keep a short "how they differ" in the
+  subtitle, shorten the label, and validate the planning words.
+- **Validation, prediction (student, made stricter by the assistant):**
+  hypnotic-rabbit uses ik / niet / kan / helaas / vanavond / gefeliciteerd
+  more than *each* of the other eight (not only the pooled rest), plus
+  messages that turn something down ("kan … niet" or "helaas"); and the
+  pattern holds per year, not in one period only.
+- **Validation result:** hypnotic-rabbit is **#1 of 9 against each person
+  separately** on all six words (ik 46.5, niet 25.2, kan 14.6, helaas 6.3,
+  vanavond 7.3, gefeliciteerd 6.9 per 1,000 words) and on declining messages
+  ("kan … niet" or "helaas"): **10.4%** of messages vs 5.5% for the next
+  (effervescent-penguin) and ~2.5% typical. **#1 in every year 2020–2026**
+  (5.6% → 19.8%, rising; rest median 1.6–4.6%). Prediction ✅. Limits:
+  yearly counts are small (81–319 messages); the regex also catches e.g.
+  "kan niet wachten" (positive) — not checked by hand; vanavond and
+  gefeliciteerd were found by looking, so description only.
+- **Draft 3** (`notebooks/analysis/who-writes-like-whom-draft-3.png`; draft 2
+  png kept on disk, its cell replaced): title "Different path, different
+  messages" (assistant's wording of student's option C, student to confirm);
+  subtitle: went to work while the rest studied, turns plans down nearly
+  twice as often as anyone else (1.9×), every year since 2020, congratulates
+  more, laughs less; label: "ik kan helaas niet", "gefeliciteerd", laughs
+  least; footnote takes the dot explanation, 67% vs 11%, the definition of
+  turning down, "one person, can't be tested", t-SNE caveat.
+- **Open:** student's point 4 was cut off; privacy of the career detail on
+  the graph (ask the friend?); the picture is the trigram clump while the
+  subtitle's numbers are word counts — student to judge whether that link is
+  clear for the reader.
+- **Student (2026-10-27):** asked how "laughing" is defined; wants the title
+  and graph to stress "formal" (planning, congratulating, laughing less);
+  drop the pseudonym from the graph (outside the group it adds nothing);
+  subtitle should say what the graph shows; reflection draft written (below).
+- **Laughing = ** regex `ha(?:ha)+h?`, case-insensitive (haha, hahaha, hahah,
+  Haha …) per 1,000 characters of the balanced windows; "hehe", "lol", "xD"
+  and 😂 not counted. hypnotic-rabbit 0.3 (#9), striking-rail 0.4,
+  fluffy-beaver 0.7 → "laughs least" is a near tie; graph now says "rarely
+  writes 'haha'".
+- **"Formal" vs the tracker:** the formality checks earlier mostly failed
+  (capitals #4 and non-discriminating, full words #7, emoji #5; only polite
+  words #1). What holds: turns plans down, congratulates, rarely "haha",
+  polite words. → "formal" would be contradicted by the student's own checks;
+  asked to choose a word the data backs (e.g. polite) before the title changes.
+- **Draft 4** (`who-writes-like-whom-draft-4.png`): label "one friend" (no
+  pseudonym), subtitle starts with what a dot is and what closeness means,
+  then the friend's facts; footnote defines "haha". Title unchanged pending
+  the student's word.
+- **Reflection draft (student):** reviewed — factual fix needed: "messages
+  very close to each other" (tightness was #5; what holds is far from the
+  others' (#2) and recognisable); "formal" → see above; "no clear clusters"
+  → state the test (51% / 33% of splits).
+- **Draft 5** (`who-writes-like-whom-draft-5.png`, student's edits): subtitle
+  "one friend who went to work after high school while the rest of us started
+  studying; polite and to the point: more 'ik kan helaas niet' and
+  'gefeliciteerd', rarely 'haha'"; no "turn plans down" (student: it's about
+  one person); label just "one friend"; footnote lines 1 and 3 kept, line 2
+  removed. Title unchanged.
+- **Moved to the reflection text (student):** turning down = a message with
+  "kan … niet" or "helaas" (10% of theirs, next highest 5.5%, #1 every year
+  2020–2026); "haha" = haha, hahaha, … (0.3 per 1,000 characters, near tie
+  with striking-rail 0.4); one person, so whether the path explains the
+  messages can't be tested.
+- **Flag on "to the point":** hypnotic-rabbit has the *longest* median message
+  of the nine (30 characters, tied with effervescent-penguin) → "to the point"
+  reads as short/concise, which the data contradicts. Student to decide.
+- **Draft 6** (2026-10-28, `who-writes-like-whom-draft-6.png`): "to the
+  point" → "practical" (student; "to the point" clashed with the longest
+  median messages); "Their messages" → "This person's messages" (student).
+  "Practical" is an interpretation (messages about plans and dates rather than
+  banter) — student to be ready to defend it.
