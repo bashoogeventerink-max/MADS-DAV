@@ -4936,3 +4936,81 @@ So far: 5 right, 1 partly, 6 wrong.
   near tie); "can sadly not be tested extensively" → can't be tested at all
   with one person, alternatives (personality, role in the group); typos
   (eaech, where → were), doubled "explanation … explained".
+- **Reflection v3 (student, 2026-10-28):** fixed: first-draft wording, "in the
+  data", tested numbers, the 10% vs 5.5% evidence, "cannot be tested". Still
+  open: "to the point" (graph says "practical"); "as" links topics and
+  politeness as cause and effect; doubled "explanation … explained";
+  alternatives not named; typos (thedata, he next, 5,5%, persons).
+- **Polite words checked (2026-10-28):** hypnotic-rabbit #1 of 9 on helaas
+  (57 uses), graag (11) and sorry (11); bedankt only #5 (7) — assistant's
+  earlier "bedankt" example was wrong. Most of the polite-word score is
+  "helaas", which overlaps with turning plans down.
+- **Reflection text, final (student, fixes applied by assistant on request):**
+
+  > First I wanted to see if there are patterns in the style of the messages of
+  > various small groups within the total group. Based on some expectations of
+  > logical splitting (study background, place of living), the people in those
+  > groups were no closer to each other than a random split (51% of splits did
+  > as well with study background, 33% for city split). However, in the first
+  > draft I noticed one author whose messages were far from everyone else's and
+  > were easy to recognise in the data. After investigation, I see that this
+  > person sends different topics of messaging compared to others, as this
+  > person turns down plans the most (10% compared to the next highest 5.5%,
+  > and this person is #1 of the nine in every year since 2020) and sends the
+  > most congratulations. At the same time, this person's messages are polite
+  > and practical, and rarely contain a "haha" (this person uses polite words
+  > such as "helaas", "graag" and "sorry" the most of the nine). A possible
+  > explanation is that this person started working earlier than the rest of
+  > the group, who went on to study after high school. However, since this is
+  > related to one person, this cannot be tested. Another explanation might be
+  > the personality of this person.
+
+## Stage 5 again — critique of draft 6 (2026-10-28)
+
+- **First impression (student):** sees the blue dots first, then the rest;
+  highest contrast = blue dots (data); nothing bright that isn't important;
+  without colour "yes, the blue dots sit close together".
+- **Grey test (assistant):** draft 6 with blue recoloured grey
+  (scratchpad, not kept): the friend's clump is only faintly visible — slightly
+  bigger dots, grey dots mixed in, no gap. → colour (and size) carries the
+  message, position only partly; consistent with own-match 68% over time.
+- **Assistant's grouping/guideline notes:** label far from the clump (long
+  leader line crossing dots); frame and title–subtitle gap removable; one
+  stray blue dot (honest, keep or explain); start-with-grey done well.
+- **Student (critique, continued):** without colour the group can't be read
+  (corrected answer 4). Keep the stray blue dot. Label: move next to the
+  clump (assistant to suggest). Claim (student): "a clear author who is very
+  distinct in their typing behaviour compared to the rest"; falsified if
+  their stretches spread out and sit next to other authors' instead of
+  their own; wants "the most different" rather than "differs"; comparison
+  not on the plot is fine (t-SNE axes mean little); grey = the others, not
+  relevant; perplexity: "the pattern per author stays", not sure.
+- **Perplexity sweep with the friend highlighted** run next (prediction:
+  their clump holds at 5, 15, 30, 50).
+- **Perplexity sweep result** (`sketch-D-friend-perplexity-sweep.png`): the
+  friend's clump holds at 5, 15, 30, 50 — share of their dots whose nearest
+  dot *on the picture* is theirs: 91%, 94%, 85%, 85% (full data 88%; 68%
+  with half a year apart). Prediction ✅. Perplexity 15 shows it tightest.
+- **Draft 7** (`who-writes-like-whom-draft-7.png`): "one friend" in bold
+  directly beside the clump, no leader line; stray dot kept.
+- **Claim — open points for the student:** (1) "very distinct in their
+  *typing behaviour*" vs the evidence: the difference is mostly *what* they
+  write; "clear" vs the grey test. (3) "the most different" is not what the
+  data says on style: #2 on distance (rib-tickling-curlew #1), #3 on
+  own-match over time (vibrant-barracuda 94%); #1 only on content measures
+  (turning down, helaas/graag/sorry, congratulating). (4) the content numbers
+  are in the subtitle, not visible in the picture — fine for this graph type
+  if said. (5) not shown: who the grey dots are, that each person has their
+  own clump (67%). (6) answered by the sweep.
+- **Claim (student, final for this round):** "There is one friend that stands
+  apart, mostly in what they write"; kind of claim: "this friend differs from
+  the rest" (not "the most"). Points 2, 4, 5 unchanged; 6 answered by the
+  sweep. Title "Different path, different messages" still fits the claim.
+- **Reflection text — sentence added (on request, 2026-10-28):**
+
+  > The friend's clump is not the product of one setting: at perplexity 5, 15,
+  > 30 and 50, between 85% and 94% of their dots have one of their own as
+  > nearest neighbour on the picture.
+
+- **Next (2026-10-29):** seed range for the 67% (and the 51% / 33%); then
+  ask the friend; draft-1 cell still overwrites the handed-in png on each run.
