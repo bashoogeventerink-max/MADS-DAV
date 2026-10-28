@@ -4922,3 +4922,17 @@ So far: 5 right, 1 partly, 6 wrong.
   median messages); "Their messages" → "This person's messages" (student).
   "Practical" is an interpretation (messages about plans and dates rather than
   banter) — student to be ready to defend it.
+- **Committed (2026-10-28, 3b7caa8):** today's work. Word-list output cleared
+  before the commit (it printed a real first name); the pre-commit hook
+  strips outputs anyway. The draft-1 cell rewrites the handed-in png on every
+  run (hook reruns the notebook too) → restored from git twice; to fix.
+  Hook: lesson notebooks 06.1 and 07.1 fail (not touched today).
+- **Reflection v2 (student):** structure good (starting point → tests →
+  noticed one person → content → possible reason → limit). Feedback: "in
+  these draft we see one author highlighting" (draft 1 highlighted nobody —
+  the student noticed them); "to the point" still in (graph now says
+  "practical"; longest messages); evidence that moved from the footnote is
+  missing (turning down 10% vs 5.5%, every year; polite words #1; "haha"
+  near tie); "can sadly not be tested extensively" → can't be tested at all
+  with one person, alternatives (personality, role in the group); typos
+  (eaech, where → were), doubled "explanation … explained".
