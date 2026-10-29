@@ -5071,3 +5071,42 @@ So far: 5 right, 1 partly, 6 wrong.
   > nearest neighbour is by the same person 63–72% of the time (chance 11%), and
   > this friend's messages are the furthest from everyone else's in 16 of the
   > 20 draws (second furthest in the other 4).
+
+- **Draft-1 cell fixed:** it no longer saves `who-writes-like-whom-draft.png`
+  (it only shows the chart), so the png handed in on 23 Oct stays as submitted.
+- **Student's feedback on draft 8:** the point (this friend writes politely and
+  practically) is only readable from the subtitle and the small panel.
+- **Assistant:** the old title "Different path, different messages" claims a
+  cause (working early → different style) that the reflection itself calls
+  untestable; the title should carry what the data shows instead.
+- **Draft 9** (`who-writes-like-whom-draft-9.png`; student chose "behaviour
+  first" + "bigger panel near the title"): title "One friend writes politely
+  and practically, unlike the rest of the group"; subtitle keeps the
+  went-to-work context as description, not as cause. Panel larger, top right,
+  rows grouped under the two title words: *polite* → "helaas" 2.8×, "haha"
+  0.2×; *practical* → messages turning down plans 4.4×. Scatter narrowed so
+  the panel labels don't overlap it.
+- **Open for the student:** "practical" rests on one number (turning down
+  plans) — be ready to say why that counts as practical.
+- **Student's feedback on draft 9:** call the friend "first worker of the
+  group"; legend "× the median of the rest of the group"; which other words
+  make this person stand out?
+- **Word readback vs the median of the other eight** (519 words used ≥ 30
+  times by ≥ 3 people; raw list not committed, it contains first names): #1 of
+  9 on courteous words (thanks 7.3×, sorry 3.8×, helaas 2.8×, graag 2.8×),
+  warm/occasion words (gezellig, fijn, gefeliciteerd, sterkte, van harte) and
+  evening planning (vanavond, zaterdagavond, morgenavond, kaarten); #9 of 9 on
+  casual markers (haha, idd, toch, lekker, gewoon). Longest median message of
+  the nine (30 vs 25 characters). Caveat: ~1 in 9 words lands on #1 by chance
+  (≈ 58 of 519), so themes carry the claim, not single words.
+- **Grounding check (assistant):** "unlike the casual talk of the rest" would
+  say the others *are* casual; the data only shows they are *more* casual than
+  this person → the student chose the relative wording.
+- **Draft 10** (`who-writes-like-whom-draft-10.png`): title "The first worker
+  of the group writes courteously and practically, less casually than the rest
+  of us"; panel in three groups chosen by the student — courteous (thanks 7.3×,
+  graag 2.8×, helaas 2.8×) and practical (turning down plans 4.4×) point right,
+  casual (haha 0.2×, idd 0.1×, toch 0.45×, lekker 0.35×) points left, with a
+  "less | more" key. Ratios in the notebook match the separate readback.
+- **Open:** "idd" rests on 1 use by this person; panel line 1 and the 1× note
+  still say "the other eight".
