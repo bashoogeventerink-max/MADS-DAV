@@ -5014,3 +5014,60 @@ So far: 5 right, 1 partly, 6 wrong.
 
 - **Next (2026-10-29):** seed range for the 67% (and the 51% / 33%); then
   ask the friend; draft-1 cell still overwrites the handed-in png on each run.
+
+## 2026-10-29
+
+- **Consent:** the friend is OK with the subtitle (student).
+- **Student:** the reason the friend differs is only readable in the
+  subtitle; idea: a small legend/word cloud in the graph. Seed range next.
+- **Seed range (20 random draws of 34 windows per author; no prediction
+  written first):**
+  - same author 1-NN: **63–72%** (median 66%); > half a year apart
+    **52–63%** (median 57%) — chance 11% throughout.
+  - study splits as good: **24–63%** (median 43%); city: **25–63%** (median
+    48%) → never near the 5% threshold; "not a finding" holds in every draw,
+    but the single numbers (51%, 33%) were one draw of a wide range.
+  - friend's rank on distance to the rest: **#1 in 16 of 20 draws**, #2 in 4
+    (seed 42 was one of the #2 draws); own match > half a year: #3 in 14, #2
+    in 3, #4 in 3.
+  - → footnote should say "63–72% over 20 draws"; reflection text numbers
+    become ranges.
+- **Draft 8** (`who-writes-like-whom-draft-8.png`, student chose option B):
+  comparison panel to the right of the scatter (not inside — no empty corner
+  big enough): one friend vs the median of the other eight, one log axis with
+  a 1× line — messages turning down plans **4.4×**, "helaas" **2.8×**,
+  "haha" **0.2×**. Subtitle shortened (the words moved to the panel).
+  Footnote: "63–72% of the time over 20 random draws (chance 11%)". Draft
+  cell moved after the seed check; colours and `is_focus` moved to the sweep
+  cell.
+- **Surprise read correctly (student):** in 16 of 20 draws this friend's
+  messages are the furthest from everyone else's (2nd in the other 4) — in
+  the trigram (style) space; on recognisability over time they're mostly #3.
+- **Reflection text — updated (on request): ranges instead of single draws,
+  and the seed check added.**
+
+  > First I wanted to see if there are patterns in the style of the messages of
+  > various small groups within the total group. Based on some expectations of
+  > logical splitting (study background, place of living), the people in those
+  > groups were no closer to each other than a random split (over 20 random
+  > draws, 24–63% of the splits did as well for study background and 25–63% for
+  > the city split). However, in the first draft I noticed one author whose
+  > messages were far from everyone else's and were easy to recognise in the
+  > data. After investigation, I see that this person sends different topics of
+  > messaging compared to others, as this person turns down plans the most (10%
+  > compared to the next highest 5.5%, and this person is #1 of the nine in
+  > every year since 2020) and sends the most congratulations. At the same
+  > time, this person's messages are polite and practical, and rarely contain a
+  > "haha" (this person uses polite words such as "helaas", "graag" and "sorry"
+  > the most of the nine). A possible explanation is that this person started
+  > working earlier than the rest of the group, who went on to study after high
+  > school. However, since this is related to one person, this cannot be
+  > tested. Another explanation might be the personality of this person.
+  >
+  > The friend's clump is not the product of one setting: at perplexity 5, 15,
+  > 30 and 50, between 85% and 94% of their dots have one of their own as
+  > nearest neighbour on the picture. It also does not depend on which
+  > stretches of messages were drawn: over 20 random draws, each person's
+  > nearest neighbour is by the same person 63–72% of the time (chance 11%), and
+  > this friend's messages are the furthest from everyone else's in 16 of the
+  > 20 draws (second furthest in the other 4).
