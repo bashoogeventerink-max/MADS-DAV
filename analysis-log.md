@@ -5110,3 +5110,13 @@ So far: 5 right, 1 partly, 6 wrong.
   "less | more" key. Ratios in the notebook match the separate readback.
 - **Open:** "idd" rests on 1 use by this person; panel line 1 and the 1× note
   still say "the other eight".
+
+### 2026-10-31 — final chart for 3 Nov
+
+- **Final** (`who-writes-like-whom-final-draft.png`): draft 10, renamed by the
+  student; the notebook's last cell now saves under that name.
+- **"idd" (student): keep it** in the casual group, even though it rests on 1
+  use by this person. Be ready to defend that when asked.
+- **Panel text (student): "rest of the group"** instead of "the other eight":
+  heading "The first worker compared with the rest of the group", note
+  "1× = as often as the median of the rest". Notebook rerun; ratios unchanged.
