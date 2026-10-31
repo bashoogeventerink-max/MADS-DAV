@@ -23,7 +23,7 @@ My data reaches the final chart in two routes:
 The notebook also reads `../../data/processed/author-groups.csv` and `author-city.csv`
 itself, outside `load_own_chat`.
 
-*[picture: Atlas view of the analysis 19 route]*
+![Atlas view of the analysis 19 route: 207 steps in one frame](atlas-v1-current.png)
 
 ## 2. What Atlas shows me
 
@@ -79,7 +79,7 @@ config.toml ─▶ load_config ─▶ clean ─▶ add_features ─▶ load_fram
 and is run by hand. `clean()` reads the WhatsApp export and cleans it in one step: the
 separate preprocess command of route 1 goes away. Atlas draws one route of five named steps instead of 207.
 
-*[picture: Atlas vision of the planned flow]*
+![Atlas view of the planned flow: main calls five named steps (dotted = sketch, not built yet)](atlas-v1-planned.png)
 
 ## Next
 
