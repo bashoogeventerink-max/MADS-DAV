@@ -5120,3 +5120,120 @@ So far: 5 right, 1 partly, 6 wrong.
 - **Panel text (student): "rest of the group"** instead of "the other eight":
   heading "The first worker compared with the rest of the group", note
   "1× = as often as the median of the rest". Notebook rerun; ratios unchanged.
+
+# Analysis 20 — who talks together? (network graph)
+
+Started 2026-11-01. Draft due Tue 2026-11-03. Before starting: `load_own_chat()`
+now returns `timestamp` as datetimes (0ab383f), so `GraphBuilder` runs on the
+own chat (lesson 7.1 no longer errors).
+
+## Stage 1 — Question (2026-11-01)
+
+- **Question (student):** which friends end up in the same conversation most
+  often?
+- **Edge (student):** two people are linked when they both take part in the same
+  conversation, not when one replies within N seconds (the `GraphBuilder`
+  window). Chosen because the question is about being together in a
+  conversation, and that is what shows groups.
+- **End of a conversation (student):** 6 hours without any message in the group
+  chat, whoever wrote it.
+- **Taking part (student):** at least 1 message in that conversation.
+- **Falsified if (student):** everyone shares about as many conversations with
+  every other member, so no subgroups exist.
+- **Note:** `scripts/sessionize.py` splits per author (gap since that
+  author's own previous message), so it can't be reused directly. Here the gap
+  is between any two consecutive messages in the chat.
+- **Still open (raised by the assistant, for the student to decide):**
+  - is 6 h backed by the data (gap distribution across the whole chat), and how
+    many conversations and people per conversation does it give?
+  - with 1 message enough and a 6 h gap, do big conversations make
+    nearly everyone linked to everyone?
+  - "as many conversations" — compared to what? People who write a lot share
+    more conversations just by being active, so a baseline may need to keep each
+    person's own number of conversations.
+- **Next:** Stage 2 — split the chat into conversations and count them.
+
+### Stage 1 — continued (2026-11-01)
+
+- **6 h gap (student):** from experience, some members take 3+ hours to answer
+  (e.g. accepting or declining plans), so a shorter gap would cut real
+  conversations in two. Still to check against the gaps in the data.
+- **Taking part (student, revised):** at least **2 messages** in a conversation,
+  to show interaction rather than a single drop-in.
+- **Baseline (point 3):** not clear yet to the student; explained with an
+  example below, open for the student to decide.
+- **Taking part (student, confirmed):** keep **2 messages** for now; check in
+  Stage 2 how many people it drops (e.g. a slow "I'm in" reply is 1 message).
+- **Baseline (student, understood):** two active people sharing many
+  conversations is not a finding: "it is just that they are both active". So a
+  pair counts only if it shares clearly more conversations than in shuffled
+  versions that keep each person's number of conversations and each
+  conversation's size.
+- **Stage 1 done.**
+- **Notebook:** `notebooks/analysis/16-who-talks-together.ipynb` (notebook
+  numbers do not follow the Analysis numbers; Analysis 19 is notebook 15).
+
+## Stage 2 — Data (2026-11-01)
+
+- **Conversations** (6 h gap, notebook 16): 1,643. With the 2-message rule, 715
+  have fewer than 2 participants (no links), and 2,974 of 6,961 participations
+  are dropped (43%). Conversations with all 9: 13 (81 with 1 message); most
+  have 2–5 people.
+- **Everyone linked? (student):** the worry is mostly gone: there are enough
+  conversations with a few people, so there is room for specific links.
+- **Single messages (student):** mostly "ik kan wel"-type replies, so not noise:
+  they respond to something. Note: this argues against the 2-message rule
+  chosen in Stage 1; to decide (1 message, or build both and compare).
+- **Gap (student):** 257 one-person conversations (even with 1 message) suggest
+  the gap could be longer, since replies can come late. Points raised by the
+  assistant: a one-person conversation can also be a message nobody answered;
+  a longer gap merges conversations into bigger ones, which brings back the
+  "everyone linked" worry. Check by rerunning with 12 h.
+
+### Stage 2 — continued (2026-11-01)
+
+- **Taking part (student, revised):** build the graph **both ways**, with at
+  least 1 and at least 2 messages, and compare.
+- **Gap (student, revised):** **12 hours** (was 6), because replies can come late.
+- **Numbers at 12 h:** 1,168 conversations (was 1,643). One-person
+  conversations with 1 message: 111 (was 257). All 9 people: 112 with 1
+  message (was 81), 28 with 2 messages (was 13). With 2 messages, 404
+  conversations give no links and 2,187 of 5,769 participations are dropped
+  (38%).
+- **Next:** pair counts (conversations shared per pair) and the graph, for
+  both participation rules.
+
+## Stage 3 — 1 message vs 2 messages (2026-11-01)
+
+- **Pair counts** (12 h gap, notebook 16): every one of the 36 pairs shares at
+  least one conversation under both rules, so both graphs are complete; any
+  structure is in the edge weights, not in which edges exist.
+- **Order of pairs:** Spearman 0.92 between the rules; same top three pairs
+  (effervescent-penguin, fluffy-beaver and rib-tickling-curlew with each
+  other).
+- **Spread:** a pair's share of all links runs 0.021–0.039 with 1 message and
+  0.015–0.042 with 2, so the 2-message rule makes differences between pairs
+  bigger.
+- **Biggest change:** hypnotic-rabbit (fewest messages) has all pairs at ranks
+  29–36 with 2 messages; with 1 message some were mid-table (20, 24), so this
+  person often takes part with a single message.
+- **Draft chart:** two circular panels, same author order, edge width = share.
+  Complete graphs with small width differences; groups are hard to see. Chart
+  design still open (student).
+- **Still raw counts:** the shuffle baseline is what tells activity apart from
+  real pairs.
+- **Rule for the draft (student):** **2 messages**.
+- **Chart (student):** not the network picture: it has no story yet. Goal: make
+  it clearer who talks more with whom.
+- **Number (student):** shared conversations ÷ expected by chance (quick
+  version: conversations of A × conversations of B ÷ 962 conversations with
+  at least one participant).
+- **Chart (student):** **heatmap**, authors ordered by clustering on the ratio.
+- **First result:** every ratio is above 1 (1.10–1.52), and the highest are
+  the three least active people (hypnotic-rabbit, striking-rail,
+  vibrant-barracuda; top pair rabbit–rail 1.52). Likely partly an artefact:
+  the quick version assumes people join conversations independently and
+  ignores conversation size. If quiet people mostly show up in big
+  conversations, they get high ratios with everyone. The shuffle (keeps each
+  person's number of conversations and each conversation's size) is needed
+  before reading this as "who talks with whom".
