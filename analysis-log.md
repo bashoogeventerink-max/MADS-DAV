@@ -5312,3 +5312,182 @@ own chat (lesson 7.1 no longer errors).
   `is_planning_label` y/n. Notebook 16 never overwrites the file.
 - **Next:** precision (matched) and misses (near miss) from the labels; then
   decide the pattern and the planning vs other conversation split.
+
+### Stage 6 — labels and pattern check (2026-11-02)
+
+- **Labelled (student):** all 100 samples in 3 rounds; the assistant proposed
+  y/n, the student corrected (5 of 100 overruled). Columns `proposed_label`,
+  `is_planning_label`, `label_round`.
+- **Rule (student):** y = the message starts an arrangement: an invite, a
+  proposal, or a genuine question to the group about who comes or where
+  (organised outings count). n = replies about coming or not, logistics
+  statements ("ik rij wel"), one person's own request (a lift), vague promises.
+  Rows 1 and 56 (labelled n in round 1) look like the later "question to the
+  group" rule; left as labelled.
+- **Precision:** 47 of 50 matched are planning (0.94, 95% 0.84–0.98), so about
+  159 of the 169 flagged messages.
+- **Misses:** 11 of 50 near misses are planning (0.22, 95% 0.13–0.35), so about
+  290 of the 1,320 near misses (range 168–465).
+- **Found share:** within the near-miss pool the pattern finds about 35% of
+  planning messages; planning messages outside the pool are not counted, so
+  this is an upper bound.
+- **What it misses:** proposals without wie/iemand (58), verbs and activities
+  not in the word list: komen (60, 78), voetbal/potten kijken (65, 66),
+  kaarten/kerstmarkt (59, 76), biertje or bier without doen/drinken (72, 97),
+  waar doen we (89), online (98).
+
+### Stage 6 — widened pattern (2026-11-02)
+
+- **Added (student):** next to wie/iemand: day and time words (A), komen/mee (B),
+  samen (C), drinks (D); on their own: "waar doen/zullen/gaan/willen we" (F).
+  Not added: kijken (E). 169 → 407 messages (+238).
+- **Rule additions (student):** a group request to help (moving house) and a
+  small invite (getting ice cream) are planning; a "where" question to the
+  group is planning, also on the spot (wide row 26). A lift question stays
+  logistics (n).
+- **Labelled (student):** 50 of the added messages in 3 rounds
+  (`planning-label-check-wide.csv`), 1 overruled; 3 rows overlap the first
+  sample and kept their labels.
+- **Precision of the additions:** 41 of 50 (0.82, 95% 0.69–0.90), so about 195
+  of the 238 added. Whole widened pattern: about 0.87.
+- **Misses:** the widened pattern catches 10 of the 11 planning near misses
+  from the first sample; only row 58 (a proposal without wie/iemand) stays
+  missed. Found share within the pool now about 0.93, but the remaining-miss
+  estimate rests on one message, and messages outside the pool are not counted.
+- **False hits (n rows the additions flag):** jokes, replies and remarks that
+  mention wie + a day or beer (e.g. "zij beslissen wie er in komt"), "weet
+  iemand waar pils in de aanbieding is", lift logistics.
+- **Open:** first-sample row 56 ("Waar zullen we zo afspreken?") is still n,
+  while the later rule makes such "where" questions y.
+
+## Stage 7 — Planning vs other conversations (2026-11-02)
+
+- **Split (student):** a conversation is planning when its first planning
+  message (widened pattern) is within its first 10 messages; a later one makes
+  it hard to say the whole conversation is about planning. 240 planning, 722
+  other conversations with a participant. Same shuffle (1,000 × 200) per half.
+- **Core four, ratio planning | other:** penguin–curlew 1.16 | 1.05,
+  penguin–beaver 1.09 | 1.07, beaver–curlew 1.06 | 1.08, penguin–rail
+  1.02 | 1.06, beaver–rail 1.00 | 1.09, curlew–rail 0.93 | 1.13. Mean
+  1.04 | 1.08: the core is **not** stronger in planning; striking-rail's ties
+  are in the other conversations.
+- **Above chance in planning:** hypnotic-rabbit with striking-rail 1.24
+  (other 0.86), humorous-stingray 1.18 (0.90) and fluffy-beaver 1.13 (0.96);
+  fluffy-beaver–vibrant-barracuda 1.16; effervescent-penguin–humorous-stingray
+  1.12 (also the weekend-only pair in Stage 5).
+- **Caution:** planning half is small (expected 40–70 per pair); 36 pairs, 5 at
+  share above ≤ 0.05 in planning; burn-in and mixing still unchecked.
+- **Reading (student):** hypnotic-rabbit is polite and practical (analysis 15);
+  this person joins in when the topic is planning and interacts less in the
+  group chat otherwise. The planning result and the analysis 15 finding fit
+  each other.
+
+## Stage 8 — Distance and planning (2026-11-02, started)
+
+- **Question (student):** one might assume distance matters for planning, but
+  some people may travel far to see their friends.
+- **Data (student):** a town per person with the date they moved there, kept
+  gitignored (friends' personal data, town level only).
+- **Prediction (student, before running):** people join planning similarly when
+  the distance is bigger; the only outlier would be humorous-stingray, who
+  lives abroad.
+- **Network draft (student):** goes ahead with planning + distance; the earlier
+  who-talks-with-whom version is the backup, not submitted, because it has no
+  story.
+- **Locations (student):** everyone in Losser before their move; striking-rail
+  Amsterdam 2021, animated-elk Amsterdam 2022, effervescent-penguin Groningen
+  2022 → Deventer 2023, vibrant-barracuda Oldenzaal 2023, humorous-stingray
+  Vienna 2023, rib-tickling-curlew Oldenzaal 2026, pliable-tiger Leiden → Losser
+  2024; fluffy-beaver and hypnotic-rabbit Losser throughout. Year = 1 January.
+  Stored in gitignored `data/processed/author-location.csv`.
+- **Prediction refined (student):** take part and say yes regardless of
+  distance. This data measures taking part only ("ik kan niet" counts too);
+  saying yes would need a yes/no label on replies.
+- **Method:** straight-line km between towns on each planning conversation's
+  start date, median per pair; Spearman with the ratio; 10,000 shuffles of
+  the 9 people's locations (Mantel), since pairs share people.
+- **Result:** planning ratio vs km Spearman −0.35, shuffles at least as strong
+  0.12; other ratio −0.11, 0.67. A weak lean toward less planning together
+  further apart, not distinguishable from chance with 9 people.
+  humorous-stingray (Vienna, 800–940 km) is not an outlier: planning ratios
+  0.83–1.18, with hypnotic-rabbit 1.18 and effervescent-penguin 1.12.
+
+### Stage 8 — network on a distance map (2026-11-02, draft)
+
+- **Encoding (student):** one sentence, "planning together does not fade with
+  distance". Position = distance: Losser at the centre, angle = compass
+  direction, radius = log km from Losser (rings 10/50/100/500 km). Edges =
+  planning ratio, all pairs including the low ones, same red/blue scale as the
+  heatmaps. Time fixed to one period instead of encoded.
+- **Period (student):** planning conversations from 2023 on (151), so
+  positions match where people lived; each person at the town of most of these
+  conversations (pliable-tiger and rib-tickling-curlew: Losser). Shuffle rerun
+  for this period.
+- **Result 2023–2026:** planning ratio vs km Spearman −0.10, location shuffles
+  at least as strong 0.64: no sign that planning together fades with distance.
+  Strongest pair humorous-stingray–hypnotic-rabbit 1.33 (Vienna–Losser, share
+  above 0.005); effervescent-penguin–rib-tickling-curlew 1.21;
+  fluffy-beaver–vibrant-barracuda 1.19. pliable-tiger is below chance with
+  almost everyone, also in Losser (lowest: with striking-rail 0.78).
+
+### Stage 8 — story for the draft (student, 2026-11-02)
+
+- **Story (student):** "People stay in touch planning to see each other despite
+  distance." Setting: a friend group that met in Losser. Tension: half moved
+  away (Amsterdam, Deventer, Oldenzaal, Vienna). Resolution: they keep taking
+  part in planning about as much as those in Losser; the differences are
+  between people, not places.
+- **Take-part rate per person (2023–2026):** share of the planning
+  conversations (with an inviter) a person took part in. Losser 40% on
+  average, elsewhere 39%; Spearman with km from Losser −0.41, all 362,880
+  reorderings at least as strong 0.27. Highest fluffy-beaver 51% (Losser),
+  lowest hypnotic-rabbit 23% (Losser); humorous-stingray (Vienna) 37%.
+- **Tried and dropped:** "when A invites, B joins" as 72 arrows in one network:
+  unreadable (hairball). Kept as numbers (`share_joined`).
+- **Wording:** "take part" means the conversation (≥ 2 messages, "ik kan niet"
+  included), not saying yes and not coming to the event.
+
+## To do for the final report (due Tue 10 Nov)
+
+- [ ] **Saying yes:** label replies to invites yes / no / maybe (sample, as in
+      the planning label check); measure per pair "when A invites, does B say
+      yes?" and check whether distance matters for saying yes.
+- [ ] **Small multiples:** one panel per inviter ("when X invites, who takes
+      part / says yes?"), layout with line length = distance between the two.
+      Note small inviters (hypnotic-rabbit 5, rib-tickling-curlew 8).
+- [ ] **Shuffle checks:** burn-in and whether 200 trades per shuffle mix enough
+      (open since Stage 4).
+- [ ] **Multiple testing:** 36 pairs, about 2 pass a 0.05 cut by chance; say
+      so next to the highlighted pairs.
+- [ ] **Planning pattern:** row 58 type (proposal without wie/iemand) still
+      missed; first-sample row 56 still labelled n (open).
+- [ ] **Time and distance:** moves and chat changes happen in the same years;
+      consider a before/after check per person who moved (e.g.
+      humorous-stingray, 2023) against people who stayed.
+- [ ] **One-message replies:** decide whether a single "ik ben erbij" counts
+      as taking part (now ≥ 2 messages).
+- [ ] **Critique pass** on the final graph with the coaching tool.
+- [ ] **Draft graph layout:** the stingray–rabbit (red) and stingray–barracuda
+      (blue) lines run together, and the red beaver–barracuda line passes
+      close to hypnotic-rabbit; separate them (e.g. bend directions per pair).
+
+### Stage 8 — draft graph for 3 Nov (student, 2026-11-02)
+
+- **Title (student):** "Living close is not the same as being close".
+- **Edges carry the story (network theme: who connects, who drifts):** all 36
+  pairs in grey (every pair shares at least 18 planning conversations);
+  coloured where share above ≤ 0.05 (red) or ≥ 0.95 (blue), thicker the
+  further from chance. Dots equal; the take-part rate is in the label. No
+  names (student), labels "Author living in <town>".
+- **Annotations:** Vienna: strongest tie of the group (33% more than chance
+  with an author in Losser), 12% less with the author in Oldenzaal; one author
+  in Losser is on 5 of the 6 blue lines.
+- **Footnote:** what chance means, about 2 coloured lines can be chance, 151
+  conversations, taking part ≠ saying yes ≠ coming.
+- **Rejected (assistant advised, student agreed):** emphasising red lines more
+  at long distance and blue more at short distance: emphasis by fit with the
+  story.
+- **Subtitle (student):** "All nine grew up in the same hometown. Moving away
+  didn't loosen the ties; staying didn't guarantee them (planning
+  conversations 2023–2026)". Labels: km from hometown and %, no towns;
+  "Losser" shown as "Hometown" (student).
