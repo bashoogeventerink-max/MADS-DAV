@@ -5237,3 +5237,78 @@ own chat (lesson 7.1 no longer errors).
   conversations, they get high ratios with everyone. The shuffle (keeps each
   person's number of conversations and each conversation's size) is needed
   before reading this as "who talks with whom".
+
+## Stage 4 — Shuffle baseline (2026-11-01)
+
+- **Method:** 1,000 shuffles (curveball, 200 trades each, seed 42) keeping each
+  person's number of conversations and each conversation's size. Ratio =
+  observed ÷ mean of shuffles; "share above" = how often a shuffle gave at least
+  the observed count. Not checked yet: burn-in (the first shuffles start from
+  the real data) and whether 200 trades mix enough.
+- **Corner block gone:** hypnotic-rabbit–striking-rail 1.52 (quick ratio) →
+  1.00. The quick-ratio result was conversation size, not who talks with whom.
+- **Ratios now 0.87–1.08:** small differences; the group is fairly mixed.
+- **Above chance, a core of four:** effervescent-penguin, fluffy-beaver,
+  rib-tickling-curlew, striking-rail (pairs 1.05–1.08; share above 0.003–0.03,
+  penguin–rail 0.08).
+- **Below chance:** animated-elk with hypnotic-rabbit, vibrant-barracuda (0.87)
+  and pliable-tiger (0.90); humorous-stingray–vibrant-barracuda 0.88 (shuffles
+  almost never this low).
+- **Caution:** 36 pairs tested, so about 2 would pass a 0.05 cut by chance; 7
+  pairs have share above ≤ 0.033.
+
+### Stage 4 — reading the result (student, 2026-11-02)
+
+- **Core of four (student):** effervescent-penguin, fluffy-beaver,
+  rib-tickling-curlew and striking-rail are the people who, over the years,
+  met most for weekend drinks. Except striking-rail, they also live closest
+  together.
+- **Not matching (student):** hypnotic-rabbit also lives close but does not
+  stand out with them (data: ratios 0.98–1.02 with the four, i.e. chance).
+  vibrant-barracuda was expected in the group too (shows up a lot, reacts
+  quickly to events); data: above chance with fluffy-beaver (1.05) and
+  rib-tickling-curlew (1.04), not with effervescent-penguin (0.97).
+- **Points raised by the assistant:**
+  - "reacts quickly" is about reply speed, i.e. the time-window edge
+    (approach 1), not being in the same conversation; a quick replier can still
+    spread over all conversations evenly.
+  - the chat shows chat conversations, not drinks; the drinks explanation is a
+    hypothesis the data can test (weekend vs weekday conversations).
+
+## Stage 5 — Weekend vs weekday (2026-11-02)
+
+- **Weekend (student):** conversation starts Friday 12:00 up to and including
+  Sunday (Amsterdam local time). 388 weekend, 574 weekday conversations with
+  a participant. Same shuffle (1,000 × 200 trades) per half.
+- **Core pairs, ratio weekend | weekday:** penguin–beaver 1.11 | 1.05,
+  penguin–rail 1.08 | 1.04, curlew–rail 1.07 | 1.07, penguin–curlew
+  1.06 | 1.09, beaver–rail 1.04 | 1.08, beaver–curlew 1.03 | 1.10. Mean
+  1.06 | 1.07: the core is **not** stronger on weekends. Weekday results are
+  firmer (more conversations).
+- **Weekend-only pair:** effervescent-penguin–humorous-stingray 1.12 on
+  weekends (share above 0.003), 1.01 on weekdays.
+- **Below chance in both:** animated-elk–vibrant-barracuda,
+  humorous-stingray–vibrant-barracuda, animated-elk–pliable-tiger.
+- **Reading:** the simple "weekend drinks" test does not support the
+  explanation. Open (student): drinks may be planned on weekdays, which this
+  test would miss.
+- **Student:** weekdays can hold planning too; it depends on the type of
+  conversation and its topic, so weekend/weekday is a weak stand-in for
+  "drinks". Next idea: split by topic instead, e.g. conversations with a
+  planning message (Analysis 2's `is_planning`: who/iemand AND an activity
+  word; 169 of 22,517 messages).
+
+## Stage 6 — Planning label check (2026-11-02)
+
+- **Unit (student):** messages, because a planning message starts the
+  conversation about who shows up.
+- **Pattern:** Analysis 2's `is_planning` (wie/iemand AND an activity word):
+  169 messages, same count as in Analysis 2.
+- **Near-miss pool (student's words):** not flagged, but containing wie,
+  iemand, vnv, biertje(s), drinken, or an activity word from the pattern:
+  1,320 messages. Glued system lines and media excluded.
+- **Samples:** `data/processed/planning-label-check.csv` (gitignored: real
+  messages), 50 matched + 50 near miss, seed 42. Student labels
+  `is_planning_label` y/n. Notebook 16 never overwrites the file.
+- **Next:** precision (matched) and misses (near miss) from the labels; then
+  decide the pattern and the planning vs other conversation split.
