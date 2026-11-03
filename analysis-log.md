@@ -5764,3 +5764,50 @@ network-graph hand-in (see Analysis 20, "Step back").
   drink–laughter) are the same and in the same order. Overlaps are lower at
   6 h (shorter conversations hold fewer topics): 5 lines above 0.15 instead
   of 12. The ranking is robust; the cut-off value belongs to the 12 h gap.
+- **Committed (2026-11-03):** f4f7242 (analysis 20 checks, analysis 21
+  notebook and drafts), 3bfbbaa (report draft v0). `todo.md` is gitignored.
+  Hooks: notebook 17 passed; lesson notebook 06.1 fails (existing, todo §4).
+- **Draft 4 (student):** "holidays" renamed "festive days"; laughter label
+  on the left of its dot. `notebooks/analysis/topics-network-draft-4.png`.
+- **Coverage (student asked):** chat 12 Aug 2020 – 8 Sep 2026, 1,168
+  conversations in total. 198 have no topic: 808 messages (4% of all),
+  median 3 messages (13 with a topic), 60 single messages, 18 only media /
+  deleted / system lines. 35 more have only topics left out of the graph.
+  935 conversations (80%) have at least one of the 9 topics in the graph.
+- **Story options chosen (student):** 1 title + subtitle with the number,
+  2 colour the core, 3 one or two annotations; footnote (4) later.
+- **Laughter (student):** behaviour, not a topic → out of the graph.
+  Without laughter at 0.15: 7 lines (planning–drink 0.32, planning–work
+  0.20, bad news–family 0.19, drink–birthdays 0.17, drink–work 0.16,
+  drink–food 0.16, planning–birthdays 0.15). Football loses its only line
+  (best left: football–work 0.144). Coverage: planning or drink 39% of
+  conversations (not "most"); any of the 8 topics 63%.
+- **Draft 5 (student):** laughter out of the graph (behaviour), football
+  kept as a lonely dot, line width proportional to overlap (20 pt per 1.0;
+  was 30 × overlap − 3, which made 2× overlap look 4× as thick), legend
+  "How to read" for dots and lines, no numbers on lines; title left for the
+  student after seeing the graph. `notebooks/analysis/topics-network-draft-5.png`:
+  8 topics, 7 lines. 6 h check for these 8: Spearman 0.97; 3 lines above
+  0.15 at 6 h. Lines now run 3.0–6.3 pt: the differences between pairs are
+  small, and the graph shows that honestly.
+- **Draft 6 (student):** legend shows only what a dot and a line mean (the
+  numbers sit next to the dots); title (student) "Planning to have a drink
+  is the biggest topic of the group chat".
+  `notebooks/analysis/topics-network-draft-6.png`.
+  - Title check: planning AND drink = 142 conversations, fewer than work
+    (193), birthdays (181) or football (164); planning alone is the biggest
+    topic (322). 44% of planning conversations mention a drink; 53% of drink
+    conversations are also planning. "Biggest topic" is not literal yet —
+    to discuss with the student.
+- **Why football has no line (student asked):** football conversations hold
+  the other topics about as often as any conversation (planning 28% vs 28%,
+  drink 24% vs 23%, birthdays 16% vs 15%; more work 27% vs 17%, politics
+  12% vs 5%). Only 30% of football conversations have no other topic. So
+  football is not "on its own": it turns up in all kinds of conversations
+  without a favourite partner (best overlap football–work 0.144). 98 of 164
+  football conversations have just one football message (often a country
+  name, e.g. "nederland" 44×). With a 2+ football-message rule: 66
+  conversations, overlaps 0.03–0.07 (no change to the conclusion).
+- **Coverage (student asked):** of 1,168 conversations, 735 (63%) have at
+  least one of the 8 graph topics; 970 (83%) at least one of the 13 labels;
+  235 only left-out topics or laughter; 198 (17%) no label at all.
