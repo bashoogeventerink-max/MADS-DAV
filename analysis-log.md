@@ -5491,3 +5491,276 @@ own chat (lesson 7.1 no longer errors).
   didn't loosen the ties; staying didn't guarantee them (planning
   conversations 2023–2026)". Labels: km from hometown and %, no towns;
   "Losser" shown as "Hometown" (student).
+
+### Stage 9 — gap sensitivity: 3 h and 6 h vs 12 h (2026-11-03)
+
+- **Asked (student):** does the network graph hold with a shorter conversation
+  gap? Rerun of the final-graph pipeline (planning conversations 2023–2026,
+  ≥ 2 messages, 1,000 curveball shuffles, seed 42) at 3, 6 and 12 h; the
+  notebook itself still uses 12 h. 12 h reproduces `network-final.png`.
+- **Numbers:** conversations 2,159 / 1,643 / 1,168; planning conversations
+  2023–26 with a participant 160 / 161 / 151; coloured lines red 2 / 3 / 3,
+  blue 3 / 5 / 6 (3 h / 6 h / 12 h).
+- **Distance (title claim):** no link at any gap — Spearman of km with the
+  ratio −0.12 / −0.18 / −0.10, location shuffles at least as strong
+  0.56 / 0.41 / 0.64.
+- **Pair ratios between gaps:** Spearman 0.89 (3–6 h), 0.77 (3–12 h),
+  0.72 (6–12 h).
+- **Stable at all three gaps:** pliable-tiger–rib-tickling-curlew and
+  pliable-tiger–striking-rail blue. pliable-tiger is on the most blue lines
+  at every gap (3 of 3, 3 of 5, 5 of 6).
+- **Depends on the gap:** Vienna–hometown (humorous-stingray–hypnotic-rabbit)
+  1.21 (not coloured) / 1.37 red / 1.33 red; Vienna–Oldenzaal
+  (stingray–vibrant-barracuda) 0.86 / 0.83 blue / 0.88 blue;
+  stingray–pliable-tiger 0.82 blue / 0.80 blue / 1.00; four other lines are
+  coloured at one gap only.
+- **Open (student):** what this means for the graph and its annotations, and
+  whether to mention the gap check in the footnote or reflection. Prediction
+  before the run was not written down.
+- **Overall spread (same run):** mean distance of the 36 ratios from 1 is
+  0.116 / 0.116 / 0.084 (3 / 6 / 12 h); range 0.70–1.27 / 0.74–1.37 /
+  0.78–1.33. The 12 h gap makes pairs look more alike.
+- **Per author (mean ratio over their 8 pairs, 3 / 6 / 12 h):**
+  pliable-tiger 0.86 / 0.90 / 0.90 (lowest at every gap; 0 red, 3 / 3 / 5
+  blue); effervescent-penguin 1.13 / 1.16 / 1.06 (highest at every gap; only
+  red lines); the other seven stay within 0.95–1.05. Mean ratio reads as "ends
+  up with the others more or less than their own activity predicts".
+
+### Feedback on the draft graph (2026-11-03, class)
+
+- **Good:** the story works; where the authors live is a strong hook to
+  build the story on.
+- **Too much information:** hard to read what the lines and the dots mean.
+- **Too many dimensions** (authors, location, the distance rings, line
+  colour, line thickness): unclear which story the graph wants to point out.
+- **Next (student + assistant):** choose ONE story first, then keep only the
+  dimensions that serve it.
+- **Story (student):** "distance between each other does not matter for
+  making plans together" (story A; holds at 3 / 6 / 12 h). The hometown
+  drifter and the Vienna tie are no longer the main story.
+- **Decisions (student):** layout = line length is the distance between the
+  two (option 1, the MDS "alternative" layout); grey lines kept faint; title
+  kept. Assistant suggested and drafted: no thickness, no take-part %, no
+  rings, one annotation (longest red vs shortest blue line), footnote with the
+  Spearman result. Draft: `notebooks/analysis/network-draft-v2.png`
+  (scratch script, notebook unchanged).
+- **Coloured pairs at 12 h, km apart:** red 803 (Vienna–hometown), 57, 8;
+  blue 811, 144, 144, 8, 0, 0. Red and blue at both ends of the distance range.
+- **Problems seen in draft v2 (to discuss):** same-town people are spread on a
+  circle, so a 0 km line looks about as long as an 8–57 km line; the 803 km red
+  and 811 km blue lines to Vienna lie on top of each other; the "0 km"
+  annotation does not clearly point at one line.
+- **Rethink (student):** don't fix positions by location; let the layout come
+  from who plans together, so clusters appear naturally, and add location
+  on top (e.g. dot colour). Story A then reads as "clusters are mixed in
+  location". Checks agreed: clusters stable across layout starts, gaps
+  (3 / 6 / 12 h) and a modularity-based community method.
+- **Prediction (student, before draft v3):** the core group
+  (effervescent-penguin, fluffy-beaver, rib-tickling-curlew, striking-rail)
+  lives close to each other, with striking-rail as the exception.
+- **Draft v3** (`notebooks/analysis/network-draft-v3.png`, scratch script):
+  Kamada-Kawai layout with distance 1 / ratio, dots coloured by km from
+  hometown, red = more often than chance.
+  - **Layout fails:** the red pairs end up far apart, and 20 random starts
+    give very different pictures (max deviation 1.66 × layout size). With all
+    36 ratios between 0.78 and 1.33, the distances are too alike to settle.
+  - **Communities** (modularity on the pairs above 1, weight = ratio − 1;
+    Louvain gives the same result for 20 seeds at each gap): 12 h
+    {elk, penguin, curlew} {beaver, rail, barracuda} {stingray, rabbit}
+    {tiger}, Q 0.27; 6 h and 3 h group differently (Q 0.22, 0.19). Same at
+    every gap: {stingray, rabbit} (Vienna + hometown) and
+    {beaver, barracuda} (hometown + 8 km). Q around 0.2–0.3 = weak structure.
+  - **Prediction check:** the heatmap "core" (penguin 57 km, beaver 0,
+    curlew 0, rail 144 km) is 2 hometown + 2 elsewhere, so not only
+    striking-rail is the exception; and at 12 h it is not one community in
+    the planning data (the core came from the all-conversation heatmap).
+- **Student:** not surprised by weak clusters (fits earlier graphs). Asks for
+  an easier metric than "more often than chance", e.g. messages per author.
+- **Simple metrics checked (2023–26, scratch script):**
+  - Messages per author: 541 (hypnotic-rabbit) to 1,781 (pliable-tiger).
+  - Raw shared planning conversations per pair: 18–58; Spearman with
+    activity (messages A × B) +0.73; with km −0.19 (shuffles 0.53).
+  - Replies (B's message follows A's within 10 min, both directions):
+    29–206; Spearman with activity +0.79; with km +0.10 (shuffles 0.74).
+    Top 2 pairs both involve the author abroad (936 km, 803 km).
+  - Draft `notebooks/analysis/network-draft-v4-replies.png`: dot size =
+    messages, line = replies, spring layout. Mostly shows who is active.
+- **Focus (student):** planning only; question = does the distance between
+  two friends affect planning? Metric: share of A's replies that go to B.
+- **Draft v5** (`notebooks/analysis/network-draft-v5-planning-replies.png`):
+  replies = a message within 10 min after someone else's, inside the 168
+  planning conversations 2023–26 (151 of them have a participant with ≥ 2
+  messages); 1,073 replies, 49 (hypnotic-rabbit) to 167 per author.
+  - Share of A's replies to B: 0.9%–25.2%, even split 12.5%.
+  - Distance vs share: Spearman +0.23 over 72 directed pairs; location
+    shuffles at least as strong 15% → no clear distance effect.
+  - Mean share by distance: same town 9.6% (14 pairs), 8 km 12.0% (8),
+    57–144 km 13.2% (34), ~800 km 13.8% (16). If anything, far friends get
+    a slightly larger share, not a smaller one.
+  - Top: abroad author → animated-elk 25% (936 km).
+  - **Caveat:** the share corrects for how much A replies, not for how much
+    B writes (you can only reply to someone who wrote), so quiet people
+    (e.g. hypnotic-rabbit, hometown) pull the same-town share down.
+  - **Readability:** 72 arrows; the hometown group is a knot where the
+    same-town arrows can't be seen.
+
+### Step back (2026-11-03): is the distance story a good network graph?
+
+- **All distance tests so far (Spearman, km vs tie):** planning vs chance
+  −0.10 / −0.18 / −0.12 (12 / 6 / 3 h; shuffles 0.64 / 0.41 / 0.56); planning
+  all years −0.35 (0.12); other conversations −0.11 (0.67); raw shared
+  planning −0.19 (0.53); replies +0.10 (0.74); planning reply share +0.23
+  (0.15). None below 0.05, signs differ → consistent "no distance effect".
+- **1 h gap (student's idea), conversations with ≥ 2 people taking part:**
+  - All conversations: 1 h → 1,076 linked conversations, 42–229 per pair,
+    ratio 0.77–1.16, Q 0.09; 12 h → 764, 107–311, 0.87–1.07, Q 0.10.
+    Everyone talks with everyone; no sub-groups at either gap.
+  - Planning only: 1 h → just 83 linked conversations (2–20 per pair), too
+    thin; 12 h → 126, ratio 0.82–1.34.
+- **Assistant's view:** the distance result is solid but it is a "no effect"
+  finding about an attribute, and the pair network itself is flat (complete,
+  small ratio range, weak Q). A network graph is strongest when it shows
+  structure (groups, bridges, central nodes); "no effect" is clearer in a
+  simple chart or a sentence. Suggested: keep distance as a report finding,
+  and consider the topic co-occurrence network for the graph. Student to
+  decide.
+- **Decisions (student):** distance stays as a report finding; the network
+  graph becomes a topic co-occurrence network (Analysis 21). Topics from
+  keyword lists written by the student; edge = "of the conversations about
+  A, the share that also mention B". First 3-hour session tonight
+  (2026-11-03).
+
+# Analysis 21 — which topics come up together? (network graph, take 2)
+
+Started 2026-11-03. Replaces the people network of Analysis 20 as the
+network-graph hand-in (see Analysis 20, "Step back").
+
+- **Notebook (student):** `notebooks/analysis/17-topics-together.ipynb`
+  (skeleton: 12 h conversations as in notebook 16, empty `TOPICS` dict).
+- **Topics (student):** keyword lists, written by the student.
+- **Edge (student):** one line per pair of topics. Starting point: "of the
+  conversations about A, the share that also mention B" — to decide tonight
+  how one line is made from A → B and B → A.
+- **Edge rule (student):** overlap = conversations mentioning both A and B ÷
+  conversations mentioning A or B.
+- **Topics (student, first list):** meeting up / planning, football, having
+  a drink, stickers / images sent, banter; maybe others that come up.
+- **Topic decisions (student):** planning stays; drink words ("bier" etc.)
+  belong to "having a drink" only and are taken out of the planning pattern;
+  stickers / images dropped (the export can't tell media apart, and it is a
+  message type); banter → "laughter" (haha variants, emoji-only messages);
+  added birthdays, bad news, food. Asked for more candidates.
+- **Rough counts for more candidates (seed words, 12 h conversations of
+  1,168):** weather 278 (inflated: "weer" also means "again"), links 243
+  (a type, not a topic), work 193, going out / festivals 113, house /
+  moving 106 ("huis" also in "naar huis"), money / paying back 102, holiday /
+  travel 95, carnival / holidays 70, other sports 32, politics 23, family 12,
+  games 7.
+- **Topic list v1 (student, 13):** planning, football, having a drink,
+  laughter, birthdays, bad news, food, work, money, holiday / travel,
+  carnival / holidays, politics / elections, family / kids / weddings.
+  Politics (~23 conversations) and family (~12) are small on seed words; to
+  re-check with the student's own words. Not chosen: going out, house /
+  moving, other sports, games.
+- **Keyword lists v1 (student's words, 2026-11-03)** in notebook 17; the
+  assistant only added spellings of those words found in the chat. Planning =
+  notebook 16 pattern without drink words; football = notebook 14 list.
+  Words to check by hand: lekker (food), zon / italië / spanje (holiday),
+  stemmen / uitslag (politics), broer (family).
+- **Counts (conversations of 1,168):** laughter 683 (58%), planning 322,
+  having a drink 275, food 243, work 193, football 190, birthdays 165,
+  family 117, holiday 114, money 111, politics 56, holidays 42, bad news 38.
+  All above ~30. Laughter is in most conversations: with the overlap rule a
+  big topic can only have small overlaps with small topics.
+- **Share (explained to student):** share of the 1,168 conversations with at
+  least one message on the topic. Shares don't add up to 100%: 200
+  conversations have no topic, 283 one, 264 two, 180 three, the rest 4–9.
+- **Hand check started:** `data/processed/topic-label-check.csv` (gitignored),
+  140 rows: 15 per topic for food, holiday, politics, family; 10 for the
+  others; football skipped (checked in notebook 14). Student labels
+  `is_topic_label` y/n. Suggested extra words (jarig, verschrikkelijk,
+  beterschap, bbq, vliegen…, carnaval, koningsdag) not added yet.
+- **Hand check results (student, 2026-11-03):** 12 of 13 topics: every
+  sampled match correct (10/10 or 15/15). Food: 8 of 15 correct; all 7 wrong
+  ones contain "lekker" (compliments / "alright man"); the 5 food matches
+  without "lekker" are all correct. Two "lekker" rows the student kept as
+  food look doubtful ("Lekker Europa", watching a match) — to confirm.
+  Football list misses: a player's surname and a World Cup match in the food
+  sample (known: the list finds ~60%).
+- **Decisions after hand check 1 (student):** the two doubtful "lekker" rows
+  are not food (food: 6 of 15 correct, all 9 wrong ones contain "lekker");
+  "lekker" removed from food. Added the suggested words: jarig(e),
+  verschrikkelijk(e), beterschap, bbq, barbecue, vliegen / vliegtuig /
+  vliegveld, carnaval(s), koningsdag.
+- **Counts after (conversations):** laughter 683, planning 322, drink 275,
+  work 193, football 190, birthdays 181, holiday 123, family 117, food 114,
+  money 111, holidays 73, politics 56, bad news 53.
+- **Hand check 2:** `data/processed/topic-label-check-added.csv`, 5 messages
+  per added word (48 rows), student labels y/n.
+- **Topic list final (student):** these 13, no more.
+- **Step 4 — overlap (notebook 17, before hand check 2 labels):** 78 pairs,
+  overlap 0.019–0.318, median 0.097. Top: planning–drink 0.32,
+  planning–laughter 0.26, drink–laughter 0.24, football–laughter 0.20,
+  planning–work 0.20, laughter–work 0.19, bad news–family 0.19,
+  football–money 0.18, drink–birthdays 0.18. Bottom: bad news with money,
+  birthdays, football, drink (0.02–0.04). Pairs above 0.15: 14; above
+  0.12: 26; above 0.10: 39. Mean overlap per topic highest for laughter,
+  drink, planning; lowest for holidays, politics, bad news.
+  Built-in overlap to remember: football–holiday 0.16 shares country names
+  (spanje, italië).
+- **Surprises (student):** football–money and laughter–work.
+  - **Football–money was an artifact:** 29 of 30 payment requests matched
+    the football list (fixed payment-request text, mostly "nederland"); no
+    betting words (poule, wedden, gokken, toto) in those conversations.
+    Payment requests now count for money only (as in notebook 14):
+    football 190 → 164 conversations, football–money 0.18 → 0.08.
+  - **Laughter–work:** 73% of work conversations have laughter vs 58% of
+    all conversations; laughter is in 62–84% of every topic's conversations
+    (politics highest, 84%).
+- **Story (student, first words):** the group is not too serious and mostly
+  focuses on planning and seeing each other.
+- **Cut-off (student):** 0.15 → 13 lines. Draft 1:
+  `notebooks/analysis/topics-network-draft-1.png` (spring layout on all 78
+  overlaps; dot size = conversations). Social core: planning, drink,
+  laughter (+ work, birthdays); bad news–family a separate pair; holidays,
+  money, politics without a line. Football–holiday line still partly from
+  shared country names.
+- **Hand check 2 (student, partial):** the "oma is jarig" message (matched
+  birthdays via "jarig") should be family → n for birthdays (provisional,
+  see open question); two payment requests matched holidays (koningsdag,
+  carnaval) → n; a third payment request in the sample has the same issue.
+- **Rule (student, from both hand checks):** a payment request counts for
+  money only, for every topic (43 payment requests). Changes: drink 275 →
+  270, food 114 → 109, holidays 73 → 71; graph still 13 lines.
+- **Open:** a message can be in several topics (the "oma is jarig" one is
+  also family via "oma"); confirm n for birthdays, and whether the other
+  45 rows of hand check 2 are all correct.
+- **Hand check 2 done (student):** "oma is jarig" = y for birthdays (a
+  message can be in several topics); all other rows correct. 45 of 48
+  correct; the 3 wrong ones are payment requests, now excluded by the rule.
+  Keyword lists final.
+- **Draft 2 decisions (student):** title "Most conversations include some
+  form of laughter, planning or having a drink"; duitsland / italië / spanje
+  removed from holiday; politics, holidays, money left out of the graph.
+  Draft: `notebooks/analysis/topics-network-draft-2.png`, 12 lines.
+  - Title check: laughter alone 58% of conversations; laughter, planning or
+    drink 71%; 86% of the conversations that have any topic.
+  - Holiday 123 → 95 conversations; football–holiday 0.17 → 0.08, so holiday
+    now has no line either.
+  - Layout problems: the football–laughter line runs through the planning
+    dot (reads as planning–football); laughter–work runs through the drink
+    dot; labels sit on lines.
+- **Conversation (student asked):** a conversation ends after 12 hours
+  without a message from anyone (Analysis 20 choice, notebook 16). Median 11
+  messages (IQR 4–24), median 4.9 h long (IQR 1.0–11.7 h); 81 single
+  messages; 125 run longer than 24 h (no 12 h break).
+- **Draft 3 (student):** holiday left out too (no line after the country
+  fix); rule "no line may run through a dot": best of 200 spring-layout
+  starts by the distance between lines and other dots (closest 0.25 on a
+  layout about 2 wide); labels placed on the outside.
+  `notebooks/analysis/topics-network-draft-3.png`, 12 lines, 9 topics.
+- **6 h check (student):** Spearman of the 36 overlaps between 12 h and
+  6 h = 0.98; the top 3 (planning–drink, planning–laughter,
+  drink–laughter) are the same and in the same order. Overlaps are lower at
+  6 h (shorter conversations hold fewer topics): 5 lines above 0.15 instead
+  of 12. The ranking is robust; the cut-off value belongs to the 12 h gap.
