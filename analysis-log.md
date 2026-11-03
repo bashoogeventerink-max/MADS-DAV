@@ -5811,3 +5811,40 @@ network-graph hand-in (see Analysis 20, "Step back").
 - **Coverage (student asked):** of 1,168 conversations, 735 (63%) have at
   least one of the 8 graph topics; 970 (83%) at least one of the 13 labels;
   235 only left-out topics or laughter; 198 (17%) no label at all.
+- **Draft 7 (student):** title "Planning and having a drink go together
+  more than any other topics" (fits: 0.32 is the largest overlap of all
+  pairs); core (planning, drink and their line) in light orange, the rest
+  grey. `notebooks/analysis/topics-network-draft-7.png`.
+- **Cut-off 0.10 asked (student), compared (previews in the scratchpad):**
+  - 0.15: 7 lines; football, holiday, money, festive days, politics alone.
+  - 0.12: 12 lines; football joins via work (0.144), holiday via
+    birthdays / food, family via work (0.123) — bad news–family is no longer
+    a separate pair but a tail of the main group.
+  - 0.10: 21 lines; also money; only politics and festive days alone; the
+    graph becomes a web where the orange line is one of many.
+  - Median overlap (without laughter) 0.081, so 0.10 is just above the
+    middle of all pairs.
+- **Cut-off (student):** 0.12 — more topics in the graph. Note: the labels
+  are unchanged, so the 198 conversations without a label stay; topics in
+  the graph cover 752 conversations at 0.12 vs 735 at 0.15.
+- **Is "having a drink" central at 0.12? (student asked)** Lines: work 5
+  (family, food, football, drink, planning), drink 4 (birthdays, food,
+  planning, work), planning 3. Sum of overlaps on the lines: drink 0.80,
+  work 0.77, planning 0.66. Mean overlap with all 9 others: drink and
+  planning 0.143, work 0.129. Betweenness (bridge between parts): work
+  0.63, family 0.25, drink 0.11. So drink has the strongest ties, but work
+  has the most lines and is the bridge to football and family.
+- **Draft 8 (student):** cut-off 0.12; having a drink in the middle, it and
+  its four lines (planning, work, birthdays, food) light orange; title
+  "Having a drink has the strongest ties with other social topics in the
+  group"; annotation "Work links the social topics to football and family";
+  footnote has the 6 h check (Spearman 0.97 for the 9 graph topics) instead
+  of the list of topics not shown.
+  - Pinning drink inside the spring layout did not centre it (the others
+    drifted), so the layout is now two rings: drink at the centre, the 4
+    topics with a line to it on the inner ring, the other 4 on the outer
+    ring; every order on both rings tried, the one with lines furthest from
+    other dots kept. Ring = direct line to drinks or not.
+  - Left out and why (laughter = behaviour; politics, festive days, money =
+    no line above 0.12) is no longer on the graph → must be in the report
+    text.
