@@ -5900,3 +5900,11 @@ network-graph hand-in (see Analysis 20, "Step back").
   legend. `notebooks/analysis/topics-network-draft-11.png`.
   - Open: the light-orange circle (inner ring = one line from having a
     drink) is no longer explained now that the subtitle changed.
+- **Final (student, 2026-11-04):** circle removed (orange now only means the
+  pair). Saved as `notebooks/analysis/topics-network-final.png`.
+- **Q6 (student):** the claim depends on how the keyword lists define each
+  topic; it does not depend on the gap, because a 6-hour gap gives the same
+  pairing (Spearman 0.97). Not yet addressed in words: the 0.12 cut-off (the
+  pair is the highest overlap at any cut-off) and leaving laughter out
+  (with laughter, laughter–planning 0.26 is the second-strongest pair).
+- **Next (student):** reflection text for the report this afternoon.
