@@ -5848,3 +5848,55 @@ network-graph hand-in (see Analysis 20, "Step back").
   - Left out and why (laughter = behaviour; politics, festive days, money =
     no line above 0.12) is no longer on the graph → must be in the report
     text.
+
+### Critique of draft 8 with goad (2026-11-03)
+
+- **1. First impression (student):** first sees something central connected
+  to many things — having a drink — and that is the point; highest
+  contrast is the orange in the middle (data, good); planning is large but
+  does not stand out at first glance; the main comparison can be read from
+  line thickness without colour, but thickness is hard to judge by eye.
+- **Layout question (student):** no grid; a hand-made two-ring layout (see
+  draft 8 entry): ring = direct line to drinks or not; position on a ring
+  carries no data.
+- **2. Grouping (student decisions):** bad news to the right (the long line
+  along the bottom looks odd); annotation smaller and next to work, text
+  "Work has most links"; faint light-orange circle in the background for
+  the inner ring; legend removed (its explanation moves to a subtitle line)
+  to free the right side. Nothing else grouped by accident (student).
+- **Draft 9** (`notebooks/analysis/topics-network-draft-9.png`): rings now
+  mean "lines away from having a drink" — 1 (inner ring, light-orange
+  circle: birthdays, food, planning, work), 2 (family, football, holiday),
+  3 (bad news, placed beside family); only layouts with bad news on the
+  right kept. Legend replaced by a subtitle (wording to check by the
+  student). "Work has most links" small and italic under the work label.
+  Labels turn a quarter when a line leaves the dot in the label's
+  direction; the having-a-drink label sits on the free diagonal.
+- **3. Guidelines (student decisions):** "32%" written at the drinks–planning
+  line (show the data + integrate text; line widths are hard to compare by
+  eye); Spearman (0.97, 6 h gap) moved from the footnote to the report text;
+  subtitle wording kept. Football moved to the same vertical line as family
+  (mirrored spot, same ring). "Work has most links" right of the work label.
+  Spaghetti: 12 lines, handled by one accent colour and the rest grey.
+  Draft 10: `notebooks/analysis/topics-network-draft-10.png`.
+- **4. Claim (student):** over the whole period and all conversations,
+  conversations about having a drink have the strongest overlaps with other
+  topics. Falsified if drinks' lines were not thicker than lines from other
+  topics. Comparison: the graph compares the overlaps between topics. Left
+  out: lines below 12%, conversations without a label (mostly single
+  messages or no clear topic). Q6 ("depends on…"): student not sure.
+- **Resampling check (student asked; notebook 17, 1,000 resamples of the
+  1,168 conversations):** top pair having a drink – planning in 99.9%.
+  Topic with the highest mean overlap: planning 51%, having a drink 48%,
+  work 2% (observed: planning, by a hair). Topic with the highest sum of
+  lines above 0.12: having a drink 52%, planning 31%, work 16%. So "drink
+  – planning is the strongest pair" is robust; "drink has the strongest
+  ties of all topics" is about a coin flip with planning.
+- **Draft 11 (student, 2026-11-04):** after the resampling check the title
+  goes back to the robust pair claim: "Planning and having a drink go
+  together more than any other topics". Planning orange as well; only the
+  drink–planning line orange (drink's lines to birthdays, food and work
+  grey). Subtitle in plain sentences (student's wording) instead of a
+  legend. `notebooks/analysis/topics-network-draft-11.png`.
+  - Open: the light-orange circle (inner ring = one line from having a
+    drink) is no longer explained now that the subtitle changed.
