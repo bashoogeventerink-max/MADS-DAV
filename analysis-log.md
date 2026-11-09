@@ -3526,6 +3526,25 @@ shuffle/placebo/ECDF without a family). Notebook:
   Poisson/negative binomial on the daily counts), 8 (per-day PMF), 9 (CIs from
   the fitted negative binomial).
 
+## 2026-11-08 — final for the report
+
+- Teacher: "really good and clear" → only reduce clutter (student).
+- `final_img/reply-speed-elk-vs-rest-final.png` (scratch script on notebook 11's
+  steps; notebook not yet updated): subtitle back ("Replies within 6 minutes:
+  70% for the only person with notifications always on, 51–58% for each of the
+  other eight"; computed: 69.7%, others 50.8–58.3%); orange label "only person
+  with 🔔 on" instead of the name and reply count; grey label without count;
+  y-axis "more replies at this reply time →" without density numbers; one
+  note instead of two arrows; faint 6-min line; report orange #eb6834;
+  footnote adds the 401-min cut. Old draft moved back to `notebooks/analysis/`.
+- **Revised the same day (teacher: "70% does not say much; the two smoothed
+  lines already show it"):** subtitle now in words ("Everyone has a fast and
+  a slow way of replying; the only person with notifications always on
+  replies the fast way more often, while their slow replies are as slow as
+  everyone else's"); 6-min line removed (clutter); y-axis names the
+  distribution ("density: a mix of two lognormal distributions"); note
+  shortened to "thick line: fitted curve / thin line: the data".
+
 ---
 
 # Analysis 16 — are faster replies shorter? (relationship, lesson 5)
@@ -5120,6 +5139,47 @@ So far: 5 right, 1 partly, 6 wrong.
 - **Panel text (student): "rest of the group"** instead of "the other eight":
   heading "The first worker compared with the rest of the group", note
   "1× = as often as the median of the rest". Notebook rerun; ratios unchanged.
+
+### 2026-11-08 — teacher feedback and the per-person check
+
+- **Feedback (teacher, Dutch, full text in `todo.md` section 0):** (1) the
+  method is unclear: where do the dimensions come from, how many, why;
+  trigrams in the footnote but whole words in the panel; (2) with the rest
+  grey, maybe EVERY person forms their own clump, so the graph does not
+  isolate the first worker at all.
+- **Check (scratch script, same windows/trigrams/Manhattan distances as
+  notebook 15, 20 draws of 34 windows per person, seeds 0–19), medians:**
+
+  | person | own match % (range) | distance to rest, rank | rest − own spread, rank |
+  |---|---|---|---|
+  | hypnotic-rabbit (first worker) | 87 (79–94) | #1 (16 of 20) | #3 |
+  | vibrant-barracuda | 94 (82–100) | #9 | #1 (18 of 20) |
+  | effervescent-penguin | 82 (68–97) | #8 | #2 |
+  | pliable-tiger | 68 (44–79) | #6 | #4 |
+  | the other five | 49–59 | #2–#7 | #5–#9 |
+
+  own match = a dot's nearest dot is by the same person (chance 11%).
+  rest − own spread = how much further a person's dots are from the others
+  than from each other.
+- **Reading:** the teacher is right that everyone forms a clump (49–94%,
+  all far above 11%). "Distance to the rest" (the measure behind "#1 in 16
+  of 20") is a near-tie (1,765 vs 1,763) and also rewards people whose own
+  dots are spread out. On the two measures that look at separation, the
+  first worker is #3: among the most recognisable, not uniquely so.
+  vibrant-barracuda is the most separate. The word panel (courteous,
+  practical) is a separate check and still holds.
+- **Open (student):** what the graph claims now, and how to show it.
+- **Drafts 11a/11b** (scratch script, `who-writes-like-whom-draft-11a/b.png`):
+  per-person own-match dot plot added, with (a) and without (b) the word panel.
+- **Draft 12 (student, 2026-11-08):** back to the 31 Oct final layout (no
+  per-person plot), with: orange focus (report-wide focus colour, #eb6834),
+  black group headings, Dutch words translated, panel heading "Checked
+  separately on whole words in all messages", footnote with the method
+  (trigrams, ~15,600 counts per dot, 9 × 34). Story (student): the first
+  worker writes courteously and practically; "started working" stays as
+  context in the subtitle, not as a cause. The per-person check (everyone
+  clumps; first worker 87%, #2 of 9) and the trigram–word bridge go in the
+  report text. Made by a scratch script; notebook 15 not yet updated.
 
 # Analysis 20 — who talks together? (network graph)
 
