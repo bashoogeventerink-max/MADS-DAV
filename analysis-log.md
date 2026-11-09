@@ -1151,6 +1151,38 @@ the chat and chat more, probably with each other."
 - **File:** same `notebooks/analysis/slide-pliable-tiger-election-effect.png`,
   regenerated top to bottom.
 
+### 2026-11-09 — honest error bars: the claim does not hold, dropped from the report
+
+- **Why:** the slide's Poisson bars assume independent messages; daily
+  counts outside elections vary 27× more than Poisson allows (group), 10×
+  for pliable-tiger. Bars 2–4× too narrow (todo.md section 5).
+- **Check (scratch script `election_check.py`, not in the repo): week
+  bootstrap** (7-day blocks, 2,000×, seed 42, 95% percentile range of the %
+  change vs the rest of the chat) **+ random-window ranking** (share of all
+  61-day windows outside elections that are at least as busy):
+
+  | Election | Group % (95%) | pliable-tiger % (95%) | group window rank |
+  |---|---|---|---|
+  | US 2020 | +74 (+6 to +160) | +175 (+14 to +389) | top 3% |
+  | NL 2021 | +27 (−23 to +100) | +46 (−65 to +194) | 22% |
+  | NL 2023 | +31 (−25 to +104) | +53 (−20 to +175) | 19% |
+  | US 2024 | −44 (−71 to −13) | −45 (−76 to −7) | 87% |
+  | NL 2025 | −43 (−70 to −9) | −39 (−78 to +10) | 86% |
+  | pooled | +9 (−18 to +39) | +38 (−10 to +96) | |
+
+  pliable-tiger pooled reproduces todo.md section 5 (−10% to +98%).
+- **Reading:** 1 of 5 elections stands out, 2 go the other way. The one
+  that stands out (Nov 2020) falls in the lockdown; the later ones fall in
+  the chat's quieter years (decline from Analysis 4). pliable-tiger follows
+  the group's pattern, only bigger — no sign of a person-specific effect.
+- **Verdict:** "the group's history fanatics get more active during
+  election windows" is **not supported**. The earlier slide overstated it.
+- **Decision (student, 2026-11-09):** elections leave the report's
+  categories page; a "no effect" page needs group knowledge to explain and
+  is not a strong story (student). Categories becomes football tournaments
+  (Analysis 5, see its 2026-11-09 entry). The correction to the teacher and
+  class can go in the report.
+
 # Analysis 5 — football tournaments and chat activity (lesson 3, `03.3-events-in-your-chat.ipynb`)
 
 New goad cycle, first "time" theme analysis. Same own chat data as lessons 1–2.
@@ -1469,6 +1501,67 @@ revisiting:**
   plot vs. a formal seasonal decomposition like STL), and what would count
   as a large-enough effect to act on — none of this has been scoped yet,
   this is a method to explore, not a specific chart to build.
+
+## 2026-11-09 — reopened as the report's categories graph
+
+- **Why:** the election slide (Analysis 4) did not survive honest error
+  bars; the student picked football as the categories graph instead (3 of 3
+  tournaments, no group knowledge needed to follow it).
+- **Dates checked (student):** the windows match the real tournaments
+  (Euro 2020 11 Jun–11 Jul 2021, World Cup 22 Nov–18 Dec 2022 with the
+  window from 20 Nov, Euro 2024 14 Jun–14 Jul).
+- **Honesty checks (scratch script `football_check.py`, not in the repo).**
+  Daily counts outside tournaments vary 27× more than Poisson (var/mean), so
+  every check keeps bursts together:
+  1. Week bootstrap (7-day blocks, 2,000×, seed 42), during vs the rest of
+     the chat (9.7/day): Euro 2020 +94% (+34 to +172), World Cup 2022 +116%
+     (−1 to +264, only 29 days), Euro 2024 +105% (+22 to +190); pooled
+     **+105% (+56 to +158)**.
+  2. Random-window ranking (all same-length windows not touching a
+     tournament): at least as busy in 4.1% / 2.4% / 3.1% of ~2,000 windows;
+     same season ±1 month 1.2% / 1.8% / 1.0%. Windows overlap, so a
+     ranking, not a p-value.
+  3. vs the 8 weeks before the hype week: 4.1 → 18.9, 4.8 → 21.0,
+     13.2 → 19.9 messages/day. (Not the same "baseline" as the stage-4
+     table above, which used the panel context.)
+- **Graph decisions (student):**
+  1. Bars: per tournament, the 8 weeks before vs during, average messages
+     (per day or per week: to try both).
+  2. Uncertainty: 95% week-bootstrap error bars.
+  3. Headline: "Football tournaments bring activity to the group".
+  4. Stays separate from the football relation graph (Analysis 18).
+  5. Colours: during = report orange #eb6834, before = grey.
+- **Draft 1** (scratch `football_categories_draft.py`,
+  `football-categories-draft-1-day.png` / `-week.png`): per day and per
+  week differ only in scale (×7). Before (8 weeks before the hype week) →
+  during: Euro 2020 +367% (+182 to +713), World Cup 2022 +340% (+88 to
+  +871), **Euro 2024 +50% (−34 to +374)**: two burst weeks in April 2024
+  (257 and 192 messages vs ~25 normally) inflate its "before".
+- **Draft 2 (student: 4 weeks before kickoff and 4 weeks after the final;
+  scratch `football_categories_draft2.py`)**, during vs before+after
+  pooled: Euro 2020 +220% (+98 to +446), World Cup 2022 +112% (−9 to
+  +411), Euro 2024 +219% (+62 to +502). In all three the 4 weeks after are
+  busier than the 4 weeks before.
+- **Correction to stage 6 above:** "no 4th tournament exists in this data"
+  was wrong. **World Cup 2026** (11 Jun–19 Jul 2026) is inside the export
+  (ends 2026-09-08) and was not looked at when the claim was made: a real
+  hold-out. Result: 7.0 → 10.0 messages/day, **+45% (−18 to +159)**. The
+  effect does not clearly replicate on new data. Possible reasons (chat
+  decline, the Dutch team's run, matches at night in America) are untested.
+- **Decision (student):** keep 2026 in the graph, marked as new data;
+  headline "Football tournaments brought activity to the group – until
+  2026". Draft 3 = draft 2 with that headline
+  (`football-categories-draft-3.png`, per day).
+- **Notebook:** all checks + draft 3 now live in
+  `notebooks/analysis/18-football-categories.ipynb` (student: a separate
+  notebook). Its "rest of the chat" also excludes the hype weeks and World
+  Cup 2026, so numbers differ slightly from the scratch runs. New there:
+  **World Cup 2026 vs the rest of the chat: +3% (−35 to +46)**, and 45% of
+  same-length windows are at least as busy: an ordinary month.
+- **Next:** fix the wrapped "4 weeks before/after" labels, label the dotted
+  line before 2026, critique pass (`goad_critique_visual`), then port the
+  script into notebook 03.3 or keep it as the final's scratch script, and
+  write the page.
 
 ---
 
