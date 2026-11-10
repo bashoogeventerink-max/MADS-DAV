@@ -1575,8 +1575,13 @@ revisiting:**
   result. Title (student's pick): "When the ball rolls, the group chat rolls
   too"; pooled number in the subtitle. Final image:
   `notebooks/analysis/final_img/football-categories-final.png`.
-- **Next:** the report page (what it shows / design and text choices / is it
-  real?).
+- **Report page (2026-11-10):** student wrote the three sections; after
+  feedback (Poisson vs week bootstrap wording, gestalt, 4-week reason, the
+  after-weeks caveat) the draft is in
+  `notebooks/analysis/findings-football-categories.md`. Student's framing for
+  2026: it was in the data all along but left out of earlier analyses (not
+  presented as new data). After > before holds in 3 of 4 tournaments (2026:
+  6.7 vs 7.0). Student checks the text and moves it into the Google Doc.
 
 ---
 
