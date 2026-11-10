@@ -1562,6 +1562,21 @@ revisiting:**
   line before 2026, critique pass (`goad_critique_visual`), then port the
   script into notebook 03.3 or keep it as the final's scratch script, and
   write the page.
+- **2026-11-10 (morning) — final graph.** Student noticed the during-bars'
+  lower whiskers reach below a grey bar for World Cup 2022 and 2026. Direct
+  difference ranges (during vs the 4 weeks around): Euro 2020 +220% (+103 to
+  +467), World Cup 2022 +112% (−6 to +360), Euro 2024 +219% (+73 to +540),
+  World Cup 2026 +45% (−17 to +158): 2022 and 2026 cannot rule out no change
+  on their own. **Decision (student):** the claim is the pooled effect, not
+  tournament by tournament, pooled over all four: 7.2 → 17.0 messages/day,
+  **+134% (+68 to +230), 2.3× (1.7–3.3×)**. (Three tournaments only: +171%,
+  +88 to +298.) 2026 no longer singled out on the graph (dotted line and
+  "new data" labels removed); footnote names it as the weakest per-tournament
+  result. Title (student's pick): "When the ball rolls, the group chat rolls
+  too"; pooled number in the subtitle. Final image:
+  `notebooks/analysis/final_img/football-categories-final.png`.
+- **Next:** the report page (what it shows / design and text choices / is it
+  real?).
 
 ---
 
