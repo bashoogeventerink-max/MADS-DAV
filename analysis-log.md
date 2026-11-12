@@ -2242,6 +2242,29 @@ chart, logged to pick back up later:
    weekends, 10,000 draws vs. ~2,000 possible positions, pooled vs.
    per-year) are listed in the feedback file.
 
+### Point 3 done: shuffle test on the jump (2026-11-12)
+
+- **Choices, fixed before running (student):** jump = median msgs/day during
+  the 3 trip days − median of 28 days before + 28 days after (difference,
+  median, 4 weeks); 2024 and 2025 separately. Every possible start day as a
+  fake (2,039 positions), fakes whose window contains a real trip day left
+  out. Extra check named before the run: Friday starts only (both trips
+  start on a Friday; 291 positions).
+- **Result** (last cells of `05-friends-weekend-activity.ipynb`):
+  | Trip | Real jump | Fakes ≥ real, all starts | Friday starts |
+  |---|---|---|---|
+  | 2024 | +85.5/day | 0/2039 | 0/291 |
+  | 2025 | +49.5/day | 15/2039 (0.7%) | 3/291 (1.0%) |
+- Fake jumps: median 0, 95th percentile 21, max 63. Largest fakes:
+  2022-08-19, 2022-11-20/21 (start of the 2022 World Cup), 2023-11-21/22
+  (Dutch general election).
+- **Caveat for the text:** neighbouring start days share most of their
+  window, so the 15 fakes for 2025 are a handful of separate episodes, not
+  15 independent ones. The test says the jump is rare for this chat; it does
+  not say the trip caused it (n = 2 trips, and "people text more when they
+  are together" was named up front).
+- Replaces the 0/2091 and 68/2087 level results in the page text.
+
 ---
 
 # Analysis 8 — hour-of-day distribution, lockdown vs. after
